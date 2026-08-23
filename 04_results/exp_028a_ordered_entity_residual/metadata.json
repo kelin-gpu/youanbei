@@ -1,11 +1,13 @@
 {
-  "status": "completed_failed_evidence_only_prediction_generated",
+  "status": "online_rejected_evidence_only",
   "causal_status": "compliant_strict_ordered_residual_calibration",
-  "decision": "failed_gates_prediction_generated_evidence_only_not_promotable",
+  "decision": "online_rejected_confirmed_local_direction",
   "prediction": "prediction_1.npy",
   "prediction_sha256": "59b4a03eff7170ad89e4556105a22650dcf6c16df630052e52a5a44475cea61d",
   "formal_submission_overwritten": false,
   "test_labels_loaded": false,
-  "online_submission_used": false,
+  "online_submission_used": true,
+  "online_rank_ic": 0.110966,
+  "online_result_source": "user_reported_2026-08-23",
   "user_artifact_override_applied": true
 }

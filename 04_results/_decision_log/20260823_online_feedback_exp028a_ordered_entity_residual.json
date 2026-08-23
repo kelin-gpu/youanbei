@@ -1,0 +1,25 @@
+{
+  "date": "2026-08-23",
+  "experiment": "exp_028a_ordered_entity_residual",
+  "event": "user_reported_online_feedback",
+  "candidate_prediction": "04_results/exp_028a_ordered_entity_residual/prediction_1.npy",
+  "candidate_sha256": "59b4a03eff7170ad89e4556105a22650dcf6c16df630052e52a5a44475cea61d",
+  "online_rank_ic": 0.110966,
+  "comparisons": {
+    "delta_vs_exp024b_0.120847": -0.009881,
+    "delta_vs_exp023h_0.119660": -0.008694,
+    "delta_vs_exp021_0.116568": -0.005602
+  },
+  "local_diagnostic_direction": "negative_in_all_three_post_windows",
+  "decision": "online_rejected_confirmed_local_direction",
+  "promoted": false,
+  "formal_submission_changed": false,
+  "formal_submission_experiment": "exp_024b_retrieval_exploratory",
+  "formal_submission_sha256": "6ff796c7c222bb3e9a55077014c1fc885dca368e3ac1bd29aecafb4e58e2be55",
+  "submission_budget_2026-08-23": {
+    "used": 2,
+    "remaining": 1,
+    "daily_limit": 3
+  },
+  "source": "user_reported_in_codex_conversation"
+}

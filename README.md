@@ -15,7 +15,7 @@
 > - **RankIC > 0.12 目标已达成**：exp024b 相对 exp023h 提高 `+0.001187`，超过目标 `+0.000847`。
 > - exp024a 的本地稳健性门槛曾失败，因此 exp024b 保留完整探索性风险记录；线上结果不反向修改历史诊断。
 > - `final_submission` 不自动覆盖；本次已取得用户明确授权并完成 exp024b 人工晋级。
-> - exp028a 个股有序残差校准在三个后置窗口全部为负；按用户要求生成的 `prediction_1.npy` 仅作证据存档，不晋级、不提交，正式文件保持 exp024b。
+> - exp028a 个股有序残差校准在三个后置窗口全部为负，线上 RankIC `0.110966`（较 exp024b `-0.009881`）确认否决；不晋级，正式文件保持 exp024b。
 
 ## 快速导航
 
@@ -1173,7 +1173,7 @@ environment.yml                     项目声明环境与依赖
   exp_017/                          P0 归因审计报告（p0_findings.md）
   exp_018 ... exp_022/              cat5/路由/tabular/纯树结果目录
   exp_023a ... exp_023h/            收官冲刺 8 个子实验结果目录
-  _decision_log/                    决策预注册与线上反馈日志（22 份，2026-08-07..23）
+  _decision_log/                    决策预注册与线上反馈日志（23 份，2026-08-07..23）
   final_submission/                 当前正式 prediction.npy（exp024b）和 metadata
 05_docs/                            官方材料与项目报告
   official_materials/               赛题、命题说明与官方方案模板（附件1-3）
@@ -1317,7 +1317,7 @@ Train/Valid/Test 区间：
 5. `exp_015`、`exp_007`、`exp_009` 保留为强基线；exp013/014/016-pruned/019/023c/023g 明确不晋级。
 6. exp024b 的预注册、诊断风险与线上结果均保留；线上反馈决策日志位于 `04_results/_decision_log/`。
 7. exp027a 将检索校正拆为全历史先验与状态特异残差：global pooled 优势仅 `+0.000827` 且只有2/4窗口为正，residual-only 为正窗口0/4；结论 `inconclusive_keep_exp024b`，未建立 exp027b。
-8. exp028a 检验时间有序个股残差收缩，fold2/fold3/official Valid 分别为 `-0.025045/-0.003758/-0.013392`；路线被否决。按用户显式要求仍生成独立 `prediction_1.npy`，但仅为 evidence-only，不提交、不覆盖 exp024b。
+8. exp028a 检验时间有序个股残差收缩，fold2/fold3/official Valid 分别为 `-0.025045/-0.003758/-0.013392`；用户报告线上 RankIC `0.110966`，较 exp024b 低 `0.009881`，确认路线被否决。独立 `prediction_1.npy` 仅作 evidence-only，不晋级、不覆盖 exp024b。
 
 ## 10. 复现分级与命令清单
 
@@ -1824,7 +1824,7 @@ prediction[非评估位置] == 0.5
 - [`04_results/exp_024b_retrieval_exploratory/metadata.json`](04_results/exp_024b_retrieval_exploratory/metadata.json)：当前正式文件来源及线上晋级状态。
 - [`04_results/exp_028a_ordered_entity_residual/prediction_1.npy`](04_results/exp_028a_ordered_entity_residual/prediction_1.npy)：exp028a 门槛失败后按用户要求保留的 evidence-only 预测，禁止自动晋级。
 - [`04_results/final_submission/metadata.json`](04_results/final_submission/metadata.json)：当前正式文件来源和哈希。
-- [`04_results/_decision_log/`](04_results/_decision_log/)：22 份决策日志（预注册/诊断 + 线上反馈 + 晋级记录，2026-08-07..23）。
+- [`04_results/_decision_log/`](04_results/_decision_log/)：23 份决策日志（预注册/诊断 + 线上反馈 + 晋级记录，2026-08-07..23）。
 - [`04_results/exp_017/p0_findings.md`](04_results/exp_017/p0_findings.md)：exp016 归因审计报告。
 - [`.trae/documents/友安杯Y1_RankIC优化实施路线图.md`](.trae/documents/友安杯Y1_RankIC优化实施路线图.md)：项目管理路线图（含 §1.7 收官论证）。
 - [`05_docs/project_report/友安杯_Y1_项目实现方案.docx`](05_docs/project_report/友安杯_Y1_项目实现方案.docx)：项目实现方案（2026-08-23 收官重写版；按规则 0.12 前不用于提交）。

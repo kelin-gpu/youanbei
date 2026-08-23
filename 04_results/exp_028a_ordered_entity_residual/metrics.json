@@ -161,6 +161,15 @@
   "model_training_performed": false,
   "prediction_generated_under_user_override": true,
   "automatic_online_submission": false,
+  "online_submission_used": true,
+  "online_feedback": {
+    "online_rank_ic": 0.110966,
+    "source": "user_reported_2026-08-23",
+    "delta_vs_exp024b": -0.009881,
+    "delta_vs_exp023h": -0.008694,
+    "delta_vs_exp021": -0.005602,
+    "decision": "online_rejected_confirmed_local_direction"
+  },
   "formal_submission_overwritten": false,
   "elapsed_s": 32.7
 }
