@@ -1,0 +1,32 @@
+{
+  "experiment": "exp_025a_direct_rank_objective_diagnostic",
+  "status": "preregistered",
+  "registered_at": "2026-08-23",
+  "hypothesis": "相对 Pearson/pairwise 代理目标，直接最大化逐截面真实 Spearman 的强收缩全局家族权重可以产生跨时间可迁移增益。",
+  "changed_variable": "optimization_metric_exact_cross_sectional_spearman",
+  "baseline_experiment": "exp021_validation_and_exp016_strict_oof_proxy",
+  "causal_status": "preregistered_strict_oof",
+  "causal_boundary": "weights for each evaluation window are fitted only on earlier strict-OOF windows; official Valid weights use OOF ending at 2918",
+  "train_range": "strict OOF [1459,2918), expanding",
+  "valid_range": "holdouts [1945,2432), [2432,2918), official Valid [2918,3161)",
+  "local_metric": "mean exact cross-sectional Spearman RankIC",
+  "expected_gain": "positive on both temporal holdouts and at least +0.0025 on full official Valid",
+  "failure_rule": "either temporal holdout delta <= 0; official Valid delta < +0.0025; fitted weight L1 instability > 0.20; any audit/hash failure",
+  "online_submission_allowed": false,
+  "test_prediction_allowed": false,
+  "preregistered_parameters": {
+    "family_count": 7,
+    "candidate_shrink_alpha": 0.1,
+    "weight_parameterization": "softmax",
+    "optimizer": "Nelder-Mead",
+    "optimizer_maxfev": 240,
+    "l2_penalty_to_base_weights": 0.02,
+    "initial_weights": "exp016_BASE_WEIGHTS",
+    "weight_stability_l1_max": 0.20
+  },
+  "submission_budget": {
+    "daily_limit": 3,
+    "remaining_on_2026-08-23": 3,
+    "allocated_to_exp025a": 0
+  }
+}

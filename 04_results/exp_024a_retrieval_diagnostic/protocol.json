@@ -1,0 +1,36 @@
+{
+  "experiment": "exp_024a_retrieval_diagnostic",
+  "status": "preregistered",
+  "registered_at": "2026-08-23",
+  "hypothesis": "仅使用当前无标签截面状态检索历史相似截面，比最近窗口和随机历史截面更能恢复可迁移的截面排序信号。",
+  "changed_variable": "historical_section_selection_method",
+  "baseline_experiment": "exp021_validation_and_exp016_strict_oof_proxy",
+  "causal_status": "preregistered_strict_causal",
+  "causal_boundary": "query t only uses X(t), library X(s) and y(s) with s before the evaluation window start; no Test labels and no X after t",
+  "train_range": "[486,2918) expanding by evaluation window",
+  "valid_range": "[1459,3161), windows=[1459,1945),[1945,2432),[2432,2918),[2918,3161)",
+  "local_metric": "mean cross-sectional Spearman RankIC and delta versus frozen window baseline",
+  "expected_gain": "retrieval correction beats random in every window and recent in at least three of four windows",
+  "failure_rule": "any leakage/audit failure; retrieval not above random in every window; retrieval above recent in fewer than three windows; confidence-gain relationship unstable under leave-one-block-out",
+  "online_submission_allowed": false,
+  "test_prediction_allowed": false,
+  "preregistered_parameters": {
+    "eligible_feature_actions": ["stable_keep", "rank_or_robust_transform"],
+    "state_statistics": ["q10", "median", "q90", "iqr", "std", "zero_rate"],
+    "state_pca_components": 16,
+    "neighbors": 32,
+    "retrieval_distance": "euclidean_after_library_robust_scaler_and_pca",
+    "neighbor_aggregation": "unweighted_mean_feature_rank_ic_fingerprint",
+    "recent_control_neighbors": 32,
+    "random_control_neighbors": 32,
+    "random_seed": 20260823,
+    "diagnostic_blend_alpha": 0.1,
+    "leave_one_block_out_blocks": 8,
+    "confidence_pass_rule": "median leave-one-block-out Spearman(confidence, retrieval_delta) > 0 and at least 75% of leave-one-block-out correlations are positive"
+  },
+  "submission_budget": {
+    "daily_limit": 3,
+    "remaining_on_2026-08-23": 3,
+    "allocated_to_exp024a": 0
+  }
+}

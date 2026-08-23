@@ -1,6 +1,6 @@
 {
   "project": "youanbei-y1",
-  "status": "收官/创新准备",
+  "status": "创新筛选完成/等待新证据",
   "source_of_truth": {
     "human_summary": "README.md",
     "online_feedback": "04_results/_decision_log/",
@@ -54,7 +54,14 @@
     "test_history": "04_results/_acceptance/test_history_audit.json",
     "feature_registry": "04_results/_acceptance/drift_feature_registry.csv",
     "exp021_full_valid_audit": "04_results/_acceptance/exp021_validation_audit/metrics.json",
-    "next_experiment": "exp024_drift_feature_gating"
+    "next_experiment": "none_pending_new_independent_signal",
+    "plan": "05_docs/rankic_gt_012_innovation_plan.md",
+    "latest_diagnostics": {
+      "exp024a": "completed_rejected",
+      "exp025a": "completed_rejected"
+    },
+    "online_submissions_used_on_2026-08-23": 0,
+    "online_submissions_remaining_on_2026-08-23": 3
   },
   "last_reviewed": "2026-08-23"
 }

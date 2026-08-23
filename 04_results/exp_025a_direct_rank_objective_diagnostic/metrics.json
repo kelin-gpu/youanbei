@@ -1,0 +1,119 @@
+{
+  "experiment": "exp_025a_direct_rank_objective_diagnostic",
+  "decision": "stop_direct_rank_route",
+  "passed": false,
+  "parameters": {
+    "family_count": 7,
+    "candidate_shrink_alpha": 0.1,
+    "weight_parameterization": "softmax",
+    "optimizer": "Nelder-Mead",
+    "optimizer_maxfev": 240,
+    "l2_penalty_to_base_weights": 0.02,
+    "initial_weights": "exp016_BASE_WEIGHTS",
+    "weight_stability_l1_max": 0.2
+  },
+  "base_weights": {
+    "exp015_anchor": 0.2,
+    "tabular": 0.15,
+    "dual_axis": 0.18,
+    "time_frequency": 0.1,
+    "relational_graph": 0.1,
+    "foundation_representation": 0.1,
+    "multi_objective_rank": 0.17
+  },
+  "fit_fold_1": {
+    "weights": {
+      "exp015_anchor": 0.18469564309612196,
+      "tabular": 0.20848444579791994,
+      "dual_axis": 0.10929340486422752,
+      "time_frequency": 0.08175321817556301,
+      "relational_graph": 0.07541795734445801,
+      "foundation_representation": 0.16887958775105613,
+      "multi_objective_rank": 0.17147574297065354
+    },
+    "success": false,
+    "message": "Maximum number of function evaluations has been exceeded.",
+    "function_evaluations": 240,
+    "objective_calls": 240,
+    "train_penalized_objective": -0.12511287071121155
+  },
+  "evaluation_fold_2": {
+    "sections": 487,
+    "baseline_mean_ic": 0.12267642319235886,
+    "candidate_mean_ic": 0.12256477992044372,
+    "mean_delta": -0.00011164327191514283,
+    "positive_delta_ratio": 0.41478439425051333,
+    "worst_delta": -0.0028037833362073022
+  },
+  "fit_folds_1_2": {
+    "weights": {
+      "exp015_anchor": 0.17571148669339393,
+      "tabular": 0.1625180951571847,
+      "dual_axis": 0.15519789225795813,
+      "time_frequency": 0.0755701822874344,
+      "relational_graph": 0.09557325573437297,
+      "foundation_representation": 0.13811172371318906,
+      "multi_objective_rank": 0.1973173641564668
+    },
+    "success": true,
+    "message": "Optimization terminated successfully.",
+    "function_evaluations": 201,
+    "objective_calls": 201,
+    "train_penalized_objective": -0.12383499959648225
+  },
+  "evaluation_fold_3": {
+    "sections": 486,
+    "baseline_mean_ic": 0.100295111794833,
+    "candidate_mean_ic": 0.10035568862944844,
+    "mean_delta": 6.0576834615416645e-05,
+    "positive_delta_ratio": 0.6296296296296297,
+    "worst_delta": -0.0015668244813798748
+  },
+  "fit_all_oof": {
+    "weights": {
+      "exp015_anchor": 0.17770479378668913,
+      "tabular": 0.15790731838019023,
+      "dual_axis": 0.16535774675356524,
+      "time_frequency": 0.07922121345457882,
+      "relational_graph": 0.09953011967586033,
+      "foundation_representation": 0.1279526177917086,
+      "multi_objective_rank": 0.19232619015740765
+    },
+    "success": true,
+    "message": "Optimization terminated successfully.",
+    "function_evaluations": 226,
+    "objective_calls": 226,
+    "train_penalized_objective": -0.11599316937655459
+  },
+  "evaluation_official_valid": {
+    "sections": 243,
+    "baseline_mean_ic": 0.09180860784097308,
+    "candidate_mean_ic": 0.09178114139911982,
+    "mean_delta": -2.746644185327559e-05,
+    "positive_delta_ratio": 0.5102880658436214,
+    "worst_delta": -0.0011449773325515333
+  },
+  "fit_weight_l1_instability": 0.18380281393891781,
+  "pass_checks": {
+    "fold_2_delta_positive": false,
+    "fold_3_delta_positive": true,
+    "official_valid_delta_at_least_0_0025": false,
+    "weight_l1_instability_at_most_0_20": true,
+    "protected_hashes_unchanged": true
+  },
+  "protected_hashes_before": {
+    "exp021_prediction": "acd8ae2411f3b96ff01538face5a861b22f87443298194f5376b8e12d8e278b2",
+    "exp023h_prediction": "2fb9021f97d21827eee7102ddd386af7ce3b32fe4be14fcdbe9782860ee84877",
+    "formal_submission": "5721e5fa325ecce624755da65db6e0245f2e79857f14f6d61e4fed9d9c83c524"
+  },
+  "protected_hashes_after": {
+    "exp021_prediction": "acd8ae2411f3b96ff01538face5a861b22f87443298194f5376b8e12d8e278b2",
+    "exp023h_prediction": "2fb9021f97d21827eee7102ddd386af7ce3b32fe4be14fcdbe9782860ee84877",
+    "formal_submission": "5721e5fa325ecce624755da65db6e0245f2e79857f14f6d61e4fed9d9c83c524"
+  },
+  "protected_unchanged": true,
+  "test_arrays_loaded": false,
+  "prediction_generated": false,
+  "online_submission_used": false,
+  "elapsed_s": 56.1
+}

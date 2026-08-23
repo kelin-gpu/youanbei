@@ -84,8 +84,10 @@ def rows() -> list[dict[str, str]]:
         experiment = directory.name
         metrics_path = directory / "metrics.json"
         metadata_path = directory / "metadata.json"
+        protocol_path = directory / "protocol.json"
         metrics = read_json(metrics_path)
         metadata = read_json(metadata_path)
+        protocol = read_json(protocol_path)
         predictions = sorted(directory.rglob("prediction*.npy"))
         if not predictions:
             predictions = [None]
@@ -94,21 +96,23 @@ def rows() -> list[dict[str, str]]:
             row.update({
                 "experiment": experiment,
                 "artifact": prediction.name if prediction else "missing",
-                "baseline": (
+                "baseline": str(protocol.get("baseline_experiment", (
                     "exp021" if experiment in {"exp_020_tabular_categorical", "exp_021_retrain_head_router"}
                     else "exp021+anchor_surgery" if experiment == "exp_023h_ultimate_surgery"
                     else "missing"
-                ),
-                "causal_status": causal_status(experiment, metrics),
+                ))),
+                "causal_status": str(protocol.get("causal_status", causal_status(experiment, metrics))),
+                "train_range": str(protocol.get("train_range", "missing")),
+                "valid_range": str(protocol.get("valid_range", "missing")),
                 "local_rank_ic": scalar_metric(
                     metrics.get("online_rank_ic", metrics.get("surgery_valid_ic", metrics.get("blend_valid_ic", metrics.get("capped_valid_mean_ic", (metrics.get("fit_reference", {}) or {}).get("capped_valid_mean_ic", "missing")))))
                 ),
                 "online_rank_ic": scalar_metric(scores.get(experiment, "missing")),
                 "metrics_path": str(metrics_path.relative_to(ROOT)).replace("\\", "/") if metrics_path.exists() else "missing",
                 "metadata_path": str(metadata_path.relative_to(ROOT)).replace("\\", "/") if metadata_path.exists() else "missing",
-                "status": str(metadata.get("status", metrics.get("decision", "recorded"))),
+                "status": str(metadata.get("status", protocol.get("status", metrics.get("decision", "recorded")))),
                 "decision": decision_for(experiment),
-                "changed_variable": str(metrics.get("experiment", metadata.get("task", "missing"))),
+                "changed_variable": str(protocol.get("changed_variable", metrics.get("experiment", metadata.get("task", "missing")))),
             })
             if prediction:
                 row["prediction_path"] = str(prediction.relative_to(ROOT)).replace("\\", "/")
