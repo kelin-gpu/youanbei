@@ -88,6 +88,7 @@ def rows() -> list[dict[str, str]]:
         metrics = read_json(metrics_path)
         metadata = read_json(metadata_path)
         protocol = read_json(protocol_path)
+        recorded_decision = decision_for(experiment)
         predictions = sorted(directory.rglob("prediction*.npy"))
         if not predictions:
             predictions = [None]
@@ -111,7 +112,11 @@ def rows() -> list[dict[str, str]]:
                 "metrics_path": str(metrics_path.relative_to(ROOT)).replace("\\", "/") if metrics_path.exists() else "missing",
                 "metadata_path": str(metadata_path.relative_to(ROOT)).replace("\\", "/") if metadata_path.exists() else "missing",
                 "status": str(metadata.get("status", protocol.get("status", metrics.get("decision", "recorded")))),
-                "decision": decision_for(experiment),
+                "decision": (
+                    recorded_decision
+                    if recorded_decision != "missing"
+                    else str(metrics.get("decision", "missing"))
+                ),
                 "changed_variable": str(protocol.get("changed_variable", metrics.get("experiment", metadata.get("task", "missing")))),
             })
             if prediction:
