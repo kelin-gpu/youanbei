@@ -6,6 +6,8 @@
 
 机器可读项目状态见 [`project_status.json`](project_status.json)，实验产物登记见 [`04_results/experiment_registry.csv`](04_results/experiment_registry.csv)，只读环境/契约审计入口为 [`scripts/project_audit.py`](scripts/project_audit.py)。
 
+创新前测试复用与补测记录见 [`04_results/_acceptance/README.md`](04_results/_acceptance/README.md)；现有测试不重复执行，缺失的 exp021 全量 Valid/逐截面/高漂移验收已补齐。
+
 > **项目最终状态（2026-08-23）**
 >
 > - **线上最佳成绩：`0.119660`**，来自 `exp_023h_ultimate_surgery/prediction_1.npy`（exp021 融合栈 + 锚点手术终极版）。

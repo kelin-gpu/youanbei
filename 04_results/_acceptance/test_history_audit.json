@@ -1,0 +1,106 @@
+{
+  "scope": "innovation-readiness test history",
+  "principle": "reuse completed evidence; only execute missing acceptance tests",
+  "tests": [
+    {
+      "test": "data_and_prediction_contract",
+      "status": "done_reused",
+      "evidence": "scripts/project_audit.py; exp016 safety contract"
+    },
+    {
+      "test": "raw_feature_quality_and_psi",
+      "status": "done_reused",
+      "evidence": "01_analysis/outputs/numeric_feature_profile.csv"
+    },
+    {
+      "test": "single_feature_rankic_stability",
+      "status": "done_reused",
+      "evidence": "01_analysis/outputs/rankic_summary.csv"
+    },
+    {
+      "test": "walk_forward_oof",
+      "status": "done_reused",
+      "evidence": "exp016 OOF cache; exp021 metrics_fit.json"
+    },
+    {
+      "test": "exp016_full_valid_and_per_time_stability",
+      "status": "done_reused",
+      "evidence": "exp016/full/official_valid_full_report.json; per_time_ic_full.csv"
+    },
+    {
+      "test": "family_ablation_and_resource_audit",
+      "status": "done_reused",
+      "evidence": "exp016/full/family_ablation.json; resource.json"
+    },
+    {
+      "test": "psi_rankic_feature_registry",
+      "status": "newly_completed",
+      "evidence": "04_results/_acceptance/drift_feature_registry.csv"
+    },
+    {
+      "test": "exp021_vs_exp023h_prediction_similarity",
+      "status": "newly_completed",
+      "evidence": "04_results/_acceptance/prediction_similarity.json"
+    },
+    {
+      "test": "exp021_full_valid_per_time_and_high_drift",
+      "status": "newly_completed",
+      "evidence": "04_results/_acceptance/exp021_validation_audit/metrics.json"
+    }
+  ],
+  "feature_registry_counts": {
+    "disable_candidate": 14,
+    "downweight": 20,
+    "rank_or_robust_transform": 5,
+    "stable_keep": 60
+  },
+  "prediction_similarity": {
+    "left": "04_results/exp_021_retrain_head_router/prediction_1.npy",
+    "right": "04_results/exp_023h_ultimate_surgery/prediction_1.npy",
+    "left_sha256": "acd8ae2411f3b96ff01538face5a861b22f87443298194f5376b8e12d8e278b2",
+    "right_sha256": "2fb9021f97d21827eee7102ddd386af7ce3b32fe4be14fcdbe9782860ee84877",
+    "evaluation_rows": 2042538,
+    "pearson_all_evaluation_rows": 0.9952579447201485,
+    "per_time_rank_correlation_mean": 0.994909882702856,
+    "per_time_rank_correlation_min": 0.3467762499560893,
+    "changed_time_sections": 6
+  },
+  "exp021_validation_summary": {
+    "experiment": "exp_021_retrain_head_router",
+    "task": "missing full-valid/per-time/high-drift acceptance audit",
+    "rows": 982972,
+    "groups": 243,
+    "mean_rank_ic": 0.09180860784097308,
+    "median_rank_ic": 0.09491998748907436,
+    "std_rank_ic": 0.09792650127106643,
+    "positive_ratio": 0.831275720164609,
+    "worst": -0.17155220997682077,
+    "best": 0.32877070449862505,
+    "worst_decile_mean": -0.09217921555094699,
+    "late_half_mean": 0.08560943339775545,
+    "drift_proxy": "per-time mean abs of standardized current selected raw features (tree columns 0:40)",
+    "high_drift_quantile": 0.8,
+    "high_drift_threshold": 0.6583556652069091,
+    "high_drift_group_count": 49,
+    "high_drift_mean_rank_ic": 0.08916126226030224,
+    "other_groups_mean_rank_ic": 0.09247726729176108,
+    "high_drift_delta": -0.0033160050314588324,
+    "protected_hashes_before": {
+      "exp021_prediction": "acd8ae2411f3b96ff01538face5a861b22f87443298194f5376b8e12d8e278b2",
+      "formal_submission": "5721e5fa325ecce624755da65db6e0245f2e79857f14f6d61e4fed9d9c83c524"
+    },
+    "protected_hashes_after": {
+      "exp021_prediction": "acd8ae2411f3b96ff01538face5a861b22f87443298194f5376b8e12d8e278b2",
+      "formal_submission": "5721e5fa325ecce624755da65db6e0245f2e79857f14f6d61e4fed9d9c83c524"
+    },
+    "protected_unchanged": true,
+    "model_training": "one in-memory official-valid tabular family; no model saved",
+    "reused": [
+      "exp016 full-valid first-six/state/group caches",
+      "exp021 multi_objective_head.pt",
+      "exp021 state_router.pt"
+    ],
+    "elapsed_s": 201.8
+  },
+  "training_performed": false
+}

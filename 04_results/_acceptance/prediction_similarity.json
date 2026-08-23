@@ -1,0 +1,11 @@
+{
+  "left": "04_results/exp_021_retrain_head_router/prediction_1.npy",
+  "right": "04_results/exp_023h_ultimate_surgery/prediction_1.npy",
+  "left_sha256": "acd8ae2411f3b96ff01538face5a861b22f87443298194f5376b8e12d8e278b2",
+  "right_sha256": "2fb9021f97d21827eee7102ddd386af7ce3b32fe4be14fcdbe9782860ee84877",
+  "evaluation_rows": 2042538,
+  "pearson_all_evaluation_rows": 0.9952579447201485,
+  "per_time_rank_correlation_mean": 0.994909882702856,
+  "per_time_rank_correlation_min": 0.3467762499560893,
+  "changed_time_sections": 6
+}

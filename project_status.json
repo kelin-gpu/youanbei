@@ -49,5 +49,12 @@
     "dataset": "03_cache/processed_data_v1",
     "manifest_sha256": "f7c4076de6e3ae7d631554df5a15f69f50d7e8f676249fb6d2d4cf71ccec8c6f"
   },
+  "innovation_readiness": {
+    "status": "accepted",
+    "test_history": "04_results/_acceptance/test_history_audit.json",
+    "feature_registry": "04_results/_acceptance/drift_feature_registry.csv",
+    "exp021_full_valid_audit": "04_results/_acceptance/exp021_validation_audit/metrics.json",
+    "next_experiment": "exp024_drift_feature_gating"
+  },
   "last_reviewed": "2026-08-23"
 }
