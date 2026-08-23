@@ -1,0 +1,20 @@
+# exp024b：固定检索残差探索候选
+
+状态：`candidate_generated_exploratory_not_promoted`。
+
+这是用户要求补齐的可提交候选，不代表 exp024a 的 no-go 结论被推翻。固定参数来自 exp024a 预注册：K=32、PCA=16、alpha=0.1，不做事后搜索。
+
+以 exp023h 为底座；Test 前 6 个锚点截面逐值保留，后续截面加入状态检索得到的历史特征秩指纹校正。脚本不读取 Test 标签，也不会自动上传或覆盖正式提交。
+
+## 产物
+
+- 文件：`prediction_1.npy`
+- SHA-256：`6ff796c7c222bb3e9a55077014c1fc885dca368e3ac1bd29aecafb4e58e2be55`
+- shape：`(442, 5282)`
+- dtype：`float32`
+- 非评估位置：全部为 `0.5`
+- 保留 exp023h：前 6 个截面
+- 修改截面：后 436 个
+- 与 exp023h 评估位 Pearson：`0.997573`
+
+本候选可供用户手动提交，但 exp024a 的稳健性门槛曾失败，因此状态保持 `exploratory_not_promoted`。

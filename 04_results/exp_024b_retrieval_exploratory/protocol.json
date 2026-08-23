@@ -1,0 +1,32 @@
+{
+  "experiment": "exp_024b_retrieval_exploratory",
+  "status": "preregistered_user_requested_exploratory",
+  "registered_at": "2026-08-23",
+  "hypothesis": "尽管 exp024a 未通过晋级门槛，其固定检索校正在 official Valid 为正；生成一份不调参的探索性 Test 候选供用户决定是否消耗线上额度。",
+  "changed_variable": "fixed_state_retrieval_rank_correction",
+  "baseline_experiment": "exp023h_ultimate_surgery",
+  "causal_status": "preregistered_strict_causal",
+  "causal_boundary": "Test t uses X(t), Train/Valid X and labels ending at 3160, and frozen exp023h; no Test labels or X after t",
+  "train_range": "historical retrieval library [486,3161)",
+  "valid_range": "exp024a official Valid diagnostic +0.000637 but failed robustness gates",
+  "local_rank_ic": 0.000636757499860354,
+  "expected_gain": "exploratory only; no promotion claim",
+  "failure_rule": "any prediction/causal/safety/hash contract failure",
+  "online_submission_allowed": true,
+  "automatic_online_submission": false,
+  "preregistered_parameters": {
+    "eligible_feature_actions": ["stable_keep", "rank_or_robust_transform"],
+    "state_statistics": ["q10", "median", "q90", "iqr", "std", "zero_rate"],
+    "state_pca_components": 16,
+    "neighbors": 32,
+    "neighbor_aggregation": "unweighted_mean_feature_rank_ic_fingerprint",
+    "candidate_shrink_alpha": 0.1,
+    "preserve_exp023h_first_sections": 6,
+    "posthoc_parameter_search": false
+  },
+  "submission_budget": {
+    "daily_limit": 3,
+    "remaining_before_manual_submission": 3,
+    "allocated_if_user_submits": 1
+  }
+}

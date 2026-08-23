@@ -1,0 +1,7 @@
+{
+  "status": "candidate_generated_exploratory_not_promoted",
+  "causal_status": "compliant_claim_and_contract_recorded",
+  "formal_submission_overwritten": false,
+  "baseline_overwritten": false,
+  "warning": "exp024a failed robustness gates; submit only as a user-authorized exploratory probe"
+}

@@ -62,7 +62,13 @@
       "exp026a": "completed_rejected"
     },
     "online_submissions_used_on_2026-08-23": 0,
-    "online_submissions_remaining_on_2026-08-23": 3
+    "online_submissions_remaining_on_2026-08-23": 3,
+    "exploratory_candidate": {
+      "experiment": "exp_024b_retrieval_exploratory",
+      "prediction": "04_results/exp_024b_retrieval_exploratory/prediction_1.npy",
+      "sha256": "6ff796c7c222bb3e9a55077014c1fc885dca368e3ac1bd29aecafb4e58e2be55",
+      "status": "candidate_generated_exploratory_not_promoted"
+    }
   },
   "last_reviewed": "2026-08-23"
 }

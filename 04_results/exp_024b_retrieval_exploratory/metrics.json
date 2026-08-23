@@ -1,0 +1,93 @@
+{
+  "experiment": "exp_024b_retrieval_exploratory",
+  "decision": "exploratory_candidate_generated_not_promoted",
+  "baseline": "exp023h_ultimate_surgery",
+  "parameters": {
+    "eligible_feature_actions": [
+      "stable_keep",
+      "rank_or_robust_transform"
+    ],
+    "state_statistics": [
+      "q10",
+      "median",
+      "q90",
+      "iqr",
+      "std",
+      "zero_rate"
+    ],
+    "state_pca_components": 16,
+    "neighbors": 32,
+    "neighbor_aggregation": "unweighted_mean_feature_rank_ic_fingerprint",
+    "candidate_shrink_alpha": 0.1,
+    "preserve_exp023h_first_sections": 6,
+    "posthoc_parameter_search": false
+  },
+  "feature_count": 31,
+  "features": [
+    "num_8",
+    "num_57",
+    "num_41",
+    "num_68",
+    "num_39",
+    "num_40",
+    "num_73",
+    "num_48",
+    "num_74",
+    "num_86",
+    "num_38",
+    "num_3",
+    "num_42",
+    "num_71",
+    "num_87",
+    "num_4",
+    "num_55",
+    "num_85",
+    "num_75",
+    "num_56",
+    "num_76",
+    "num_67",
+    "num_88",
+    "num_61",
+    "num_79",
+    "num_1",
+    "num_84",
+    "num_15",
+    "num_60",
+    "num_64",
+    "num_43"
+  ],
+  "prediction": "prediction_1.npy",
+  "prediction_sha256": "6ff796c7c222bb3e9a55077014c1fc885dca368e3ac1bd29aecafb4e58e2be55",
+  "contract": {
+    "shape": [
+      442,
+      5282
+    ],
+    "dtype": "float32",
+    "finite": true,
+    "evaluation_count": 2042538,
+    "non_evaluation_count": 292106,
+    "non_evaluation_all_0_5": true,
+    "minimum": 0.0,
+    "maximum": 1.0
+  },
+  "preserved_first_sections": 6,
+  "changed_sections": 436,
+  "evaluation_pearson_to_exp023h": 0.9975733651133007,
+  "per_time_rank_correlation_mean": 0.9975820247103561,
+  "per_time_rank_correlation_min": 0.9947580718253599,
+  "protected_hashes_before": {
+    "exp021_prediction": "acd8ae2411f3b96ff01538face5a861b22f87443298194f5376b8e12d8e278b2",
+    "exp023h_prediction": "2fb9021f97d21827eee7102ddd386af7ce3b32fe4be14fcdbe9782860ee84877",
+    "formal_submission": "5721e5fa325ecce624755da65db6e0245f2e79857f14f6d61e4fed9d9c83c524"
+  },
+  "protected_hashes_after": {
+    "exp021_prediction": "acd8ae2411f3b96ff01538face5a861b22f87443298194f5376b8e12d8e278b2",
+    "exp023h_prediction": "2fb9021f97d21827eee7102ddd386af7ce3b32fe4be14fcdbe9782860ee84877",
+    "formal_submission": "5721e5fa325ecce624755da65db6e0245f2e79857f14f6d61e4fed9d9c83c524"
+  },
+  "protected_unchanged": true,
+  "test_labels_loaded": false,
+  "automatic_online_submission": false,
+  "elapsed_s": 40.9
+}
