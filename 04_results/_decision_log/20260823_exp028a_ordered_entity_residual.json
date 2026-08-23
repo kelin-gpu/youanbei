@@ -1,0 +1,36 @@
+{
+  "recorded_at": "2026-08-23",
+  "experiment": "exp_028a_ordered_entity_residual",
+  "source": "strict_local_diagnostic_with_user_artifact_override",
+  "hypothesis": "A strictly ordered empirical-Bayes stock-identity residual offset can correct persistent entity-level ranking bias.",
+  "changed_variable": "ordered_stock_identity_residual_offset_only",
+  "results": {
+    "fold_2_delta": -0.02504467683185205,
+    "fold_3_delta": -0.0037583787554328137,
+    "official_valid_delta": -0.013392067961824633,
+    "pooled_delta": -0.014208554446526056,
+    "bootstrap_90_lower": -0.019438021651232457,
+    "worst_32_section_block": -0.05973163351191483,
+    "mean_rank_correlation_to_baseline": 0.8921955314369185
+  },
+  "decision": "failed_gates_prediction_generated_evidence_only_not_promotable",
+  "prediction": {
+    "path": "04_results/exp_028a_ordered_entity_residual/prediction_1.npy",
+    "sha256": "59b4a03eff7170ad89e4556105a22650dcf6c16df630052e52a5a44475cea61d",
+    "shape": [442, 5282],
+    "dtype": "float32",
+    "contract_passed": true,
+    "generated_because": "user explicitly required prediction_1.npy regardless of gate outcome"
+  },
+  "safety": {
+    "strict_expanding_walk_forward": true,
+    "model_training_performed": false,
+    "test_labels_loaded": false,
+    "future_features_loaded": false,
+    "protected_hashes_unchanged": true,
+    "formal_submission_overwritten": false,
+    "automatic_online_submission": false,
+    "online_submission_used": false
+  },
+  "conclusion": "Entity residual persistence was positive but the unscaled empirical-Bayes offsets were too large and degraded every holdout. The preregistered route is rejected without alpha/shrinkage post-search. The required prediction is retained only as an audited evidence artifact; exp024b remains the formal and online best."
+}

@@ -1,0 +1,54 @@
+{
+  "experiment": "exp_028a_ordered_entity_residual",
+  "status": "preregistered",
+  "registered_at": "2026-08-23",
+  "hypothesis": "冻结基线对部分股票存在跨时间可迁移的个体排序残差偏置；仅用严格更早 OOF 残差估计的经验贝叶斯收缩偏置，可以改善后续截面 RankIC。",
+  "changed_variable": "ordered_stock_identity_residual_offset_only",
+  "baseline_experiment": "exp016_static_strict_oof_proxy_for_folds_exp021_frozen_for_official_valid_exp024b_for_test",
+  "causal_status": "preregistered_strict_causal",
+  "causal_boundary": "evaluation window t uses frozen baseline predictions plus stock residuals estimated only from strict-OOF predictions and labels before the window start; Test uses residuals ending at 3160 and never uses Test labels or X after t",
+  "train_range": "strict OOF [1459,2918), expanding; official Valid residuals [2918,3161) are added only for final Test calibration",
+  "valid_range": "fold2 [1945,2432), fold3 [2432,2918), official Valid [2918,3161)",
+  "local_metric": "paired per-section cross-sectional Spearman delta, contiguous-block bootstrap, and shuffled-stock null",
+  "online_submission_allowed": false,
+  "automatic_online_submission": false,
+  "formal_submission_overwrite_allowed": false,
+  "user_artifact_override": {
+    "requested_at": "2026-08-23",
+    "rule": "generate an independent prediction_1.npy regardless of diagnostic gate outcome",
+    "promotion_effect": "none; a failed diagnostic prediction is evidence_only_not_promotable"
+  },
+  "preregistered_parameters": {
+    "entity_key": "canonical_stock_index",
+    "residual_definition": "within_section_rank01_y_minus_within_section_rank01_baseline",
+    "estimator": "method_of_moments_empirical_bayes_normal_means",
+    "candidate_rule": "rank01_baseline_plus_shrunk_entity_residual_then_rank01",
+    "unseen_entity_offset": 0.0,
+    "in_window_label_updates": false,
+    "preserve_exp024b_first_sections": 6,
+    "shuffle_repetitions": 32,
+    "random_seed": 20260823,
+    "bootstrap_block_size": 32,
+    "bootstrap_repetitions": 10000,
+    "high_drift_quantile": 0.8
+  },
+  "decision_gates": {
+    "all_three_window_deltas_positive": true,
+    "official_valid_minimum_delta": 0.0025,
+    "pooled_minimum_delta": 0.0015,
+    "bootstrap_90_lower_must_be_positive": true,
+    "minimum_worst_32_section_block": -0.001,
+    "second_half_must_be_nonnegative": true,
+    "high_drift_must_be_nonnegative": true,
+    "must_exceed_shuffled_stock_p95_every_window": true,
+    "minimum_mean_rank_correlation_to_baseline": 0.995,
+    "protected_hashes_must_be_unchanged": true
+  },
+  "failure_rule": "any gate, causal, prediction-contract, or protected-hash failure prevents promotion; prediction_1.npy is still generated solely because of the explicit user artifact override",
+  "protected_artifacts": [
+    "exp021_prediction",
+    "exp023h_prediction",
+    "exp024b_prediction",
+    "formal_submission"
+  ]
+}
