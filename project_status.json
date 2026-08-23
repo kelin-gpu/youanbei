@@ -51,7 +51,7 @@
     "manifest_sha256": "f7c4076de6e3ae7d631554df5a15f69f50d7e8f676249fb6d2d4cf71ccec8c6f"
   },
   "innovation_readiness": {
-    "status": "target_achieved_and_formally_promoted",
+    "status": "target_achieved_formally_promoted_exp027_stopped",
     "test_history": "04_results/_acceptance/test_history_audit.json",
     "feature_registry": "04_results/_acceptance/drift_feature_registry.csv",
     "exp021_full_valid_audit": "04_results/_acceptance/exp021_validation_audit/metrics.json",
@@ -60,7 +60,8 @@
     "latest_diagnostics": {
       "exp024a": "completed_rejected",
       "exp025a": "completed_rejected",
-      "exp026a": "completed_rejected"
+      "exp026a": "completed_rejected",
+      "exp027a": "completed_rejected_inconclusive_keep_exp024b"
     },
     "online_submissions_used_on_2026-08-23": 1,
     "online_submissions_remaining_on_2026-08-23": 2,

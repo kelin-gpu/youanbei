@@ -299,3 +299,16 @@ exp025a 也未通过：
 ## 16. 正式晋级记录
 
 用户于 2026-08-23 明确授权将 exp024b 晋级为正式提交。`04_results/final_submission/prediction.npy` 已替换为 exp024b 的逐值一致副本，SHA-256 为 `6ff796c7c222bb3e9a55077014c1fc885dca368e3ac1bd29aecafb4e58e2be55`；上一正式文件 exp016 的原始产物和哈希仍保留。该人工晋级不消耗线上提交次数，也不代表已启动下一轮创新实验。
+
+## 17. exp027a 增益归因结果
+
+exp027a 保持31特征、PCA=16、K=32、alpha=0.1 和 exp024a 四窗口不变，只分解历史指纹权重：
+
+- retrieval 逐截面结果精确复现 exp024a，最大误差 `0.0`；
+- global 相对 retrieval 在 fold1/fold2/fold3/official Valid 分别为 `+0.002833/-0.000332/-0.000147/+0.001089`，仅2/4窗口为正；
+- pooled global 优势 `+0.000827`，90% bootstrap 下界为正，但低于 `+0.001` 门槛，最差32截面块为 `-0.004535`；
+- global 四个窗口均未超过32组随机对照的95%分位；
+- state residual-only 为正窗口 `0/4`；
+- 因果截断、指纹恒等式、保护哈希均通过，未读取 Test、未生成 prediction、未使用线上额度。
+
+结论：`inconclusive_keep_exp024b`。根据预注册停止规则不建立 exp027b，不再派生 gate、alpha、K、PCA 或距离实验；正式提交继续保持 exp024b `0.120847`。

@@ -1,0 +1,46 @@
+{
+  "experiment": "exp_027a_retrieval_attribution",
+  "status": "preregistered",
+  "registered_at": "2026-08-23",
+  "hypothesis": "exp024b 的线上增益可分解为全历史稳定特征先验与状态检索特异信息，其中至少一项能在严格后置窗口中形成可复现优势。",
+  "changed_variable": "historical_fingerprint_weighting_only",
+  "baseline_experiment": "exp024b_mechanism_on_exp024a_walk_forward_windows",
+  "causal_status": "preregistered_strict_causal_diagnostic",
+  "causal_boundary": "evaluation t only uses X(t), library X(s) and y(s) with s before the evaluation window start; no Test arrays or labels",
+  "train_range": "[486,2918) expanding by evaluation window",
+  "valid_range": "[1459,3161), windows=[1459,1945),[1945,2432),[2432,2918),[2918,3161)",
+  "local_metric": "paired per-section cross-sectional Spearman delta and contiguous-block bootstrap",
+  "online_submission_allowed": false,
+  "test_prediction_allowed": false,
+  "preregistered_parameters": {
+    "expected_feature_count": 31,
+    "state_pca_components": 16,
+    "neighbors": 32,
+    "alpha": 0.1,
+    "random_repetitions": 32,
+    "random_seed": 20260823,
+    "bootstrap_block_size": 32,
+    "bootstrap_repetitions": 10000,
+    "high_drift_quantile": 0.8
+  },
+  "decision_gates": {
+    "minimum_positive_windows": 3,
+    "minimum_pooled_gain": 0.001,
+    "minimum_worst_block": -0.0005,
+    "retrieval_reproduction_tolerance": 1e-7,
+    "decomposition_tolerance": 1e-10,
+    "fold3_must_be_positive": true,
+    "official_valid_must_be_positive": true,
+    "bootstrap_90_lower_must_be_positive": true,
+    "second_half_must_be_nonnegative": true,
+    "high_drift_must_be_nonnegative": true,
+    "must_exceed_random_p95_every_window": true
+  },
+  "failure_rule": "any causal/reproduction/hash failure or neither attribution direction passing every preregistered gate",
+  "protected_artifacts": [
+    "exp021_prediction",
+    "exp023h_prediction",
+    "exp024b_prediction",
+    "formal_submission"
+  ]
+}

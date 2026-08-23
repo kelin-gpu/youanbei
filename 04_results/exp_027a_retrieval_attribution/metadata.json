@@ -1,0 +1,8 @@
+{
+  "status": "completed_rejected",
+  "causal_status": "compliant_diagnostic",
+  "formal_submission_overwritten": false,
+  "test_arrays_loaded": false,
+  "test_prediction_generated": false,
+  "online_submission_used": false
+}
