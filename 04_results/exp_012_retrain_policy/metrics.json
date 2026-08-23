@@ -1,0 +1,58 @@
+{
+  "experiment_id": "exp_012_retrain_policy",
+  "created_at": "2026-08-07 20:06:22",
+  "data_hash": "a426a7078097e8d970c2f27a30a49b3122a8a0ea7c4c05f35938d5f568cfd04c",
+  "cache_hash": "f7c4076de6e3ae7d631554df5a15f69f50d7e8f676249fb6d2d4cf71ccec8c6f",
+  "blend_weight": 0.3,
+  "decision_record": "20260807_195518_training_endpoint_2918_vs_3161",
+  "results": {
+    "per_simulation": {
+      "sim_A": {
+        "old_mean": 0.10033652393785163,
+        "new_mean": 0.09893237143951795,
+        "mean_delta": -0.0014041524983336717,
+        "late_delta": -0.0007857664636956585,
+        "worst_quarter_delta": -0.0022711789541719485,
+        "per_seed_mean_deltas": [
+          -0.002167927387472568,
+          -7.640651965384881e-05,
+          -0.0008915740243649467
+        ],
+        "seed_spread": 0.002091520867818719
+      },
+      "sim_B": {
+        "old_mean": 0.07709398860561514,
+        "new_mean": 0.08564516877243089,
+        "mean_delta": 0.008551180166815747,
+        "late_delta": 0.0061434653709454,
+        "worst_quarter_delta": 0.009240425280512644,
+        "per_seed_mean_deltas": [
+          0.008029771422517762,
+          0.008608170998439635,
+          0.008335623540668163
+        ],
+        "seed_spread": 0.000578399575921873
+      },
+      "sim_C": {
+        "old_mean": 0.09597898592912807,
+        "new_mean": 0.09274056390181186,
+        "mean_delta": -0.0032384220273162095,
+        "late_delta": -0.0054370406879765965,
+        "worst_quarter_delta": 0.000891065039194984,
+        "per_seed_mean_deltas": [
+          -0.00040000211820687137,
+          -0.006238361206906531,
+          -0.0044438272540116425
+        ],
+        "seed_spread": 0.00583835908869966
+      }
+    },
+    "average_mean_delta": 0.0013028685470552887,
+    "min_mean_delta": -0.0032384220273162095,
+    "all_second_half_not_worse": false,
+    "decision_pass": false,
+    "verdict_text": "未通过：维持 Train-only（训练至 2918）",
+    "confidence": "中"
+  },
+  "runtime_seconds": 663.4551675319672
+}

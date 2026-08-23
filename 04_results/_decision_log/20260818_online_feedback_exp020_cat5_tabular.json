@@ -1,0 +1,22 @@
+{
+  "recorded_at": "2026-08-18",
+  "experiment": "exp_020_tabular_categorical",
+  "source": "user_reported",
+  "candidate": {
+    "name": "prediction_1.npy",
+    "path": "04_results/exp_020_tabular_categorical/prediction_1.npy",
+    "sha256": "812F7165DEB4AFD63659491D127DFE97A659AC4795DB634F8B4B221DF36B2F7E",
+    "change": "tabular 家族 LightGBM 以 9 个类别列(408..416，含 cat_5)作为原生类别特征；其余家族/元头/路由权重复用 exp016",
+    "local_full_valid_reblend_ic": 0.091888,
+    "local_delta_vs_router": 0.000499,
+    "new_tabular_standalone_full_valid_ic": 0.094474,
+    "online_rank_ic": 0.116252
+  },
+  "baseline": {
+    "name": "exp016 prediction.npy",
+    "online_rank_ic": 0.116132
+  },
+  "delta_online": 0.000120,
+  "decision": "promoted_online_best_pending_formal",
+  "conclusion": "cat_5 原生类别纳入 tabular：本地重融合 +0.0005、线上 +0.00012（0.116252 > 0.116132），为 exp016 之后首个线上正向改动。建议晋级为新的线上最佳，并可继续做元头+路由一致重训释放完整增益。"
+}

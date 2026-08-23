@@ -1,0 +1,22 @@
+{
+  "recorded_at": "2026-08-21",
+  "experiment": "exp_023f_multilag_surgery",
+  "source": "user_reported",
+  "candidate": {
+    "name": "prediction_1.npy",
+    "path": "04_results/exp_023f_multilag_surgery/prediction_1.npy",
+    "change": "多 lag 锚链手术：mB 输入 lag1..6，test 第 k 截面 lag_k=真实 y(3160)（k<=6）；alpha 前置调度（前6截面 0.7）；K=30 指数衰减 gamma=0.9；其余 412 截面与 exp021 一致",
+    "blend_valid_ic": 0.098683,
+    "stack_valid_ic": 0.091389,
+    "online_rank_ic": 0.119533
+  },
+  "baseline": {
+    "exp023e_online": 0.119063,
+    "exp021_online": 0.116568
+  },
+  "delta_online_vs_exp023e": 0.00047,
+  "transfer_ratio_vs_023e": 0.514,
+  "decision": "promoted_online_best_not_formal",
+  "conclusion": "锚点手术路线到达理论上限（~0.1195，前30截面已近全替换）。合规序列：0.1166 -> 0.1191 (023e) -> 0.1195 (023f)。距 0.12 差 0.000467，剩余缺口必须来自中段 412 截面（当前为 exp021 原样，线上 0.1166 平台）。",
+  "next": "exp023g：exp022 CatBoost YetiRank (valid 0.0985) 替换融合栈 tabular 专家（exp020/021 方法论，历史迁移稳定 +0.001~0.002）+ 手术叠加。两增益区段不相交（前30 vs 其余412），近似可加。预期 0.1205~0.1215。"
+}

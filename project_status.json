@@ -1,0 +1,53 @@
+{
+  "project": "youanbei-y1",
+  "status": "收官/创新准备",
+  "source_of_truth": {
+    "human_summary": "README.md",
+    "online_feedback": "04_results/_decision_log/",
+    "machine_registry": "04_results/experiment_registry.csv"
+  },
+  "baselines": {
+    "stack": {
+      "experiment": "exp_021_retrain_head_router",
+      "online_rank_ic": 0.116568,
+      "prediction": "04_results/exp_021_retrain_head_router/prediction_1.npy",
+      "sha256": "acd8ae2411f3b96ff01538face5a861b22f87443298194f5376b8e12d8e278b2",
+      "shape": [442, 5282],
+      "dtype": "float32",
+      "status": "frozen_reference"
+    },
+    "best_candidate": {
+      "experiment": "exp_023h_ultimate_surgery",
+      "online_rank_ic": 0.119660,
+      "prediction": "04_results/exp_023h_ultimate_surgery/prediction_1.npy",
+      "sha256": "2fb9021f97d21827eee7102ddd386af7ce3b32fe4be14fcdbe9782860ee84877",
+      "shape": [442, 5282],
+      "dtype": "float32",
+      "status": "online_best_pending_formal_promotion"
+    },
+    "formal_submission": {
+      "experiment": "exp_016_unified_expert_fusion",
+      "online_rank_ic": 0.116132,
+      "prediction": "04_results/final_submission/prediction.npy",
+      "sha256": "5721e5fa325ecce624755da65db6e0245f2e79857f14f6d61e4fed9d9c83c524",
+      "shape": [442, 5282],
+      "dtype": "float32",
+      "status": "protected"
+    }
+  },
+  "causal_policy": {
+    "rule": "预测 t 截面只能使用 X(<=t) 与 <t 的给定标签或自有预测",
+    "exp_023a_future_shift": "invalid_future_information_probe",
+    "default_for_new_experiments": "must_pass_causal_audit"
+  },
+  "promotion_policy": {
+    "auto_overwrite_formal_submission": false,
+    "online_promotion_threshold": 0.12,
+    "local_stack_change_submission_threshold": 0.002
+  },
+  "cache": {
+    "dataset": "03_cache/processed_data_v1",
+    "manifest_sha256": "f7c4076de6e3ae7d631554df5a15f69f50d7e8f676249fb6d2d4cf71ccec8c6f"
+  },
+  "last_reviewed": "2026-08-23"
+}

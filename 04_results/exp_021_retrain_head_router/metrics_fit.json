@@ -1,0 +1,9 @@
+{
+  "experiment": "exp_021_retrain_head_router",
+  "stage": "fit",
+  "oof_rows": 1494016,
+  "capped_valid_mean_ic": 0.09097241756005069,
+  "baseline_capped_valid_ic": 0.09048734,
+  "capped_valid_delta": 0.000485,
+  "elapsed_s": 1242.8
+}

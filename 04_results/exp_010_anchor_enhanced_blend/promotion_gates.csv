@@ -1,0 +1,8 @@
+﻿gate,passed,value
+w > 0,False,0.00
+锚点复现 |valid_anchor - 0.09294016824452567| <= 0.0003,True,0.000000
+official_mean_delta >= 0.0003,False,+0.000000
+official_late_delta >= -0.0002,True,+0.000000
+official_worst_quarter_delta >= -0.0015,True,+0.000000
+test_anchor_correlation >= 0.97,True,1.000000
+稳定性平台 plateau_span < 0.001,True,0.000000

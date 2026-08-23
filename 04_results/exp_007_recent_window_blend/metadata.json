@@ -1,0 +1,13 @@
+{
+  "experiment_id": "exp_007_recent_window_blend",
+  "status": "candidate_not_submitted",
+  "migrated_at": "2026-08-03 13:17:39",
+  "source_path": "D:\\google_dl\\book\\友安杯\\archive\\legacy_structure\\04_old_results\\candidate_submission\\y1_blend_full65_recent35.npy",
+  "source_sha256": "fb7cf4518bfd2d43196609798652a15701670f130c51166a553e6bedbbdec9ae",
+  "prediction_shape": [
+    442,
+    5282
+  ],
+  "prediction_dtype": "float32",
+  "prediction_sha256": "fb7cf4518bfd2d43196609798652a15701670f130c51166a553e6bedbbdec9ae"
+}

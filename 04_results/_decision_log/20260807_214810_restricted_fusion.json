@@ -1,0 +1,141 @@
+{
+  "record_id": "20260807_214810_restricted_fusion",
+  "experiment_id": "exp_012_model_zoo_fusion",
+  "candidate_id": "restricted_fusion",
+  "pre_registered_at": "2026-08-07 21:48:10",
+  "params": {
+    "experts": [
+      "recent",
+      "lgbm_cat337",
+      "catboost_yetirank"
+    ],
+    "final_weights": {
+      "anchor": 0.65,
+      "catboost_yetirank": 0.35
+    },
+    "dev_fold_deltas": [
+      0.0076763479493374,
+      0.007348515534185085
+    ],
+    "seeds": [
+      42,
+      2026,
+      3407
+    ],
+    "note": "Train-only 口径；test_anchor_rank_corr 门槛因官方锚点训练至 3161 而天然不适用，改用同口径参考(Train-only)相关性评估一致性；该口径说明在阶段1报告中已预注册"
+  },
+  "gates_expected": {
+    "anchor_reproduction": {
+      "max_abs_delta": 0.0003
+    },
+    "dev_fold_mean_delta": {
+      "min": 0.0005
+    },
+    "dev_fold_all_positive": {},
+    "dev_worst_fold_delta": {
+      "min": 0.0
+    },
+    "shadow_delta": {
+      "min": 0.0
+    },
+    "shadow_second_half_delta": {
+      "min": -0.0005
+    },
+    "official_valid_mean_delta": {
+      "min": 0.0003
+    },
+    "official_valid_late_delta": {
+      "min": -0.0002
+    },
+    "official_valid_worst_quarter_delta": {
+      "min": -0.0015
+    },
+    "plateau_span": {
+      "max": 0.001
+    },
+    "test_anchor_rank_corr": {
+      "min": 0.98
+    },
+    "seed_ensemble_stable": {}
+  },
+  "status": "verified",
+  "results": {
+    "anchor_reproduction": 0.0,
+    "dev_fold_mean_delta": 0.007512431741761243,
+    "dev_fold_all_positive": true,
+    "dev_worst_fold_delta": 0.007348515534185085,
+    "shadow_delta": 0.004024351154031491,
+    "shadow_second_half_delta": 0.002416986356063633,
+    "official_valid_mean_delta": 0.004340756715335459,
+    "official_valid_late_delta": 0.003734150998415925,
+    "official_valid_worst_quarter_delta": 0.0036361224668219755,
+    "plateau_span": 0.0,
+    "test_anchor_rank_corr": 0.9434641738846709,
+    "seed_ensemble_stable": true,
+    "test_same_policy_reference_corr": 0.9684471117528094
+  },
+  "verdict": "not_promoted",
+  "verified_at": "2026-08-07 21:48:10",
+  "gates_outcomes": {
+    "anchor_reproduction": {
+      "measured": 0.0,
+      "pass": true,
+      "detail": "|Δ|=0.000000≤0.0003"
+    },
+    "dev_fold_mean_delta": {
+      "measured": 0.007512431741761243,
+      "pass": true,
+      "detail": "0.007512≥0.0005"
+    },
+    "dev_fold_all_positive": {
+      "measured": true,
+      "pass": true,
+      "detail": ""
+    },
+    "dev_worst_fold_delta": {
+      "measured": 0.007348515534185085,
+      "pass": true,
+      "detail": "0.007349≥0.0"
+    },
+    "shadow_delta": {
+      "measured": 0.004024351154031491,
+      "pass": true,
+      "detail": "0.004024≥0.0"
+    },
+    "shadow_second_half_delta": {
+      "measured": 0.002416986356063633,
+      "pass": true,
+      "detail": "0.002417≥-0.0005"
+    },
+    "official_valid_mean_delta": {
+      "measured": 0.004340756715335459,
+      "pass": true,
+      "detail": "0.004341≥0.0003"
+    },
+    "official_valid_late_delta": {
+      "measured": 0.003734150998415925,
+      "pass": true,
+      "detail": "0.003734≥-0.0002"
+    },
+    "official_valid_worst_quarter_delta": {
+      "measured": 0.0036361224668219755,
+      "pass": true,
+      "detail": "0.003636≥-0.0015"
+    },
+    "plateau_span": {
+      "measured": 0.0,
+      "pass": true,
+      "detail": "0.000000≤0.001"
+    },
+    "test_anchor_rank_corr": {
+      "measured": 0.9434641738846709,
+      "pass": false,
+      "detail": "0.943464≥0.98"
+    },
+    "seed_ensemble_stable": {
+      "measured": true,
+      "pass": true,
+      "detail": ""
+    }
+  }
+}

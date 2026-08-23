@@ -1,0 +1,6 @@
+{
+  "experiment": "exp_021_retrain_head_router",
+  "task": "head+router 一致重训（categorical tabular）",
+  "generated": "2026-08-18 21:06:30",
+  "final_submission_overwritten": false
+}

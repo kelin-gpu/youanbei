@@ -1,0 +1,14 @@
+{
+  "best": 0.326136002495531,
+  "cap": 5282,
+  "experiment": "exp_016_unified_expert_fusion",
+  "generated": "2026-08-17 15:33:48",
+  "groups": 243,
+  "mean_rank_ic": 0.09138945422305736,
+  "median_rank_ic": 0.09561215455915041,
+  "positive_ratio": 0.8271604938271605,
+  "rows": 982972,
+  "std_rank_ic": 0.097560272075511,
+  "task": "T0.1b full valid inference",
+  "worst": -0.16900693458695262
+}

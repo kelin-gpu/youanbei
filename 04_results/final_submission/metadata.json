@@ -1,0 +1,20 @@
+{
+  "shape": [
+    442,
+    5282
+  ],
+  "dtype": "float32",
+  "finite": true,
+  "evaluation_count": 2042538,
+  "non_evaluation_count": 292106,
+  "non_evaluation_value": 0.5,
+  "source": "D:\\google_dl\\book\\youanbei\\04_results\\exp_016_unified_expert_fusion\\full\\prediction.npy",
+  "destination": "D:\\google_dl\\book\\youanbei\\04_results\\final_submission\\prediction.npy",
+  "status": "promoted_online_best",
+  "online_rank_ic": 0.116132,
+  "source_sha256": "5721e5fa325ecce624755da65db6e0245f2e79857f14f6d61e4fed9d9c83c524",
+  "prediction_sha256": "5721e5fa325ecce624755da65db6e0245f2e79857f14f6d61e4fed9d9c83c524",
+  "previous_submission_sha256": "9d322401a2d8fedd38dea66b97578873e721f03eeb93575dbc8bdc2a1aef38e6",
+  "previous_online_rank_ic": 0.108105,
+  "promoted_at": "2026-08-17"
+}

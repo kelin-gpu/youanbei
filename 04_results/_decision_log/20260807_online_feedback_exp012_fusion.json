@@ -1,0 +1,28 @@
+{
+  "record_id": "20260807_online_feedback_exp012_fusion",
+  "experiment_id": "exp_012_model_zoo_fusion",
+  "candidate_id": "restricted_fusion_online_feedback",
+  "pre_registered_at": "2026-08-07",
+  "params": {
+    "candidate": "promoted_candidate.npy (anchor 0.65 + catboost_yetirank 0.35, train_only_2918)",
+    "local_official_valid": 0.097090,
+    "online_feedback": "user_reported_2026-08-07"
+  },
+  "gates_expected": {
+    "online_exceeds_official_submission": {"min": 0.108105},
+    "online_exceeds_online_best": {"min": 0.109959}
+  },
+  "results": {
+    "online_rankic": 0.108265,
+    "exceeds_official_submission": true,
+    "exceeds_online_best": false,
+    "delta_vs_official_submission": 0.00016,
+    "delta_vs_online_best": -0.001694,
+    "same_policy_delta_vs_exp011": 0.003277
+  },
+  "status": "verified",
+  "verdict": "not_promoted",
+  "verified_at": "2026-08-07",
+  "conclusion": "CatBoost 专家线上价值确认（Train-only 口径内线上最高，较 exp_011 +0.003277），但本地 Valid 高估绝对增益（线上仅 +0.000160 相对 exp_003）；未超过线上最佳 exp_007，正式提交目录保持原样。转移衰减表已追加 CatBoost 家族标定。",
+  "next_steps": "如需冲击线上最佳：在训练至 3161 口径下重训 CatBoost 专家并与 exp_007 家族对齐比较（先复核阶段1训练终点决策）。"
+}

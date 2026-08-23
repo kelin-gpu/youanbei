@@ -1,0 +1,7 @@
+{
+  "experiment": "exp_020_tabular_categorical",
+  "task": "cat_5 native categorical into tabular family",
+  "generated": "2026-08-17 16:12:44",
+  "final_submission_overwritten": false,
+  "elapsed_s": 383.6
+}

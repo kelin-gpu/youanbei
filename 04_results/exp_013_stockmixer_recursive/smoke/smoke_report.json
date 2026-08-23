@@ -1,0 +1,54 @@
+{
+  "status": "passed",
+  "device": "cuda",
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "torch": "2.6.0+cu124",
+  "cuda_build": "12.4",
+  "parameter_count": 147201,
+  "batch_size": 64,
+  "loss": {
+    "loss": 0.681053876876831,
+    "ic_loss": 0.9530105590820312,
+    "huber_loss": 0.021161556243896484,
+    "pairwise_loss": 0.693047285079956
+  },
+  "gradient_norm": 3.7130472660064697,
+  "checkpoint": "D:\\google_dl\\book\\友安杯\\04_results\\exp_013_stockmixer_recursive\\smoke\\checkpoint_smoke.pt",
+  "checkpoint_restored": true,
+  "recursive_self_tests": {
+    "first": [
+      0.5,
+      1.0
+    ],
+    "second": [
+      1.0
+    ],
+    "third": [
+      0.5,
+      1.0
+    ]
+  },
+  "raw_contract": {
+    "shape": [
+      442,
+      5282
+    ],
+    "dtype": "float32",
+    "minimum": 0.47607421875,
+    "maximum": 0.5,
+    "evaluation_count": 2042538,
+    "non_evaluation_count": 292106
+  },
+  "recursive_contract": {
+    "shape": [
+      442,
+      5282
+    ],
+    "dtype": "float32",
+    "minimum": 0.00023228803183883429,
+    "maximum": 1.0,
+    "evaluation_count": 2042538,
+    "non_evaluation_count": 292106
+  },
+  "note": "仅前两期含模型预测，其余评估位保持 0.5；该文件不可提交。"
+}

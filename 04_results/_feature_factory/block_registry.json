@@ -1,0 +1,186 @@
+{
+  "schema_version": "1.0",
+  "description": "特征块注册表：每个块登记列区间、因果性声明、构建参数、来源实验。用于阶段2特征工厂的块级准入裁决。列区间以 processed_data_v1 manifest.json 的列顺序为准。",
+  "active_default_view": "legacy_328",
+  "blocks": {
+    "legacy_328_raw_40": {
+      "view": "legacy_328",
+      "column_ranges": [[0, 40]],
+      "feature_count": 40,
+      "description": "筛选后的 40 个稳定原始数值特征（num_8/11/57/41/90/68/39/40/73/47/53/72/48/74/86/38/50/3/42/71/87/49/4/55/85/75/56/76/51/67/88/61/79/1/91/84/15/60/64/43）",
+      "causal_declaration": "仅使用当前时点观测，无未来信息",
+      "source_experiment": "exp_003 / processed_data_v1",
+      "evidence": "legacy_328 视图整体为当前锚点基线；消融(exp_011)显示完整 328 维最优"
+    },
+    "legacy_328_rank_20": {
+      "view": "legacy_328",
+      "column_ranges": [[40, 60]],
+      "feature_count": 20,
+      "description": "前 20 个历史特征逐时间截面百分位秩",
+      "causal_declaration": "截面秩只使用同一时点内股票间比较，无未来信息",
+      "source_experiment": "exp_003",
+      "evidence": "exp_011 消融 no_rank 平均增量 -0.006454（最大块），关键块"
+    },
+    "legacy_328_lag_short": {
+      "view": "legacy_328",
+      "column_ranges": [[60, 100]],
+      "feature_count": 40,
+      "description": "lag_1/lag_5 × 20 历史特征",
+      "causal_declaration": "滞后特征仅使用过去信息",
+      "source_experiment": "exp_003",
+      "evidence": "exp_011 消融 no_short_lag 平均增量 -0.001724"
+    },
+    "legacy_328_lag_long": {
+      "view": "legacy_328",
+      "column_ranges": [[100, 140]],
+      "feature_count": 40,
+      "description": "lag_20/lag_60 × 20 历史特征",
+      "causal_declaration": "滞后特征仅使用过去信息",
+      "source_experiment": "exp_003",
+      "evidence": "exp_011 消融 no_long_lag 平均增量 -0.003173"
+    },
+    "legacy_328_roll_mean": {
+      "view": "legacy_328",
+      "column_ranges": [[140, 160], [200, 220], [260, 280]],
+      "feature_count": 60,
+      "description": "roll_mean_5/20/60 × 20 历史特征",
+      "causal_declaration": "滚动均值仅使用窗口内过去信息",
+      "source_experiment": "exp_003",
+      "evidence": "exp_011 消融 no_roll_mean 平均增量 -0.002195"
+    },
+    "legacy_328_roll_std": {
+      "view": "legacy_328",
+      "column_ranges": [[160, 180], [220, 240], [280, 300]],
+      "feature_count": 60,
+      "description": "roll_std_5/20/60 × 20 历史特征",
+      "causal_declaration": "滚动标准差仅使用窗口内过去信息",
+      "source_experiment": "exp_003",
+      "evidence": "exp_011 消融 no_roll_std 平均增量 -0.005225"
+    },
+    "legacy_328_roll_change": {
+      "view": "legacy_328",
+      "column_ranges": [[180, 200], [240, 260], [300, 320]],
+      "feature_count": 60,
+      "description": "roll_change_5/20/60 × 20 历史特征",
+      "causal_declaration": "滚动变化量仅使用窗口内过去信息",
+      "source_experiment": "exp_003",
+      "evidence": "exp_011 消融 no_roll_change 平均增量 +0.000383（唯一非负，弱块）"
+    },
+    "legacy_328_lag_available": {
+      "view": "legacy_328",
+      "column_ranges": [[320, 324]],
+      "feature_count": 4,
+      "description": "lag_1/5/20/60 可用性标记",
+      "causal_declaration": "可用性标记仅反映过去观测状态",
+      "source_experiment": "exp_003",
+      "evidence": "legacy_328 组成部分"
+    },
+    "legacy_328_state": {
+      "view": "legacy_328",
+      "column_ranges": [[324, 328]],
+      "feature_count": 4,
+      "description": "history_coverage_5/20/60 + stock_age",
+      "causal_declaration": "覆盖率与股票年龄均为历史累计状态",
+      "source_experiment": "exp_003",
+      "evidence": "exp_011 消融 no_state 平均增量 -0.002647"
+    },
+    "numeric_408_diff": {
+      "view": "numeric_408",
+      "column_ranges": [[328, 408]],
+      "feature_count": 80,
+      "description": "diff_1/5/20/60 × 20 历史特征（一阶差分）",
+      "causal_declaration": "差分仅使用当前与过去信息",
+      "source_experiment": "processed_data_v1 manifest",
+      "evidence": "exp_005 中 408 维相对 328 无可靠提升，未激活"
+    },
+    "tree_419_categorical": {
+      "view": "tree_419",
+      "column_ranges": [[408, 417]],
+      "feature_count": 9,
+      "description": "9 个原始类别特征（cat_0..cat_8；cat_5 高基数近似身份列，见 category_state）",
+      "causal_declaration": "类别为当前时点观测值",
+      "source_experiment": "processed_data_v1 manifest",
+      "evidence": "exp_005 中 419 维无整体提升；从未在专家+门槛语境下单独测过类别块（阶段3候选）"
+    },
+    "tree_419_extra": {
+      "view": "tree_419",
+      "column_ranges": [[417, 419]],
+      "feature_count": 2,
+      "description": "树视图 419 维中列 417-418 未在 legacy_328/numeric_408 出现，构建细节待核验",
+      "causal_declaration": "待核验",
+      "source_experiment": "processed_data_v1 manifest",
+      "evidence": "tree_count=419，tree_categorical_indices=[408..416]"
+    },
+    "exp008_raw99": {
+      "view": "exp008_363",
+      "column_ranges": [[0, 99]],
+      "feature_count": 99,
+      "description": "filled_raw_clip_num_0..98：因果补全后的 99 个原始数值特征（截尾）",
+      "causal_declaration": "补全仅使用过去信息（filled_numeric_v2），截尾参数 Train 内冻结",
+      "source_experiment": "exp_008_new_method",
+      "evidence": "numeric_feature_bank_v2 metadata 实际核验"
+    },
+    "exp008_cs_rank99": {
+      "view": "exp008_363",
+      "column_ranges": [[99, 198]],
+      "feature_count": 99,
+      "description": "filled_cs_rank_num_0..98：补全值的截面百分位秩",
+      "causal_declaration": "截面秩仅用同一时点内股票间比较",
+      "source_experiment": "exp_008_new_method",
+      "evidence": "numeric_feature_bank_v2 metadata 实际核验"
+    },
+    "exp008_surprise": {
+      "view": "exp008_363",
+      "column_ranges": [[198, 258]],
+      "feature_count": 60,
+      "description": "filled_surprise_h5/h20/h60 × 20：补全值与观测值的偏离",
+      "causal_declaration": "补全仅使用过去信息，偏离量基于当前观测",
+      "source_experiment": "exp_008_new_method",
+      "evidence": "exp_010 折内增量 +0.000890（3折均正）但官方 Valid 崩塌(w=0)，迁移风险高"
+    },
+    "exp008_surprise_rank": {
+      "view": "exp008_363",
+      "column_ranges": [[258, 318]],
+      "feature_count": 60,
+      "description": "filled_surprise_rank_h5/h20/h60 × 20：surprise 的截面秩",
+      "causal_declaration": "截面秩仅用同一时点内股票间比较",
+      "source_experiment": "exp_008_new_method",
+      "evidence": "不在 exp_010 的 105 增量块内，从未单独评估"
+    },
+    "exp008_trend": {
+      "view": "exp008_363",
+      "column_ranges": [[318, 358]],
+      "feature_count": 40,
+      "description": "filled_fast_trend/slow_trend × 20：补全序列的趋势分量",
+      "causal_declaration": "趋势仅由历史补全序列估计",
+      "source_experiment": "exp_008_new_method",
+      "evidence": "exp_008 全体系 Train 0.100747 -> Valid 0.084385，迁移风险高"
+    },
+    "exp008_history_state": {
+      "view": "exp008_363",
+      "column_ranges": [[358, 363]],
+      "feature_count": 5,
+      "description": "current_fill_confidence / current_fill_source_scaled / missing_gap_before_current / real_coverage / imputed_coverage",
+      "causal_declaration": "当前与历史补全状态统计",
+      "source_experiment": "exp_008_new_method",
+      "evidence": "numeric_feature_bank_v2 metadata 实际核验"
+    }
+  },
+  "view_composition": {
+    "legacy_328": ["legacy_328_raw_40", "legacy_328_rank_20", "legacy_328_lag_short", "legacy_328_lag_long", "legacy_328_roll_mean", "legacy_328_roll_std", "legacy_328_roll_change", "legacy_328_lag_available", "legacy_328_state"],
+    "numeric_408": ["legacy_328", "numeric_408_diff"],
+    "tree_419": ["numeric_408", "tree_419_categorical", "tree_419_extra"],
+    "exp008_363": ["exp008_raw99", "exp008_cs_rank99", "exp008_surprise", "exp008_surprise_rank", "exp008_trend", "exp008_history_state"],
+    "exp008_incremental_105": ["exp008_surprise", "exp008_trend", "exp008_history_state"],
+    "enhanced_433": ["legacy_328", "exp008_incremental_105"]
+  },
+  "admission_gates": {
+    "fold_internal": "3 个开发折平均增量 >= 0.0010 且折1/2均正且后段 >= 0（种子集成口径）",
+    "transfer_budget": "同族历史衰减率 >= 0.5（见 _decision_log 转移衰减表）或折内增量 >= 2x0.0005",
+    "seed_consistency": "多种子增益符号一致；spread 超阈值(0.002)挂起",
+    "orthogonality": "候选块驱动专家与锚点 Test 截面秩相关 < 0.99",
+    "placebo": "按股票置换时间序列后重训无增益（防泄漏，一票否决）",
+    "imputation_quality": "fill_source/confidence/缺口长度在 Train/Valid/Test 间漂移在阈值内（针对 exp_008 家族）"
+  },
+  "created_at": "2026-08-07"
+}

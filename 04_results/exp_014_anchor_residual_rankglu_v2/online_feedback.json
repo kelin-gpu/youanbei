@@ -1,0 +1,12 @@
+{
+  "experiment": "exp_014_anchor_residual_rankglu_v2",
+  "reported_date": "2026-08-13",
+  "source": "user_reported",
+  "candidate_file": "candidate_prediction.npy",
+  "candidate_rankic": 0.108465,
+  "reference_experiment": "exp_009_anchor_recent_blend_cv",
+  "reference_rankic": 0.109928,
+  "delta_vs_reference": -0.001463,
+  "decision": "not_promoted",
+  "reason": "Candidate online RankIC is lower than the exp_009 reference by 0.001463; keep the anchor fallback and do not overwrite final_submission."
+}

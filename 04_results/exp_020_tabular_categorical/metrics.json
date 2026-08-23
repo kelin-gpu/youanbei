@@ -1,0 +1,22 @@
+{
+  "experiment": "exp_020_tabular_categorical",
+  "change": "tabular 家族 LightGBM 将 9 个类别列(408..416，含 cat_5)作为原生类别特征",
+  "new_tabular_standalone_full_valid_ic": 0.0944738072120357,
+  "reblend_full_valid_ic": 0.09188784835527995,
+  "baseline_router_full_valid_ic": 0.091389,
+  "reblend_delta_vs_router": 0.000499,
+  "contract": {
+    "shape": [
+      442,
+      5282
+    ],
+    "dtype": "float32",
+    "finite": true,
+    "evaluation_count": 2042538,
+    "non_evaluation_count": 292106,
+    "non_evaluation_all_0_5": true,
+    "minimum": 0.00020399836648721248,
+    "maximum": 1.0
+  },
+  "submission": "prediction_1.npy"
+}

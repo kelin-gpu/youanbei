@@ -1,0 +1,18 @@
+{
+  "prediction_shape": [
+    442,
+    5282
+  ],
+  "prediction_dtype": "float32",
+  "all_finite": true,
+  "evaluation_positions": 2042538,
+  "neutral_non_evaluation_positions": 292106,
+  "non_evaluation_all_neutral_0_5": true,
+  "parameter_search_rows": 30,
+  "verification_rows": 15,
+  "verified_parameter_sets": 5,
+  "verified_folds": 3,
+  "notebook_code_cells_executed": 4,
+  "notebook_error_outputs": 0,
+  "model_size_bytes": 89534
+}

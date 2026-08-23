@@ -1,0 +1,11 @@
+{
+  "status": "REJECTED: online candidate below exp_009 reference; prediction.npy remains anchor fallback",
+  "promoted": false,
+  "selected_alpha": 0.5,
+  "online_candidate_rankic": 0.108465,
+  "online_reference_rankic": 0.109928,
+  "online_delta_vs_reference": -0.001463,
+  "candidate_file": "D:\\google_dl\\book\\youanbei\\04_results\\exp_014_anchor_residual_rankglu_v2\\candidate_prediction.npy",
+  "recommended_file": "D:\\google_dl\\book\\youanbei\\04_results\\exp_014_anchor_residual_rankglu_v2\\prediction.npy",
+  "fallback_used": true
+}

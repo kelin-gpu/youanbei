@@ -1,0 +1,41 @@
+{
+  "cat5_col": 413,
+  "train_unique_categories": 4093,
+  "cap": 1024,
+  "num_boost_round": 16,
+  "results": [
+    {
+      "treatment": "native",
+      "prediction": "prediction_1.npy",
+      "valid_mean_rank_ic": 0.09291162581316421,
+      "contract_ok": true,
+      "elapsed_s": 28.7,
+      "delta_vs_remove": 0.006931
+    },
+    {
+      "treatment": "frequency",
+      "prediction": "prediction_2.npy",
+      "valid_mean_rank_ic": 0.08614144776414041,
+      "contract_ok": true,
+      "elapsed_s": 29.0,
+      "delta_vs_remove": 0.000161
+    },
+    {
+      "treatment": "unknown_bucket",
+      "prediction": "prediction_3.npy",
+      "valid_mean_rank_ic": 0.09291162581316421,
+      "contract_ok": true,
+      "elapsed_s": 25.0,
+      "delta_vs_remove": 0.006931
+    },
+    {
+      "treatment": "remove",
+      "prediction": "prediction_4.npy",
+      "valid_mean_rank_ic": 0.08598059187725267,
+      "contract_ok": true,
+      "elapsed_s": 21.0,
+      "delta_vs_remove": 0.0
+    }
+  ],
+  "baseline": "remove"
+}

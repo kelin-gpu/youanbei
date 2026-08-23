@@ -1,0 +1,126 @@
+{
+  "aligned_preflight_time": 2921,
+  "anchor_oof_contract": {
+    "folds": [
+      "fold_1",
+      "fold_2",
+      "fold_3"
+    ],
+    "requires_train_only_models": true,
+    "source": "exp009/exp015 walk-forward reconstruction",
+    "test_anchor_available": true,
+    "test_labels_loaded": false
+  },
+  "anchor_test_rows": 2042538,
+  "catboost_pool_constructed": {
+    "columns": 419,
+    "rows": 64
+  },
+  "context": {
+    "manifest_sha256": "f7c4076de6e3ae7d631554df5a15f69f50d7e8f676249fb6d2d4cf71ccec8c6f",
+    "splits": {
+      "test": {
+        "groups": 442,
+        "has_labels": false,
+        "rows": 2042538
+      },
+      "train": {
+        "groups": 2432,
+        "has_labels": true,
+        "rows": 6489099
+      },
+      "valid": {
+        "groups": 243,
+        "has_labels": true,
+        "rows": 982972
+      }
+    },
+    "test_has_labels": false
+  },
+  "feature_shape": [
+    128,
+    120
+  ],
+  "final_submission_sha256_after": "9d322401a2d8fedd38dea66b97578873e721f03eeb93575dbc8bdc2a1aef38e6",
+  "final_submission_sha256_before": "9d322401a2d8fedd38dea66b97578873e721f03eeb93575dbc8bdc2a1aef38e6",
+  "graph_shape": {
+    "indices": [
+      128,
+      16
+    ],
+    "weights": [
+      128,
+      16
+    ]
+  },
+  "history_shape": [
+    128,
+    240,
+    40
+  ],
+  "memory_peak_mb": 724,
+  "optimizer_step_called": false,
+  "pretraining_checkpoint": {
+    "available": true,
+    "compatible": true,
+    "steps": 35016
+  },
+  "real_time_points": [
+    2918,
+    2919,
+    2920,
+    2921
+  ],
+  "relevance_contract": {
+    "label_gain_length": 64,
+    "label_gain_matches_levels": true,
+    "train": {
+      "levels": 64,
+      "maximum": 63,
+      "minimum": 0
+    },
+    "valid": {
+      "levels": 64,
+      "maximum": 63,
+      "minimum": 0
+    }
+  },
+  "resource_budget": {
+    "cuda_total_bytes": 8585216000,
+    "fits_cuda_sequence_budget": true,
+    "sequence_batch_bytes": 39321600
+  },
+  "spectral_confidence_finite": true,
+  "status": "PREFLIGHT_PASSED",
+  "tabular_dry_run": {
+    "cat_features": [
+      408,
+      409,
+      410,
+      411,
+      412,
+      413,
+      414,
+      415,
+      416
+    ],
+    "features": 419,
+    "groups": 1,
+    "objectives": [
+      "lgbm_lambdarank",
+      "catboost_yetirank",
+      "lgbm_huber",
+      "xgboost_hist"
+    ],
+    "rows": 256
+  },
+  "test_evaluation_count": 2042538,
+  "test_label_loaded": false,
+  "training_performed": false,
+  "tree_containers": {
+    "lightgbm_rows": 64,
+    "xgboost_rows": 64
+  },
+  "tree_fit_called": false,
+  "unicode_atomic_overwrite": true
+}

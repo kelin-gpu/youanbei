@@ -1,0 +1,47 @@
+{
+  "status": "smoke_passed",
+  "trained": false,
+  "real_data_read": false,
+  "model": {
+    "shape": [
+      64
+    ],
+    "loss": 2.0836665630340576,
+    "parts": {
+      "mse": 1.8188178539276123,
+      "ic_loss": 0.9094089865684509,
+      "residual_loss": 0.6956312656402588
+    },
+    "gradient_finite": true
+  },
+  "synthetic": {
+    "anchor_rankic": 0.6024725274725274,
+    "good_rankic": 0.9222985347985345,
+    "reversed_rankic": 0.42565628815628814
+  },
+  "stability": {
+    "primary_precision": "bf16",
+    "normal_step_finite": true,
+    "fp32_retry_exercised": true,
+    "retry_optimizer_steps": [
+      1
+    ],
+    "dual_failure_diagnostic": true,
+    "failed_step_left_model_unchanged": true
+  },
+  "checkpoint": {
+    "atomic_restore": true,
+    "completed_resume_idempotent": true,
+    "corrupt_checkpoint_isolated": true
+  },
+  "full_control_flow": {
+    "stage_calls": 12,
+    "stages": [
+      "early",
+      "dev",
+      "shadow",
+      "final"
+    ],
+    "selected_alpha_nonnegative": true
+  }
+}

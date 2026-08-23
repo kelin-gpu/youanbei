@@ -1,0 +1,138 @@
+{
+  "record_id": "20260807_195201_skeleton_anchor_recent_blend",
+  "experiment_id": "exp_012_framework_base",
+  "candidate_id": "skeleton_anchor_recent_blend",
+  "pre_registered_at": "2026-08-07 19:52:01",
+  "params": {
+    "anchor_seg": [
+      486,
+      2918
+    ],
+    "recent_seg": [
+      1216,
+      2918
+    ],
+    "anchor_rounds": 8,
+    "recent_rounds": 16,
+    "weight": 0.3,
+    "seeds": [
+      42,
+      2026,
+      3407
+    ],
+    "note": "Train-only 口径；test_anchor_corr 门槛受训练终点不一致影响（见阶段1）"
+  },
+  "gates_expected": {
+    "anchor_reproduction": {
+      "max_abs_delta": 0.0003
+    },
+    "dev_fold_mean_delta": {
+      "min": 0.0005
+    },
+    "dev_fold_all_positive": {},
+    "dev_worst_fold_delta": {
+      "min": 0.0
+    },
+    "shadow_delta": {
+      "min": 0.0
+    },
+    "shadow_second_half_delta": {
+      "min": -0.0005
+    },
+    "official_valid_mean_delta": {
+      "min": 0.0003
+    },
+    "official_valid_late_delta": {
+      "min": -0.0002
+    },
+    "official_valid_worst_quarter_delta": {
+      "min": -0.0015
+    },
+    "plateau_span": {
+      "max": 0.001
+    },
+    "test_anchor_rank_corr": {
+      "min": 0.98
+    },
+    "seed_ensemble_stable": {}
+  },
+  "status": "verified",
+  "results": {
+    "anchor_reproduction": 0.0,
+    "dev_fold_mean_delta": 0.001022282312941429,
+    "dev_fold_all_positive": true,
+    "dev_worst_fold_delta": 0.0009711125404290311,
+    "shadow_delta": 0.0007468510727898781,
+    "shadow_second_half_delta": 0.0007309741375415429,
+    "official_valid_mean_delta": -2.2284789606336064e-05,
+    "official_valid_late_delta": -0.0005883838229465005,
+    "official_valid_worst_quarter_delta": -0.00016031949560853936,
+    "plateau_span": 8.473694219249955e-05,
+    "test_anchor_rank_corr": 0.9389618473402309,
+    "seed_ensemble_stable": false
+  },
+  "verdict": "not_promoted",
+  "verified_at": "2026-08-07 19:52:01",
+  "gates_outcomes": {
+    "anchor_reproduction": {
+      "measured": 0.0,
+      "pass": true,
+      "detail": "|Δ|=0.000000≤0.0003"
+    },
+    "dev_fold_mean_delta": {
+      "measured": 0.001022282312941429,
+      "pass": true,
+      "detail": "0.001022≥0.0005"
+    },
+    "dev_fold_all_positive": {
+      "measured": true,
+      "pass": true,
+      "detail": ""
+    },
+    "dev_worst_fold_delta": {
+      "measured": 0.0009711125404290311,
+      "pass": true,
+      "detail": "0.000971≥0.0"
+    },
+    "shadow_delta": {
+      "measured": 0.0007468510727898781,
+      "pass": true,
+      "detail": "0.000747≥0.0"
+    },
+    "shadow_second_half_delta": {
+      "measured": 0.0007309741375415429,
+      "pass": true,
+      "detail": "0.000731≥-0.0005"
+    },
+    "official_valid_mean_delta": {
+      "measured": -2.2284789606336064e-05,
+      "pass": false,
+      "detail": "-0.000022≥0.0003"
+    },
+    "official_valid_late_delta": {
+      "measured": -0.0005883838229465005,
+      "pass": false,
+      "detail": "-0.000588≥-0.0002"
+    },
+    "official_valid_worst_quarter_delta": {
+      "measured": -0.00016031949560853936,
+      "pass": true,
+      "detail": "-0.000160≥-0.0015"
+    },
+    "plateau_span": {
+      "measured": 8.473694219249955e-05,
+      "pass": true,
+      "detail": "0.000085≤0.001"
+    },
+    "test_anchor_rank_corr": {
+      "measured": 0.9389618473402309,
+      "pass": false,
+      "detail": "0.938962≥0.98"
+    },
+    "seed_ensemble_stable": {
+      "measured": false,
+      "pass": true,
+      "detail": ""
+    }
+  }
+}

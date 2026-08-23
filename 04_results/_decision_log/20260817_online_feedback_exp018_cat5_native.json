@@ -1,0 +1,20 @@
+{
+  "recorded_at": "2026-08-17",
+  "experiment": "exp_018_cat5_ablation",
+  "source": "user_reported",
+  "candidate": {
+    "name": "prediction_1.npy",
+    "path": "04_results/exp_018_cat5_ablation/prediction_1.npy",
+    "sha256": "A63D901FDE201744259506DC07FB242F490C30F7D35431AFA267B4371D81521B",
+    "treatment": "native cat_5 categorical（legacy_328 + cat_5 原生类别）",
+    "local_full_valid_rank_ic": 0.092912,
+    "local_delta_vs_remove": 0.006931,
+    "online_rank_ic": 0.107010
+  },
+  "reference": {
+    "exp003_formal_online": 0.108105,
+    "exp016_best_online": 0.116132
+  },
+  "decision": "not_promoted_evidence_only",
+  "conclusion": "native cat_5 本地全量 Valid +0.0069（相对 remove），线上 0.107010 接近 exp003(0.108105)。证明 cat_5 原生类别处理有效，建议纳入 tabular 专家（当前按数值列处理）；但本轻量 16 轮模型不晋级为线上最佳，仅作去风险/特征处理证据。"
+}

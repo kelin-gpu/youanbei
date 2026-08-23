@@ -1,0 +1,11 @@
+{
+  "anchor_valid": 0.092940153549703,
+  "recent_valid": 0.08965672120833612,
+  "selected_weight": 0.3,
+  "shadow_delta": 0.0007468510727898781,
+  "official_delta": -2.2284789606336064e-05,
+  "test_anchor_corr": 0.9389618473402309,
+  "verdict": "not_promoted",
+  "decision_record": "20260807_195201_skeleton_anchor_recent_blend",
+  "runtime_seconds": 3.917141914367676
+}

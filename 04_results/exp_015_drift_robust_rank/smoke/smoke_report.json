@@ -1,0 +1,9 @@
+{
+  "status": "smoke_passed",
+  "ties_verified": true,
+  "rank_range_verified": true,
+  "zero_weight_reproduces_anchor": true,
+  "blend_direction_verified": true,
+  "atomic_write_verified": true,
+  "gate_logic_verified": true
+}

@@ -1,0 +1,8 @@
+{
+  "fingerprint": "6099a59b9ae4f7b3ba6bb743dbcdd79a092f08c41c385f558b96bdb9278a1a19",
+  "train_start": 1459,
+  "train_stop": 3161,
+  "rounds": 16,
+  "training_seconds": 14.177000999450684,
+  "train_rows": 2042400
+}

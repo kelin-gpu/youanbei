@@ -1,0 +1,6 @@
+{
+  "experiment": "exp_023g_catboost_stack_surgery",
+  "task": "CatBoost tabular 专家替换 + head/router 重训 + 锚点手术",
+  "generated": "2026-08-21 15:55:04",
+  "final_submission_overwritten": false
+}

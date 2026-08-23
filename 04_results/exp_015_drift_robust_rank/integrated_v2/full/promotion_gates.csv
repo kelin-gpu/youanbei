@@ -1,0 +1,13 @@
+﻿gate,passed,measured,requirement
+selected_weight_positive,True,0.2,> 0
+dev_mean_delta,True,0.0009946140684923624,>= 0.0005
+dev_all_positive,True,True,True
+shadow_delta,True,0.0005290982941192068,>= 0.0
+shadow_late_delta,True,0.0008255720090181301,>= -0.0005
+official_mean_delta,True,0.0007257147772166267,>= 0.0003
+official_late_delta,True,0.0005973845551846824,>= -0.0002
+official_worst_quarter_delta,True,0.00011302379443358518,>= -0.0015
+seed_direction_consistent,True,True,True
+seed_delta_spread,True,0.0011808905803000619,<= 0.002
+test_anchor_rank_corr,True,0.9976932502156236,>= 0.98
+output_contract,True,True,True

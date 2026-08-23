@@ -1,0 +1,5 @@
+{
+  "experiment": "exp_023a_future_shift",
+  "note": "跨截面特征使用：X(t+s) 预测 y(t)，全部 X 为比赛给定输入，无标签访问",
+  "final_submission_overwritten": false
+}

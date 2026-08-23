@@ -1,0 +1,131 @@
+{
+  "data_z": {
+    "bytes": 3250274528,
+    "sha256": "a426a7078097e8d970c2f27a30a49b3122a8a0ea7c4c05f35938d5f568cfd04c",
+    "expected": "a426a7078097e8d970c2f27a30a49b3122a8a0ea7c4c05f35938d5f568cfd04c",
+    "match": true
+  },
+  "cache_manifest": {
+    "manifest_sha256": "f7c4076de6e3ae7d631554df5a15f69f50d7e8f676249fb6d2d4cf71ccec8c6f",
+    "ready_ok": true,
+    "status": "ready"
+  },
+  "boundaries": {
+    "train_start_idx": 486,
+    "valid_start_idx": 2918,
+    "test_start_idx": 3161,
+    "T": 3603,
+    "S": 5282,
+    "match_official": true
+  },
+  "supervision": {
+    "Train": {
+      "split": "Train",
+      "time_range": [
+        486,
+        2918
+      ],
+      "mask_x_count": 7354184,
+      "mask_y_count": 6489099,
+      "y1_finite_count": 6489099,
+      "supervision_count": 6489099,
+      "per_time_valid": {
+        "min": 1208,
+        "max": 3815,
+        "median": 2459.5,
+        "mean": 2668.2150493421054
+      }
+    },
+    "Valid": {
+      "split": "Valid",
+      "time_range": [
+        2918,
+        3161
+      ],
+      "mask_x_count": 1089602,
+      "mask_y_count": 982972,
+      "y1_finite_count": 982972,
+      "supervision_count": 982972,
+      "per_time_valid": {
+        "min": 3813,
+        "max": 4307,
+        "median": 4033.0,
+        "mean": 4045.1522633744858
+      }
+    },
+    "Test": {
+      "split": "Test",
+      "time_range": [
+        3161,
+        3603
+      ],
+      "mask_x_count": 2219158,
+      "mask_y_count": 2042538,
+      "y1_finite_count": 0,
+      "supervision_count": 0,
+      "per_time_valid": {
+        "min": 4305,
+        "max": 4902,
+        "median": 4651.0,
+        "mean": 4621.126696832579
+      }
+    },
+    "cache_rows_match": true
+  },
+  "legacy_328": {
+    "feature_count": 328,
+    "block_structure": {
+      "raw_40": true,
+      "rank_20": true,
+      "lag_80": true,
+      "roll_mean_60": true,
+      "roll_std_60": true,
+      "roll_change_60": true,
+      "lag_available_4": true,
+      "coverage_age_4": true,
+      "total_328": true
+    },
+    "finite_sample_check": {
+      "train": true,
+      "valid": true,
+      "test": true
+    },
+    "cache_compat_status": "passed",
+    "cache_valid_max_abs_error": 5.957341553397555e-08,
+    "cache_test_max_abs_error": 5.960239524149813e-08,
+    "train_shape": [
+      6489099,
+      419
+    ],
+    "valid_shape": [
+      982972,
+      419
+    ],
+    "test_shape": [
+      2042538,
+      419
+    ]
+  },
+  "test_model_training_endpoints": {
+    "exp_003": {
+      "code_evidence": "run_pipeline 中 final_train 使用 (TRAIN_START, TEST_START) 区间，即 [486, 3161)，包含 Valid 标签；随后用 official_best_iteration 在测试集预测",
+      "train_stop_for_test": 3161,
+      "includes_valid_labels": true
+    },
+    "exp_006": {
+      "code_evidence": "定稿单元 final_start = max(TRAIN_START, VALID_STOP - window)，valid_begin = VALID_START，训练数据拼接 train + valid 至 3161",
+      "train_stop_for_test": 3161,
+      "includes_valid_labels": true
+    },
+    "exp_007": {
+      "code_evidence": "最终近期专家 final_stop = VALID_STOP = 3161，训练 train[1459,2918) + valid[2918,3161)；锚点直接读取 final_submission（exp_003 产物，训练至 3161）",
+      "train_stop_for_test": 3161,
+      "includes_valid_labels": true
+    },
+    "exp_009": {
+      "code_evidence": "模型元数据 model_recent.metadata.json：train_start=1459, train_stop=3161, rounds=16；锚点读取 final_submission",
+      "train_stop_for_test": 3161,
+      "includes_valid_labels": true
+    }
+  }
+}

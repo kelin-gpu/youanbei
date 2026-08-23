@@ -1,0 +1,46 @@
+{
+  "compiled": [
+    "src\\__init__.py",
+    "src\\artifacts.py",
+    "src\\data_context.py",
+    "src\\dual_axis.py",
+    "src\\feature_views.py",
+    "src\\full_pipeline.py",
+    "src\\multi_objective_head.py",
+    "src\\oof_anchor.py",
+    "src\\pipeline.py",
+    "src\\prediction_contract.py",
+    "src\\ranking.py",
+    "src\\ranking_objectives.py",
+    "src\\relational_graph.py",
+    "src\\self_supervised.py",
+    "src\\state_router.py",
+    "src\\tabular_experts.py",
+    "src\\time_frequency.py",
+    "src\\training.py",
+    "config.py",
+    "run_exp016.py"
+  ],
+  "default_mode": "smoke",
+  "families": [
+    "exp015_anchor",
+    "tabular",
+    "dual_axis",
+    "time_frequency",
+    "relational_graph",
+    "foundation_representation",
+    "multi_objective_rank"
+  ],
+  "full_executed": false,
+  "notebook_code_cells_compiled": 4,
+  "protected_modules_missing_guard": [],
+  "protected_training_modules": [
+    "src/training.py",
+    "src/tabular_experts.py",
+    "src/oof_anchor.py",
+    "src/full_pipeline.py"
+  ],
+  "status": "STATIC_CHECK_PASSED",
+  "training_guard": "DSCR_EXP016_MODE=full + DSCR_EXP016_ALLOW_TRAINING=YES",
+  "unexpected_training_calls": []
+}

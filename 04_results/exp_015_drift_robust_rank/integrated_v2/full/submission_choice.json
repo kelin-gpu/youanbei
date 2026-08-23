@@ -1,0 +1,13 @@
+{
+  "status": "ONLINE_NEW_BEST",
+  "promoted": true,
+  "selected_weight": 0.2,
+  "candidate_file": "D:\\google_dl\\book\\友安杯\\04_results\\exp_015_drift_robust_rank\\integrated_v2\\full\\candidate_prediction.npy",
+  "recommended_file": "D:\\google_dl\\book\\友安杯\\04_results\\exp_015_drift_robust_rank\\integrated_v2\\full\\prediction.npy",
+  "fallback_used": false,
+  "manual_online_promotion_requirement": "RankIC > 0.109959",
+  "online_rank_ic": 0.110779,
+  "previous_best_rank_ic": 0.109959,
+  "delta_vs_previous_best": 0.00082,
+  "online_decision": "promoted_online_best"
+}

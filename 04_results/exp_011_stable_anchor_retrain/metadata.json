@@ -1,0 +1,52 @@
+{
+  "experiment_id": "exp_011_stable_anchor_retrain",
+  "created_at": "2026-08-07 11:41:00",
+  "data_hash": "a426a7078097e8d970c2f27a30a49b3122a8a0ea7c4c05f35938d5f568cfd04c",
+  "cache_hash": "f7c4076de6e3ae7d631554df5a15f69f50d7e8f676249fb6d2d4cf71ccec8c6f",
+  "feature_version": "legacy_328",
+  "train_range": "[486, 2918)",
+  "recent_train_range": "[1216, 2918)",
+  "valid_range": "[2918, 3161)",
+  "test_range": "[3161, 3603)",
+  "model_parameters": {
+    "lgb": "tuned_public_best(exp_003)",
+    "learning_rate": 0.0228695,
+    "num_leaves": 79,
+    "min_data_in_leaf": 147,
+    "feature_fraction": 0.80936,
+    "bagging_fraction": 0.647764,
+    "lambda_l1": 2.35724,
+    "lambda_l2": 0.238705,
+    "max_bin": 127,
+    "objective": "lambdarank",
+    "anchor_rounds": 8,
+    "recent_rounds": 16
+  },
+  "random_seeds": [
+    42,
+    2026,
+    3407
+  ],
+  "selected_weight": 0.3,
+  "selected_training_strategy": "train_only_anchor_recent_blend_single_seed_42",
+  "prediction_shape": [
+    442,
+    5282
+  ],
+  "prediction_dtype": "float32",
+  "evaluation_position_count": 2042538,
+  "non_evaluation_position_count": 292106,
+  "prediction_sha256": "4e5584016b77a8533410dddc2f3bb1c66ee75b0ff23aa92b1dfc20dfd3824863",
+  "promotion_status": "not_promoted",
+  "fallback_level": 0,
+  "runtime_seconds": 9.458019256591797,
+  "environment": "jingge_ts / Windows",
+  "library_versions": {
+    "numpy": "2.2.6",
+    "lightgbm": "4.7.0"
+  },
+  "formal_submission_overwritten": false,
+  "online_rank_ic": 0.104988,
+  "online_result_source": "user_reported_2026-08-07",
+  "online_recorded_at": "2026-08-07 11:47:37"
+}

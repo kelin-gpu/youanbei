@@ -1,0 +1,28 @@
+{
+  "experiment": "exp_021_retrain_head_router",
+  "stage": "submit",
+  "contract": {
+    "shape": [
+      442,
+      5282
+    ],
+    "dtype": "float32",
+    "finite": true,
+    "evaluation_count": 2042538,
+    "non_evaluation_count": 292106,
+    "non_evaluation_all_0_5": true,
+    "minimum": 0.00020399836648721248,
+    "maximum": 1.0
+  },
+  "submission": "prediction_1.npy",
+  "fit_reference": {
+    "experiment": "exp_021_retrain_head_router",
+    "stage": "fit",
+    "oof_rows": 1494016,
+    "capped_valid_mean_ic": 0.09097241756005069,
+    "baseline_capped_valid_ic": 0.09048734,
+    "capped_valid_delta": 0.000485,
+    "elapsed_s": 1242.8
+  },
+  "elapsed_s": 996.2
+}

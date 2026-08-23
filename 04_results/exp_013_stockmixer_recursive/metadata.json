@@ -1,0 +1,90 @@
+{
+  "experiment_id": "exp_013_stockmixer_recursive",
+  "status": "completed",
+  "completed_at": "2026-08-12 09:25:22",
+  "runtime_seconds": 323.3400363922119,
+  "config": {
+    "seed": 42,
+    "window": 60,
+    "sequence_features": 40,
+    "rank_features": 20,
+    "state_features": 4,
+    "categories": 33,
+    "category_embedding": 8,
+    "hidden": 64,
+    "token_hidden": 128,
+    "channel_hidden": 128,
+    "mixer_blocks": 2,
+    "dropout": 0.1,
+    "epochs": 20,
+    "time_bins": 64,
+    "times_per_bin": 8,
+    "stocks_per_time": 768,
+    "inference_batch": 512,
+    "pair_count": 4096,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "warmup_epochs": 2,
+    "gradient_clip": 1.0,
+    "ema_decay": 0.999,
+    "recursive_alpha": 0.8,
+    "ic_weight": 0.6,
+    "huber_weight": 0.25,
+    "pairwise_weight": 0.15,
+    "pairwise_scale": 10.0
+  },
+  "device": "cuda",
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "torch": "2.6.0+cu124",
+  "cuda_build": "12.4",
+  "parameter_count": 147201,
+  "epochs_completed": 20,
+  "contracts": {
+    "valid_raw": {
+      "shape": [
+        243,
+        5282
+      ],
+      "dtype": "float32",
+      "minimum": 0.351318359375,
+      "maximum": 0.5654296875,
+      "evaluation_count": 982972,
+      "non_evaluation_count": 300554
+    },
+    "valid_recursive": {
+      "shape": [
+        243,
+        5282
+      ],
+      "dtype": "float32",
+      "minimum": 0.00023218017304316163,
+      "maximum": 1.0,
+      "evaluation_count": 982972,
+      "non_evaluation_count": 300554
+    },
+    "test_raw": {
+      "shape": [
+        442,
+        5282
+      ],
+      "dtype": "float32",
+      "minimum": 0.363525390625,
+      "maximum": 0.56689453125,
+      "evaluation_count": 2042538,
+      "non_evaluation_count": 292106
+    },
+    "test_recursive": {
+      "shape": [
+        442,
+        5282
+      ],
+      "dtype": "float32",
+      "minimum": 0.00020399836648721248,
+      "maximum": 1.0,
+      "evaluation_count": 2042538,
+      "non_evaluation_count": 292106
+    }
+  },
+  "prediction_sha256": "4b61d76d34a90c16b33f91f5e411618e0d8191ff16bf4bc829407d1c86238131",
+  "formal_submission_overwritten": false
+}

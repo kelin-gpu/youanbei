@@ -1,0 +1,22 @@
+{
+  "recorded_at": "2026-08-17",
+  "experiment": "exp_016_unified_expert_fusion/full",
+  "source": "user_reported",
+  "candidate": {
+    "name": "prediction_pruned_no_dual_axis.npy",
+    "path": "04_results/exp_016_unified_expert_fusion/full/prediction_pruned_no_dual_axis.npy",
+    "sha256": "CBD3B3FAFD317479969BD6C82E51250971DA4044676C3235283556572ECC00CA",
+    "change": "从 7 家族动态融合中删除 dual_axis 并把剩余 6 家族权重归一化",
+    "local_capped_valid_estimate": "+0.0028 (6 家族口径)",
+    "online_rank_ic": 0.115654
+  },
+  "baseline": {
+    "name": "prediction.npy",
+    "path": "04_results/exp_016_unified_expert_fusion/full/prediction.npy",
+    "sha256": "5721E5FA325ECCE624755DA65DB6E0245F2E79857F14F6D61E4FED9D9C83C524",
+    "online_rank_ic": 0.116132
+  },
+  "delta_online": -0.000478,
+  "decision": "pruning_rejected",
+  "conclusion": "删除 dual_axis 本地 capped Valid 估 +0.0028 但线上 -0.000478，属本地→线上错配（与 exp013/014 一致）。dual_axis 剪枝线上负向，T2.1 精简重训暂缓；conservative router 等其它去风险方向继续。"
+}

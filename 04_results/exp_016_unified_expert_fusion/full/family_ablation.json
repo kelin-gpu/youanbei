@@ -1,0 +1,62 @@
+{
+  "experiment": "exp_016_unified_expert_fusion",
+  "generated": "2026-08-17",
+  "note": "official_valid 口径为 stock_cap=1024 均匀抽样子集(248832=243x1024)，与 exp015 全量 982972 行不可直接比较。full-valid 可比较数值需用现有 checkpoints 做全量 inference 重跑。",
+  "official_valid_capped": {
+    "mean_rank_ic": 0.09048734,
+    "groups": 243,
+    "rows": 248832,
+    "per_time_stats": {"mean": 0.090487, "median": 0.089672, "std": 0.101484, "positive_ratio": 0.8313, "worst": -0.166406, "best": 0.372692},
+    "per_family_standalone_ic": {
+      "exp015_anchor": 0.089812, "tabular": 0.091634, "dual_axis": 0.072673,
+      "time_frequency": 0.089911, "relational_graph": 0.089310, "foundation_representation": 0.086944
+    },
+    "mean_dynamic_weight": {
+      "exp015_anchor": 0.1766, "tabular": 0.1497, "dual_axis": 0.1724,
+      "time_frequency": 0.1156, "relational_graph": 0.1152, "foundation_representation": 0.1152,
+      "multi_objective_rank": 0.1552
+    },
+    "leave_one_out_6family_dynamic": {
+      "base_6family_ic": 0.090205,
+      "remove_exp015_anchor_delta": -0.000459,
+      "remove_tabular_delta": -0.001167,
+      "remove_dual_axis_delta": 0.002800,
+      "remove_time_frequency_delta": -0.000248,
+      "remove_relational_graph_delta": -0.000117,
+      "remove_foundation_representation_delta": -0.001637
+    }
+  },
+  "oof_static_7family": {
+    "mean_rank_ic": 0.115948,
+    "rows": 1494016,
+    "per_family_standalone_ic": {
+      "exp015_anchor": 0.104538, "tabular": 0.111869, "dual_axis": 0.105889,
+      "time_frequency": 0.104304, "relational_graph": 0.109940, "foundation_representation": 0.109249,
+      "multi_objective_rank": 0.118068
+    },
+    "leave_one_out_static_7family": {
+      "remove_exp015_anchor_delta": 0.001680,
+      "remove_tabular_delta": -0.000724,
+      "remove_dual_axis_delta": 0.000487,
+      "remove_time_frequency_delta": 0.000839,
+      "remove_relational_graph_delta": -0.000010,
+      "remove_foundation_representation_delta": -0.001453,
+      "remove_multi_objective_rank_delta": -0.002233
+    }
+  },
+  "pruned_candidate": {
+    "name": "prediction_pruned_no_dual_axis.npy",
+    "change": "从 7 家族动态融合中删除 dual_axis 并把剩余 6 家族权重归一化",
+    "test_rank_corr_vs_original": 0.999228,
+    "contract": {"shape": [442, 5282], "dtype": "float32", "finite": true, "non_eval_all_0_5": true, "eval_count": 2042538, "non_eval_count": 292106},
+    "local_expected_gain_capped_valid": "+0.0028 (6家族口径估计，非全量，未线上验证)"
+  },
+  "resource_audit": {
+    "total_checkpoint_bytes": 9753655,
+    "total_neural_params": 207973,
+    "per_family_params": {
+      "dual_axis": 62533, "foundation": 47154, "relational_graph": 39489,
+      "foundation_head": 4289, "multi_objective_head": 3460, "time_frequency": 3361, "state_router": 533
+    }
+  }
+}

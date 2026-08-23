@@ -1,0 +1,7 @@
+{
+  "error_type": "LightGBMError",
+  "failed_at": "2026-08-13 19:37:18",
+  "message": "Model file D:\\google_dl\\book\\友安杯\\03_cache\\exp_016_unified_expert_fusion\\checkpoints\\fold_1\\tabular\\lgbm_rank.txt is not available for writes",
+  "prediction_written": false,
+  "status": "FULL_FAILED"
+}

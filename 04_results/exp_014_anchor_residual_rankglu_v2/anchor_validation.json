@@ -1,0 +1,32 @@
+{
+  "mode": "reuse_then_rebuild_inference",
+  "exp009_weight": 0.25,
+  "folds": {
+    "fold_1": {
+      "sha256": "1cf7418f66af4d4632e9b0f4ec174f821da5ece5f23b6768d5115c6d51afc19c",
+      "rows": 792337,
+      "finite": true
+    },
+    "fold_2": {
+      "sha256": "f9fd32d047e379bb036a4b988e83c475c14e05e1416bb253808b10ff5899163c",
+      "rows": 842887,
+      "finite": true
+    },
+    "fold_3": {
+      "sha256": "8100134541c696a03c000c422b63230c49912cf96aee4522d3e76488da95ad32",
+      "rows": 880157,
+      "finite": true
+    }
+  },
+  "official_valid": {
+    "sha256": "0c1726ae8115594d72e5c6df23e3ee2bdd0966b582c62a2552e017f6435fbd32",
+    "rows": 982972,
+    "finite": true
+  },
+  "test": {
+    "sha256": "2ba33f458ceb9275cb91cb5a9eab2e546129f92f6fbc3e6b0c165e1e9489c7da",
+    "rows": 2042538,
+    "finite": true
+  },
+  "status": "cache_valid"
+}

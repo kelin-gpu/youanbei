@@ -1,0 +1,13 @@
+{
+  "experiment_id": "exp_006_lgbm_window_screen",
+  "status": "completed",
+  "seed": 42,
+  "prediction_shape": [
+    442,
+    5282
+  ],
+  "prediction_dtype": "float32",
+  "evaluation_count": 2042538,
+  "prediction_sha256": "d22e50922319ed7b1f9dbb26aab2d1bdf14fb78decb0fd6c15ede90dbf761955",
+  "completed_at": "2026-08-06 21:32:33"
+}

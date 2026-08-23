@@ -1,0 +1,10 @@
+{
+  "fingerprint": "98e195c7223981cef80f4321b06c9f2565789904e0e1d545b20de07c7dfd8643",
+  "train_start": 1459,
+  "train_stop": 3161,
+  "rounds": 8,
+  "feature_set": "enhanced",
+  "strategy": "decay_1200",
+  "training_seconds": 12.052226305007935,
+  "train_rows": 2042400
+}

@@ -1,0 +1,27 @@
+{
+  "recorded_at": "2026-08-19",
+  "experiment": "exp_023c_recursion_blend",
+  "source": "user_reported",
+  "candidate": {
+    "name": "prediction_1.npy",
+    "path": "04_results/exp_023c_recursion_blend/prediction_1.npy",
+    "change": "exp021 栈 (w=0.45) + exp023b 递归自举 (w=0.55) 截面 rank 混合",
+    "blend_valid_ic": 0.096664,
+    "stack_valid_ic": 0.0914,
+    "recursion_valid_ic": 0.0926,
+    "online_rank_ic": 0.111227
+  },
+  "baseline": {
+    "exp021_online": 0.116568,
+    "exp020_online": 0.116252,
+    "exp016_online": 0.116132
+  },
+  "delta_online_vs_exp021": -0.005341,
+  "decision": "not_promoted_regression",
+  "diagnosis": "线上反推：递归分量线上 IC 约 0.09-0.095（远低于其 valid 0.0926 按栈比例 1.28 外推的 0.118）。两个原因：(1) exp023b test 递归的起始 lag 用的是 valid 递归的预测值（已腐化），而 valid 递归起始 lag 是 train 尾段真实 y——valid 的 0.0926 被开头新鲜锚点段（前48截面 +0.134）抬高，test 无此结构，属评估不对称；(2) 递归信号随步数漂移，442 截面更长。w=0.55 由 valid 选出，线上过重。",
+  "lessons": [
+    "valid 与 test 的锚点结构不对称会系统性高估递归类方法",
+    "混合权重选择需对『valid 特有结构』打折"
+  ],
+  "next": "修复锚点（test 第3161截面用真实 y(3160)）+ 三分量混合（栈/递归/exp022 CatBoost valid 0.0985）一次性提交"
+}

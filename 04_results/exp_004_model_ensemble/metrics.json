@@ -1,0 +1,12 @@
+{
+  "mean_rank_ic": 0.10128500326110766,
+  "first_half_rank_ic": 0.10961771122914712,
+  "second_half_rank_ic": 0.09288342993796042,
+  "weights": {
+    "linear": 0.4,
+    "tcn": 0.4,
+    "lgbm": 0.2
+  },
+  "promoted": false,
+  "result_origin": "historical_valid"
+}

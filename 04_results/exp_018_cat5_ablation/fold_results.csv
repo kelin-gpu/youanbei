@@ -1,0 +1,5 @@
+treatment,valid_mean_rank_ic,delta_vs_remove,contract_ok,elapsed_s
+native,0.0929116258,0.006931,True,28.7
+frequency,0.0861414478,0.000161,True,29.0
+unknown_bucket,0.0929116258,0.006931,True,25.0
+remove,0.0859805919,0.0,True,21.0

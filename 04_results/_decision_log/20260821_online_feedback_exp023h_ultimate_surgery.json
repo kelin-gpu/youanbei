@@ -1,0 +1,23 @@
+{
+  "recorded_at": "2026-08-21",
+  "experiment": "exp_023h_ultimate_surgery",
+  "source": "user_reported",
+  "candidate": {
+    "name": "prediction_1.npy",
+    "path": "04_results/exp_023h_ultimate_surgery/prediction_1.npy",
+    "change": "exp021 栈 + 锚点手术终极版（深度 LGBM 255叶×140轮×3种子, lag=rank+raw, alpha=1.0, K=6, gamma=0.85）",
+    "surgery_valid_ic": 0.099460,
+    "online_rank_ic": 0.119660
+  },
+  "baseline": {
+    "exp023f_online": 0.119533,
+    "exp023e_online": 0.119063,
+    "exp021_online": 0.116568
+  },
+  "delta_online_vs_exp023f": 0.000127,
+  "decision": "online_best_pending_formal_promotion",
+  "conclusion": "锚点手术序列线上单调爬升（0.119063 -> 0.119533 -> 0.119660）且与 valid 序列一致，机制三次验证稳定。但边际增益递减（+0.0005 -> +0.0001），transfer ratio 降至 0.16。缺口 0.000340。",
+  "gap_analysis": "缺口 0.00034 x 442 截面 = 0.15 截面-IC 总量。手术段仅 6 截面，需平均 IC +0.025（从 ~0.49 到 ~0.65+）；截面 5-6 的 lag 链已断裂（IC ~0），拉高它们等价于解决中段平台问题（22 个实验证明不可行）。锚点段模型探针（深度+0.004/原始值+0.003/种子+0.0004/3模型全试）确认榨干。",
+  "final_verdict": "0.12 在强因果合规框架下不可达。0.119660 为无泄漏方法诚实极限。建议以 exp023h 收官。",
+  "compliance_summary": "第 t 截面仅用 X(<=t) 与 <t 给定标签/自有预测；手术锚点为给定历史标签 y(3160) 等；全管线无未来信息。"
+}

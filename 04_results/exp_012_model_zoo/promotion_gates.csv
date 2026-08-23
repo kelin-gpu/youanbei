@@ -1,0 +1,13 @@
+﻿gate,measured,pass
+anchor_reproduction,0.0,True
+dev_fold_mean_delta,0.007512431741761243,True
+dev_fold_all_positive,True,True
+dev_worst_fold_delta,0.007348515534185085,True
+shadow_delta,0.004024351154031491,True
+shadow_second_half_delta,0.002416986356063633,True
+official_valid_mean_delta,0.004340756715335459,True
+official_valid_late_delta,0.003734150998415925,True
+official_valid_worst_quarter_delta,0.0036361224668219755,True
+plateau_span,0.0,True
+test_anchor_rank_corr,0.9434641738846709,False
+seed_ensemble_stable,True,True

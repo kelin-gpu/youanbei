@@ -1,0 +1,73 @@
+{
+  "experiment": "exp_014_anchor_residual_rankglu_v2",
+  "run_mode": "full",
+  "trained": true,
+  "status": "full_completed",
+  "max_epochs": 25,
+  "fixed_epochs": 25,
+  "seeds": [
+    42,
+    2026,
+    3407
+  ],
+  "selected_alpha": 0.5,
+  "promoted": false,
+  "fallback_used": true,
+  "online_feedback": {
+    "reported_date": "2026-08-13",
+    "source": "user_reported",
+    "candidate_rankic": 0.108465,
+    "reference_experiment": "exp_009_anchor_recent_blend_cv",
+    "reference_rankic": 0.109928,
+    "delta_vs_reference": -0.001463,
+    "decision": "not_promoted"
+  },
+  "primary_precision": "bf16",
+  "checkpoint_schema_version": 4,
+  "stability_policy": "finite_checks_amp_then_fp32_retry_v1",
+  "duration_seconds": 8188.818,
+  "final_submission_sha256_before": "9d322401a2d8fedd38dea66b97578873e721f03eeb93575dbc8bdc2a1aef38e6",
+  "final_submission_sha256_after": "9d322401a2d8fedd38dea66b97578873e721f03eeb93575dbc8bdc2a1aef38e6",
+  "outputs": {
+    "prediction.npy": {
+      "bytes": 9338704,
+      "sha256": "8562706cc3a210db7ad2a067852050e22dcc32c8564f9347011d6fccafeef48c"
+    },
+    "candidate_prediction.npy": {
+      "bytes": 9338704,
+      "sha256": "24dad2fc44ee103ac406afd466b383ebd71f7c6ff155e97652d9cea75ce4deed"
+    },
+    "anchor_prediction.npy": {
+      "bytes": 9338704,
+      "sha256": "8562706cc3a210db7ad2a067852050e22dcc32c8564f9347011d6fccafeef48c"
+    },
+    "expert_residual.npy": {
+      "bytes": 9338704,
+      "sha256": "cf608d3ccddeef473c88442b9e4a37f8a9ea5b0419dd9a34daa424f1befacd78"
+    },
+    "valid_prediction.npy": {
+      "bytes": 5134232,
+      "sha256": "462306ffe989e16851d85b0c056dae1ed99c35b8a85e3c569cc9ce4308770cfe"
+    },
+    "metrics.json": {
+      "bytes": 1419,
+      "sha256": "435f3aa32bad6ce6c870d131ea9e1ce45fee90cb50af9384c39021c31e48d80a"
+    },
+    "submission_choice.json": {
+      "bytes": 548,
+      "sha256": "0f9f0e6714b75046bb2c02b42724a853af75c1ad4056b515cdbbe0cba565a4d6"
+    },
+    "online_feedback.json": {
+      "bytes": 508,
+      "sha256": "4246726d482a12ec7699678b6fa5439305e1080f5df0fd4981ff906f9e78cd0a"
+    },
+    "epoch_history.csv": {
+      "bytes": 31505,
+      "sha256": "e7a63d67ce521f648a1f8491edef2be7a1294c68ab5fb4cea5e3d905747f3d8e"
+    },
+    "normalization_stats.npz": {
+      "bytes": 4701,
+      "sha256": "29a0feaed455c90ba88475f898ecb65025bfce0a9f12f26b799bd14317e40352"
+    }
+  }
+}

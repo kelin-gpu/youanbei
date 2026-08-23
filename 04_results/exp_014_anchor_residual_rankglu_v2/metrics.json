@@ -1,0 +1,48 @@
+{
+  "fixed_epochs": 25,
+  "early_best_epochs": [
+    23,
+    25,
+    25
+  ],
+  "selected_alpha": 0.5,
+  "dev_delta": 0.010272775664857639,
+  "shadow_delta": 0.017116678383440415,
+  "shadow_seed_deltas": [
+    0.01447974051180509,
+    0.013452103121775735,
+    0.013738883028459672
+  ],
+  "valid_anchor_rankic": 0.09361484760705562,
+  "valid_candidate_rankic": 0.0964331728825698,
+  "valid_delta": 0.0028183252755141913,
+  "valid_anchor_diagnostics": {
+    "mean": 0.09361484760705562,
+    "second_half": 0.0917733019788569,
+    "worst_quarter": 0.0601057743616936
+  },
+  "valid_candidate_diagnostics": {
+    "mean": 0.0964331728825698,
+    "second_half": 0.09278533006589347,
+    "worst_quarter": 0.06381718771591977
+  },
+  "test_anchor_rank_correlation": 0.9422547636543505,
+  "residual_unique_ratio": 0.997117320361275,
+  "gates": {
+    "alpha_positive": true,
+    "dev_delta_min": true,
+    "shadow_nonnegative": true,
+    "official_valid_delta_min": true,
+    "official_valid_late": true,
+    "official_valid_worst_quarter": true,
+    "shadow_seed_std": true,
+    "test_anchor_correlation": false,
+    "residual_finite": true,
+    "residual_not_collapsed": true
+  },
+  "online_candidate_rankic": 0.108465,
+  "online_reference_experiment": "exp_009_anchor_recent_blend_cv",
+  "online_reference_rankic": 0.109928,
+  "online_delta_vs_reference": -0.001463,
+  "promoted": false
+}

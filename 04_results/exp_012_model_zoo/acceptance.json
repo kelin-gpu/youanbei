@@ -1,0 +1,40 @@
+{
+  "candidate_id": "exp_012_fusion_anchor065_catboost035",
+  "created_at": "2026-08-07 22:00:24",
+  "training_endpoint_policy": "train_only_2918",
+  "weights": {
+    "anchor": 0.65,
+    "catboost_yetirank": 0.35
+  },
+  "acceptance": {
+    "shape": [
+      442,
+      5282
+    ],
+    "dtype": "float32",
+    "finite": true,
+    "evaluation_count": 2042538,
+    "non_evaluation_count": 292106,
+    "non_evaluation_all_0_5": true,
+    "minimum": 0.00020399836648721248,
+    "maximum": 1.0,
+    "mean": 0.5000947117805481,
+    "std": 0.27001264691352844,
+    "sha256": "dbeacdd56388cd43e7b5a960a13961d3dd774a354247283e97923d34a23b61e5",
+    "official_anchor_rank_corr": 0.9434641738846709,
+    "official_anchor_sha256": "9d322401a2d8fedd38dea66b97578873e721f03eeb93575dbc8bdc2a1aef38e6",
+    "candidate_sha256": "dbeacdd56388cd43e7b5a960a13961d3dd774a354247283e97923d34a23b61e5"
+  },
+  "decision_log_record": "20260807_214810_restricted_fusion",
+  "online": {
+    "rankic": 0.108265,
+    "reported_at": "2026-08-07",
+    "source": "user_reported",
+    "vs_official_submission": "exp_003 0.108105 -> +0.000160",
+    "vs_online_best": "exp_007 0.109959 -> -0.001694",
+    "same_policy_comparison": "exp_011 (train_only, 0.104988) -> +0.003277",
+    "promotion": "not_promoted (未超过线上最佳；正式提交目录保持原样)"
+  },
+  "note": "例外晋级（用户确认路径）：预注册 test_anchor_corr 门槛因官方锚点训练终点不一致而不适用，改用同口径参考相关性 0.9684；开发折/影子/官方 Valid 三级一致强正向。正式提交目录 final_submission 未被修改。线上 0.108265 已回填：超过正式提交 exp_003，未超过线上最佳 exp_007；同口径（Train-only）对比 exp_011 提升 +0.003277，CatBoost 专家线上价值确认，但本地 Valid 高估了绝对增益。",
+  "formal_submission_overwritten": false
+}

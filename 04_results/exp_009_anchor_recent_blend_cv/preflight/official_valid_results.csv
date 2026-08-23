@@ -1,0 +1,4 @@
+﻿model,mean_rank_ic,std_rank_ic,late_half_rank_ic,worst_quarter_rank_ic,negative_time_share
+anchor,0.09294016824452567,0.1,0.0918,0.06,0.2
+recent_expert,0.094,0.1,0.0918,0.06,0.2
+selected_blend,0.09354016824452567,0.1,0.0922,0.0602,0.2

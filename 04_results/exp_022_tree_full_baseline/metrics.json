@@ -1,0 +1,49 @@
+{
+  "experiment": "exp_022_tree_full_baseline",
+  "cap": 1024,
+  "variants": [
+    {
+      "variant": "lgbm_native_cat",
+      "prediction": "prediction_1.npy",
+      "valid_mean_rank_ic": 0.08860531163575472,
+      "best_iteration": 62,
+      "contract_ok": true,
+      "elapsed_s": 225.7
+    },
+    {
+      "variant": "catboost_yetirank",
+      "prediction": "prediction_2.npy",
+      "valid_mean_rank_ic": 0.09848240998296912,
+      "best_iteration": 55,
+      "contract_ok": true,
+      "elapsed_s": 761.8
+    },
+    {
+      "variant": "xgboost_pairwise",
+      "prediction": "prediction_3.npy",
+      "valid_mean_rank_ic": 0.05394430761342177,
+      "best_iteration": 27,
+      "contract_ok": true,
+      "elapsed_s": 124.2
+    },
+    {
+      "variant": "ensemble_rank",
+      "prediction": "prediction_4.npy",
+      "valid_mean_rank_ic": 0.088315531611582,
+      "best_iteration": 0,
+      "contract_ok": true,
+      "elapsed_s": 0.7
+    },
+    {
+      "variant": "lgbm_target_enc",
+      "prediction": "prediction_5.npy",
+      "valid_mean_rank_ic": 0.08258754417963397,
+      "best_iteration": 3,
+      "contract_ok": true,
+      "elapsed_s": 150.9
+    }
+  ],
+  "baseline_exp021_online": 0.116568,
+  "target": 0.12,
+  "elapsed_s": 1277.4
+}

@@ -1,0 +1,23 @@
+# Large source data and generated caches
+data.z
+03_cache/
+**/runtime_cache/
+
+# Generated model and prediction artifacts
+*.npy
+*.pt
+*.npz
+*.cbm
+*.ubj
+*.txt
+*.pkl
+
+# Python and notebook runtime files
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Local reports and editor state
+.vscode/
+.trae/

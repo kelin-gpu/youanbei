@@ -1,0 +1,18 @@
+{
+  "fingerprint": "22757b16a28dd514a52a4b51fe4d984ffad84c6cb20c21a50a5c33687d6b2c82",
+  "stage": "fold_1",
+  "seed": 2026,
+  "segments": [
+    [
+      "train",
+      487,
+      2189
+    ]
+  ],
+  "robust": true,
+  "rounds": 16,
+  "train_rows": 2042400,
+  "feature_count": 348,
+  "training_seconds": 13.221329927444458,
+  "model_sha256": "89a3cbbcfe5b00181b3c3f03854aeafe68d2b988de5a2c2ea38d95dee98b7e15"
+}

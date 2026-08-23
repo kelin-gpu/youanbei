@@ -1,0 +1,21 @@
+{
+  "key": "base_cap1200__legacy_328_recent1702__r16",
+  "config": "legacy_328_recent1702",
+  "features": "legacy_328",
+  "feature_count": 328,
+  "window": 1702,
+  "train_start": 1216,
+  "train_stop": 2918,
+  "train_rows": 2042400,
+  "rounds": 16,
+  "training_seconds": 31.317660093307495,
+  "mean_rank_ic": 0.08833968988399772,
+  "std_rank_ic": 0.10773904053173004,
+  "late_half_rank_ic": 0.08564925042910798,
+  "worst_quarter_rank_ic": 0.055160456537429625,
+  "negative_time_share": 0.18518518518518517,
+  "selection_score": 0.08089671137821719,
+  "param_profile": "base",
+  "train_stock_cap": 1200.0,
+  "num_threads": 30.0
+}

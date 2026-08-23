@@ -1,0 +1,77 @@
+{
+  "baseline_router_full_valid_ic": 0.09138945422305736,
+  "w_static": {
+    "exp015_anchor": 0.4,
+    "tabular": 0.2,
+    "dual_axis": 0.08,
+    "time_frequency": 0.06,
+    "relational_graph": 0.06,
+    "foundation_representation": 0.08,
+    "multi_objective_rank": 0.12
+  },
+  "gamma_scan": [
+    {
+      "gamma": 0.0,
+      "full_valid_ic": 0.09269810778372345,
+      "delta_vs_router": 0.001309,
+      "mean_anchor_tabular": 0.5999999642372131,
+      "max_deep_family": 0.07999999821186066
+    },
+    {
+      "gamma": 0.25,
+      "full_valid_ic": 0.09261003475501146,
+      "delta_vs_router": 0.001221,
+      "mean_anchor_tabular": 0.5999999642372131,
+      "max_deep_family": 0.08806052803993225
+    },
+    {
+      "gamma": 0.5,
+      "full_valid_ic": 0.09255687310322254,
+      "delta_vs_router": 0.001167,
+      "mean_anchor_tabular": 0.5999999642372131,
+      "max_deep_family": 0.09406653046607971
+    },
+    {
+      "gamma": 0.75,
+      "full_valid_ic": 0.09253734597188885,
+      "delta_vs_router": 0.001148,
+      "mean_anchor_tabular": 0.5999999642372131,
+      "max_deep_family": 0.09871470928192139
+    },
+    {
+      "gamma": 1.0,
+      "full_valid_ic": 0.09254872702517888,
+      "delta_vs_router": 0.001159,
+      "mean_anchor_tabular": 0.5999999642372131,
+      "max_deep_family": 0.10241877287626266
+    }
+  ],
+  "best_gamma": 0.0,
+  "submissions": [
+    {
+      "gamma": 0.0,
+      "file": "prediction_1.npy",
+      "contract_ok": true
+    },
+    {
+      "gamma": 0.25,
+      "file": "prediction_2.npy",
+      "contract_ok": true
+    },
+    {
+      "gamma": 0.5,
+      "file": "prediction_3.npy",
+      "contract_ok": true
+    },
+    {
+      "gamma": 1.0,
+      "file": "prediction_4.npy",
+      "contract_ok": true
+    },
+    {
+      "gamma": 0.75,
+      "file": "prediction_5.npy",
+      "contract_ok": true
+    }
+  ]
+}

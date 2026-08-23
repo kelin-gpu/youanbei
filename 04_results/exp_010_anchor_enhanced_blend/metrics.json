@@ -1,0 +1,92 @@
+{
+  "run_mode": "full",
+  "status": "completed_not_promoted",
+  "selected_feature_set": "enhanced",
+  "selected_strategy": "decay_1200",
+  "selected_expert_rounds": 8,
+  "selected_recent_weight": 0.0,
+  "internal_selection": {},
+  "feature_diagnosis": [
+    {
+      "fold": "fold_1",
+      "legacy_ic": 0.1101150855,
+      "enhanced_ic": 0.1108026003,
+      "delta": 0.0006875148
+    },
+    {
+      "fold": "fold_2",
+      "legacy_ic": 0.0964674924,
+      "enhanced_ic": 0.0980675697,
+      "delta": 0.0016000773
+    },
+    {
+      "fold": "fold_3",
+      "legacy_ic": 0.0857941962,
+      "enhanced_ic": 0.0861772484,
+      "delta": 0.0003830522
+    }
+  ],
+  "feature_enhanced_kept": true,
+  "time_strategy": [
+    {
+      "fold": "fold_1",
+      "full_mean_ic": 0.1108026003,
+      "decay_mean_ic": 0.1134839975,
+      "mean_delta": 0.0026813972,
+      "full_late_ic": 0.1323699328,
+      "decay_late_ic": 0.1333162816,
+      "late_delta": 0.0009463488
+    },
+    {
+      "fold": "fold_2",
+      "full_mean_ic": 0.0980675697,
+      "decay_mean_ic": 0.0950426766,
+      "mean_delta": -0.0030248931,
+      "full_late_ic": 0.0663039985,
+      "decay_late_ic": 0.0656684127,
+      "late_delta": -0.0006355858
+    },
+    {
+      "fold": "fold_3",
+      "full_mean_ic": 0.0861772484,
+      "decay_mean_ic": 0.089889119,
+      "mean_delta": 0.0037118706,
+      "full_late_ic": 0.0844963892,
+      "decay_late_ic": 0.0859277376,
+      "late_delta": 0.0014313484
+    }
+  ],
+  "strategy_decay_selected": true,
+  "selected_plateau_span": 0.0,
+  "plateau_passed": true,
+  "official_valid_anchor": {
+    "mean_rank_ic": 0.092940153549703,
+    "std_rank_ic": 0.10905264603155261,
+    "late_half_rank_ic": 0.09186783594296577,
+    "worst_quarter_rank_ic": 0.059262187805490904,
+    "negative_time_share": 0.19753086419753085
+  },
+  "official_valid_expert": {
+    "mean_rank_ic": 0.08122078767449145,
+    "std_rank_ic": 0.10175795084661153,
+    "late_half_rank_ic": 0.07686291208366186,
+    "worst_quarter_rank_ic": 0.05740467734256896,
+    "negative_time_share": 0.2139917695473251
+  },
+  "official_valid_blend": {
+    "mean_rank_ic": 0.092940153549703,
+    "std_rank_ic": 0.10905264603155261,
+    "late_half_rank_ic": 0.09186783594296577,
+    "worst_quarter_rank_ic": 0.059262187805490904,
+    "negative_time_share": 0.19753086419753085
+  },
+  "official_mean_delta": 0.0,
+  "official_late_delta": 0.0,
+  "official_worst_quarter_delta": 0.0,
+  "anchor_reproduced": true,
+  "exp009_reproduced": true,
+  "test_anchor_rank_correlation": 1.0,
+  "test_correlation_gate_passed": true,
+  "tcn_weight": 0.0,
+  "promoted": false
+}

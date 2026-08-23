@@ -1,0 +1,27 @@
+{
+  "recorded_at": "2026-08-21",
+  "experiment": "exp_023g_catboost_stack_surgery",
+  "source": "user_reported",
+  "candidate": {
+    "name": "prediction_1.npy",
+    "path": "04_results/exp_023g_catboost_stack_surgery/prediction_1.npy",
+    "change": "CatBoost 60轮 tabular 专家替换 + head/router 端到端重训 + K=6 锚点手术",
+    "capped_valid_ic": 0.091936,
+    "reblend_full_valid_ic": 0.092563,
+    "surgery_valid_ic": 0.100569,
+    "online_rank_ic": 0.118640
+  },
+  "baseline": {
+    "exp023f_online": 0.119533,
+    "exp021_online": 0.116568
+  },
+  "delta_online_vs_exp023f": -0.000893,
+  "decision": "not_promoted",
+  "diagnosis": "valid-线上第三次不一致。手术贡献反推约 +0.0022（与 023e/f 一致，锚点机制稳定）；新栈本身线上 ~0.1164，与 exp021 (0.116568) 持平——CatBoost tabular 替换 + head/router 重训的 valid 增益 (+0.0012) 未迁移。两次栈改动（020/021 cat_5 +0.0004 成功，023g CatBoost 0）说明栈平台在 0.1165 附近，valid 上 +0.001x 量级的改动无法可靠区分。",
+  "lessons": [
+    "锚点手术机制三次线上稳定（+0.0022~+0.0030），是唯一可靠的增益来源",
+    "栈侧改动 valid 增益 <0.002 时线上不可靠，不应再消耗提交额度验证栈变体",
+    "合规最佳回到 exp023f 0.119533，缺口 0.000467 必须来自手术段模型升级（当前锚点段 IC 0.91，oracle 0.98）"
+  ],
+  "next": "exp023h：手术段专用模型升级探针（CatBoost 递归 / X(t-1) 原始特征拼接 / 深度 LightGBM），valid 前 6-10 截面（真实锚链同构段）评估；若无 +0.03 以上前段 IC 提升，则宣告 0.12 合规不可达并收尾"
+}

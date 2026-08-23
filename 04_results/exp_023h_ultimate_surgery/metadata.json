@@ -1,0 +1,27 @@
+{
+  "experiment": "exp_023h_ultimate_surgery",
+  "status": "online_best_pending_formal_promotion",
+  "prediction": "prediction_1.npy",
+  "prediction_sha256": "2fb9021f97d21827eee7102ddd386af7ce3b32fe4be14fcdbe9782860ee84877",
+  "shape": [442, 5282],
+  "dtype": "float32",
+  "online_rank_ic": 0.119660,
+  "online_score_source": "04_results/_decision_log/20260821_online_feedback_exp023h_ultimate_surgery.json",
+  "local_surgery_valid_ic": 0.09946048287222131,
+  "parameters": {
+    "num_leaves": 255,
+    "rounds": 140,
+    "seeds": [42, 7, 2024],
+    "lags": [1, 2, 3, 4, 5, 6],
+    "alpha_hi": 1.0,
+    "K": 6,
+    "gamma": 0.85
+  },
+  "causal_status": "compliant_claim_recorded",
+  "formal_submission_overwritten": false,
+  "dependencies": [
+    "03_cache/processed_data_v1/",
+    "04_results/exp_021_retrain_head_router/prediction_1.npy"
+  ],
+  "reproduction_command": "python 02_experiments/exp_023_tabular_upgrade/run_exp023h.py"
+}

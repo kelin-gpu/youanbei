@@ -1,0 +1,19 @@
+{
+  "recorded_at": "2026-08-17",
+  "experiment": "exp_016_unified_expert_fusion/full",
+  "source": "user_authorized",
+  "candidate": {
+    "name": "prediction.npy",
+    "path": "04_results/exp_016_unified_expert_fusion/full/prediction.npy",
+    "sha256": "5721e5fa325ecce624755da65db6e0245f2e79857f14f6d61e4fed9d9c83c524",
+    "online_rank_ic": 0.116132
+  },
+  "replaced": {
+    "path": "04_results/final_submission/prediction.npy",
+    "previous_sha256": "9d322401a2d8fedd38dea66b97578873e721f03eeb93575dbc8bdc2a1aef38e6",
+    "previous_online_rank_ic": 0.108105,
+    "previous_source": "exp003"
+  },
+  "decision": "promoted_formal_submission",
+  "conclusion": "用户授权将 exp016（0.116132）替换 exp003（0.108105）为正式提交，final_submission/prediction.npy 已覆盖为 exp016 预测。"
+}

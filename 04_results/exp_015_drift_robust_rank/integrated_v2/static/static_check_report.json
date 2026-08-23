@@ -1,0 +1,50 @@
+{
+  "status": "STATIC_CHECK_PASSED",
+  "notebook": "02_experiments/exp_015_drift_robust_rank/experiment.ipynb",
+  "code_cells_compiled": [
+    2,
+    4,
+    6,
+    8,
+    10
+  ],
+  "kernelspec": {
+    "display_name": "jingge_ts",
+    "language": "python",
+    "name": "jingge_ts"
+  },
+  "default_mode": "smoke",
+  "supported_stages": [
+    "all",
+    "features",
+    "pretrain",
+    "experts",
+    "router",
+    "final"
+  ],
+  "feature_view": "robust_rank_348",
+  "feature_count": 348,
+  "integrated_cache_dir": "03_cache/exp_015_drift_robust_rank/integrated_v2",
+  "integrated_result_dir": "04_results/exp_015_drift_robust_rank/integrated_v2",
+  "training_guard": "Y1_EXP015_MODE=full + Y1_EXP015_ALLOW_TRAINING=YES",
+  "training_call_owners": {
+    "train_multiscale_expert": [
+      "step",
+      "train"
+    ],
+    "train_drift_router": [
+      "step",
+      "train"
+    ],
+    "train_catboost_expert": [
+      "train"
+    ],
+    "train_or_load_models": [
+      "train"
+    ]
+  },
+  "unexpected_training_call_owners": [],
+  "smoke_or_preflight_training_call_owners": [],
+  "smoke_or_preflight_contains_train_or_step": false,
+  "full_executed": false
+}

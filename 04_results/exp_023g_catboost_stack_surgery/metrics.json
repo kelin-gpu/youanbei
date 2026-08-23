@@ -1,0 +1,28 @@
+{
+  "experiment": "exp_023g_catboost_stack_surgery",
+  "stage": "submit",
+  "surgery_applied": {
+    "K": 6,
+    "w0": 1.0,
+    "gamma": 0.9,
+    "alpha_hi": 0.7,
+    "valid_ic": 0.1005687331805898
+  },
+  "test_modified_sections": "前 6 截面（3161..），其余为新栈（CatBoost tabular + 重训 head/router）",
+  "contract": {
+    "shape": [
+      442,
+      5282
+    ],
+    "dtype": "float32",
+    "finite": true,
+    "evaluation_count": 2042538,
+    "non_evaluation_count": 292106,
+    "non_evaluation_all_0_5": true,
+    "minimum": 0.00020399836648721248,
+    "maximum": 1.0
+  },
+  "submission": "prediction_1.npy",
+  "compliance": "第 t 截面仅用 X(<=t) 与 <t 给定标签/自有预测；CatBoost 60 轮来自 exp022 Phase A(55)×1.1 固定协议；无 t 后数据",
+  "elapsed_s": 1441.1
+}

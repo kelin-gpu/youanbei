@@ -1,0 +1,33 @@
+{
+  "atomic_write_verified": true,
+  "dual_axis_forward_backward": true,
+  "final_submission_sha256_after": "9d322401a2d8fedd38dea66b97578873e721f03eeb93575dbc8bdc2a1aef38e6",
+  "final_submission_sha256_before": "9d322401a2d8fedd38dea66b97578873e721f03eeb93575dbc8bdc2a1aef38e6",
+  "multi_objective_forward_backward": true,
+  "optimizer_step_called": false,
+  "parameters_unchanged": true,
+  "prediction_contract": {
+    "dtype": "float32",
+    "evaluation_count": 23,
+    "finite": true,
+    "maximum": 0.97826087474823,
+    "minimum": 0.043478261679410934,
+    "non_evaluation_all_0_5": true,
+    "non_evaluation_count": 2334621,
+    "shape": [
+      442,
+      5282
+    ]
+  },
+  "prototype_permutation_equivariant": true,
+  "rank_average_ties": true,
+  "relational_graph_forward": true,
+  "router_is_cross_sectional": true,
+  "router_lower_bounds": true,
+  "self_supervised_forward_backward": true,
+  "spectral_confidence_finite": true,
+  "status": "SMOKE_PASSED",
+  "time_frequency_forward": true,
+  "training_performed": false,
+  "tree_fit_called": false
+}

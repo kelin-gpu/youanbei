@@ -1,0 +1,18 @@
+{
+  "fingerprint": "4f725a35b4b96e1f996cc0f1d9d63443260fac7828a08ae09426d47ed84c69f1",
+  "stage": "official",
+  "seed": 3407,
+  "segments": [
+    [
+      "train",
+      1216,
+      2918
+    ]
+  ],
+  "robust": true,
+  "rounds": 16,
+  "train_rows": 2042400,
+  "feature_count": 348,
+  "training_seconds": 18.736028909683228,
+  "model_sha256": "ec95e700d51c6824ec82621f02ab1ed862eb5a81e23521569a4bbc2f35c96a37"
+}

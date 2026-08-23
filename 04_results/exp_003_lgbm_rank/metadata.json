@@ -1,0 +1,13 @@
+{
+  "experiment_id": "exp_003_lgbm_rank",
+  "status": "completed",
+  "migrated_at": "2026-08-03 13:17:33",
+  "source_path": "D:\\google_dl\\book\\友安杯\\archive\\legacy_structure\\03_model_training\\y1_rank_pipeline\\y1_rank_outputs\\y1_best.npy",
+  "source_sha256": "9d322401a2d8fedd38dea66b97578873e721f03eeb93575dbc8bdc2a1aef38e6",
+  "prediction_shape": [
+    442,
+    5282
+  ],
+  "prediction_dtype": "float32",
+  "prediction_sha256": "9d322401a2d8fedd38dea66b97578873e721f03eeb93575dbc8bdc2a1aef38e6"
+}

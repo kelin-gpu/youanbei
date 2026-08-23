@@ -1,0 +1,56 @@
+{
+  "record_id": "20260807_214604_animal_catboost_yetirank",
+  "experiment_id": "exp_012_model_zoo",
+  "candidate_id": "animal_catboost_yetirank",
+  "pre_registered_at": "2026-08-07 21:46:04",
+  "params": {
+    "framework": "catboost",
+    "cols": "legacy_328",
+    "rounds": 120,
+    "best_weight": 0.35,
+    "seeds": [
+      42,
+      2026,
+      3407
+    ],
+    "note": "训练终点 Train-only(2918)；Test 分量锚点相关性门槛因官方锚点训练至 3161 而天然偏低"
+  },
+  "gates_expected": {
+    "anchor_reproduction": {
+      "max_abs_delta": 0.0003
+    },
+    "dev_fold_mean_delta": {
+      "min": 0.0005
+    },
+    "dev_fold_all_positive": {},
+    "dev_worst_fold_delta": {
+      "min": 0.0
+    },
+    "shadow_delta": {
+      "min": 0.0
+    },
+    "shadow_second_half_delta": {
+      "min": -0.0005
+    },
+    "official_valid_mean_delta": {
+      "min": 0.0003
+    },
+    "official_valid_late_delta": {
+      "min": -0.0002
+    },
+    "official_valid_worst_quarter_delta": {
+      "min": -0.0015
+    },
+    "plateau_span": {
+      "max": 0.001
+    },
+    "test_anchor_rank_corr": {
+      "min": 0.98
+    },
+    "seed_ensemble_stable": {}
+  },
+  "status": "pre_registered",
+  "results": null,
+  "verdict": null,
+  "verified_at": null
+}

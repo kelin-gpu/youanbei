@@ -1,0 +1,17 @@
+{
+  "model_type": "recent",
+  "seed": 42,
+  "rounds": 16,
+  "feature_config": "full_328",
+  "feature_count": 328,
+  "segments": [
+    [
+      "train",
+      1216,
+      2918
+    ]
+  ],
+  "training_seconds": 15.801024913787842,
+  "train_rows": 2042400,
+  "lightgbm_version": "4.7.0"
+}

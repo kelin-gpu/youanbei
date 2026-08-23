@@ -1,0 +1,74 @@
+{
+  "experiment": "exp_015_drift_robust_rank",
+  "status": "submitted_online_best",
+  "completed_at": "2026-08-13 15:15:08",
+  "manifest_sha256": "f7c4076de6e3ae7d631554df5a15f69f50d7e8f676249fb6d2d4cf71ccec8c6f",
+  "feature_cache_fingerprint": "88fb10a7f0b0d79d4af497697e01791e481025aa4cc521952c84d8255618cb8b",
+  "feature_view": "robust_rank_348",
+  "feature_count": 348,
+  "seeds": [
+    42,
+    2026,
+    3407
+  ],
+  "rounds": 16,
+  "selected_weight": 0.2,
+  "final_training_segments": [
+    [
+      "train",
+      1459,
+      2918
+    ],
+    [
+      "valid",
+      2918,
+      3161
+    ]
+  ],
+  "final_training_skipped": false,
+  "promoted": true,
+  "fallback_used": false,
+  "formal_submission_overwritten": false,
+  "final_submission_sha256_before": "9d322401a2d8fedd38dea66b97578873e721f03eeb93575dbc8bdc2a1aef38e6",
+  "final_submission_sha256_after": "9d322401a2d8fedd38dea66b97578873e721f03eeb93575dbc8bdc2a1aef38e6",
+  "duration_seconds": 317.4873070716858,
+  "online_rank_ic": 0.110779,
+  "online_recorded_at": "2026-08-13",
+  "online_result_source": "user_reported",
+  "online_decision": "promoted_online_best",
+  "delta_vs_previous_best": 0.00082,
+  "outputs": {
+    "prediction.npy": {
+      "bytes": 9338704,
+      "sha256": "a45190d975d2c27fbf448f67fb86b30e490a4b1305e5b9fae51654c04a184ed3"
+    },
+    "candidate_prediction.npy": {
+      "bytes": 9338704,
+      "sha256": "a45190d975d2c27fbf448f67fb86b30e490a4b1305e5b9fae51654c04a184ed3"
+    },
+    "anchor_prediction.npy": {
+      "bytes": 9338704,
+      "sha256": "8562706cc3a210db7ad2a067852050e22dcc32c8564f9347011d6fccafeef48c"
+    },
+    "expert_prediction.npy": {
+      "bytes": 9338704,
+      "sha256": "68382d5c6999cfb23d17c6fddc389bbb08b62bd432b49fb43856df0df9fa680b"
+    },
+    "valid_prediction.npy": {
+      "bytes": 5134232,
+      "sha256": "23ac42e170d04a5b035479345e063b4d60ddf0113a78cfca18265beed1d536b8"
+    },
+    "fold_results.csv": {
+      "bytes": 2380,
+      "sha256": "840ea27f3d9b5e89ef9c4e56daa8084b3c93f28d56d5e309ccb2d66d7ff13d62"
+    },
+    "weight_search.csv": {
+      "bytes": 800,
+      "sha256": "e657033364a36c29323b738c13a914d268c28cf4f33431e724df0be2466a022e"
+    },
+    "promotion_gates.csv": {
+      "bytes": 637,
+      "sha256": "c3bf4580e5d134bb6eec25833e4cb2713d52046d0dfc35e6300cf44ead0e41f2"
+    }
+  }
+}

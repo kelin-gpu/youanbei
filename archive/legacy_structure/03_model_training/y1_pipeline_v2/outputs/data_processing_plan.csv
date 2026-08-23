@@ -1,0 +1,9 @@
+id,item,touchpoint,gate
+1,pretrain_merge,FOLDS/训练区间,三折中位+0.0005 且≥2折为正
+3,stock_cap_2400,PipelineConfig.final_train_stock_cap,同上
+4,history_features_40,PipelineConfig.history_feature_count,同上
+5,embargo_gap,make_embargo_folds(本notebook),验证加固，不要求提分
+6,recency_weight,recency_weights + train_ranker(weight=),同上
+7,rolling_window,最终训练区间,官方验证一次性晋级判断
+8,ewma_param_grid,trend_estimate_param(本notebook),MAE粗筛→三折定夺
+9,relevance_rank,relevance_per_time_rank(本notebook),同上

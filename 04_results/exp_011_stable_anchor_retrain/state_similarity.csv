@@ -1,0 +1,3 @@
+﻿experiment,strategy,rankic,delta_vs_full
+fold_2_anchor_r8,full,0.0971174118037759,0.0
+fold_2_anchor_r8,state_similarity,0.0979593820002806,0.0008419701965047127

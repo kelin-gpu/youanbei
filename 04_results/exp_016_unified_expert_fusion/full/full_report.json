@@ -1,0 +1,22 @@
+{
+  "contract": {
+    "dtype": "float32",
+    "evaluation_count": 2042538,
+    "finite": true,
+    "maximum": 1.0,
+    "minimum": 0.00020399836648721248,
+    "non_evaluation_all_0_5": true,
+    "non_evaluation_count": 292106,
+    "shape": [
+      442,
+      5282
+    ]
+  },
+  "formal_submission_overwritten": false,
+  "official_validation": {
+    "groups": 243,
+    "mean_rank_ic": 0.09048733578256966,
+    "rows": 248832
+  },
+  "status": "FULL_COMPLETED"
+}

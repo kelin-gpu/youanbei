@@ -1,0 +1,13 @@
+{
+  "experiment_id": "exp_001_linear_baseline",
+  "status": "completed",
+  "migrated_at": "2026-08-03 13:17:33",
+  "source_path": "D:\\google_dl\\book\\友安杯\\archive\\legacy_structure\\03_model_training\\y1_linear_baseline\\outputs\\baseline_y1.npy",
+  "source_sha256": "f4e772e6c4c7b30e45d07bc71b748ae466e73979c31d5605daa94a0ceb507afb",
+  "prediction_shape": [
+    442,
+    5282
+  ],
+  "prediction_dtype": "float32",
+  "prediction_sha256": "57da1582c4b8f9aed8bea1012911af3d4e4b88ae6303e8a2fcea9baf68e48592"
+}

@@ -1,0 +1,33 @@
+{
+  "status": "smoke_passed",
+  "experiment_version": "integrated_v2",
+  "training_performed": false,
+  "optimizer_step_called": false,
+  "ties_verified": true,
+  "rank_range_verified": true,
+  "causal_windows_verified": true,
+  "patch_sizes": [
+    5,
+    20,
+    60
+  ],
+  "model_forward_verified": true,
+  "loss_backward_graph_verified": true,
+  "parameters_unchanged_after_backward": true,
+  "prototype_permutation_equivariant": true,
+  "orthogonalization_verified": true,
+  "top2_router_verified": true,
+  "router_participation": [
+    0.6666666666666666,
+    0.6666666666666666,
+    0.6666666666666666
+  ],
+  "uncertainty_shrink_verified": true,
+  "integrated_blend_finite": true,
+  "integrated_anchor_rankic": 0.9066666666666666,
+  "training_guard_verified": true,
+  "atomic_write_verified": true,
+  "cache_fingerprint_verified": true,
+  "final_submission_sha256_before": "9d322401a2d8fedd38dea66b97578873e721f03eeb93575dbc8bdc2a1aef38e6",
+  "final_submission_sha256_after": "9d322401a2d8fedd38dea66b97578873e721f03eeb93575dbc8bdc2a1aef38e6"
+}

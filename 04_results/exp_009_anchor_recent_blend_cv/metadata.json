@@ -1,0 +1,33 @@
+{
+  "experiment_id": "exp_009_anchor_recent_blend_cv",
+  "run_mode": "full",
+  "status": "submitted_online_best",
+  "completed_at": "2026-08-04 22:07:42",
+  "run_fingerprint": "3a8382e5ee27a3a1",
+  "manifest_sha256": "f7c4076de6e3ae7d631554df5a15f69f50d7e8f676249fb6d2d4cf71ccec8c6f",
+  "anchor_path": "D:\\google_dl\\book\\友安杯\\04_results\\final_submission\\prediction.npy",
+  "anchor_sha256": "9d322401a2d8fedd38dea66b97578873e721f03eeb93575dbc8bdc2a1aef38e6",
+  "prediction_path": "D:\\google_dl\\book\\友安杯\\04_results\\exp_009_anchor_recent_blend_cv\\prediction.npy",
+  "prediction_sha256": "8562706cc3a210db7ad2a067852050e22dcc32c8564f9347011d6fccafeef48c",
+  "expert_prediction_sha256": "92d7211d17f9e393174bdca0f6766824d7eb802ad729db9985a52af6475316d6",
+  "shape": [
+    442,
+    5282
+  ],
+  "dtype": "float32",
+  "finite": true,
+  "evaluation_count": 2042538,
+  "non_evaluation_count": 292106,
+  "non_evaluation_value": 0.5,
+  "minimum": 0.0002048760507022962,
+  "maximum": 1.0,
+  "mean": 0.5000946521759033,
+  "selected_recent_rounds": 16,
+  "selected_recent_weight": 0.25,
+  "selection_reason": "选择达到最佳平均增益 95% 范围内的最低近期权重。",
+  "promoted": true,
+  "online_rank_ic": 0.109928,
+  "online_status": "submitted_online_best",
+  "online_recorded_at": "2026-08-04",
+  "formal_submission_overwritten": false
+}

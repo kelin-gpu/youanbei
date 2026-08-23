@@ -1,0 +1,48 @@
+{
+  "run_mode": "preflight",
+  "status": "preflight_only",
+  "selected_recent_rounds": 16,
+  "selected_recent_weight": 0.15,
+  "internal_selection": {
+    "recent_rounds": 16,
+    "recent_weight": 0.15,
+    "mean_rank_ic": 0.09398333333333332,
+    "fold_std": 0.0037648225574240402,
+    "late_half_rank_ic": 0.09271999999999998,
+    "worst_quarter_rank_ic": 0.0586,
+    "mean_improvement": 0.0013166666666666665,
+    "worst_fold_delta": 0.0012,
+    "late_mean_delta": 0.0010533333333333334,
+    "positive_fold_count": 3,
+    "qualified": true,
+    "selected": true
+  },
+  "official_valid_anchor": {
+    "mean_rank_ic": 0.09294016824452567,
+    "std_rank_ic": 0.1,
+    "late_half_rank_ic": 0.0918,
+    "worst_quarter_rank_ic": 0.06,
+    "negative_time_share": 0.2
+  },
+  "official_valid_expert": {
+    "mean_rank_ic": 0.094,
+    "std_rank_ic": 0.1,
+    "late_half_rank_ic": 0.0918,
+    "worst_quarter_rank_ic": 0.06,
+    "negative_time_share": 0.2
+  },
+  "official_valid_blend": {
+    "mean_rank_ic": 0.09354016824452567,
+    "std_rank_ic": 0.1,
+    "late_half_rank_ic": 0.0922,
+    "worst_quarter_rank_ic": 0.0602,
+    "negative_time_share": 0.2
+  },
+  "official_mean_delta": 0.0006000000000000033,
+  "official_late_delta": 0.0003999999999999976,
+  "official_worst_quarter_delta": 0.0001999999999999988,
+  "anchor_reproduced": true,
+  "test_anchor_rank_correlation": 1.0,
+  "test_correlation_gate_passed": true,
+  "promoted": false
+}

@@ -1,0 +1,11 @@
+{
+  "experiment_id": "exp_004_model_ensemble",
+  "status": "completed_not_promoted",
+  "prediction_shape": [
+    442,
+    5282
+  ],
+  "prediction_dtype": "float32",
+  "prediction_sha256": "8e9f8439fb92ed032771cd2f1d2cdc2390b70f13ff59c45332e8b801b4396f4c",
+  "migrated_at": "2026-08-03 13:17:39"
+}

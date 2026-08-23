@@ -1,0 +1,8 @@
+模型,结果性质,全窗RankIC,前半窗RankIC,后半窗RankIC,文件或说明
+线性模型,本地Valid,0.0896776,0.0945416,0.0847734,03_模型训练/y1_pipeline_v2/outputs/valid_linear.npy
+TCN_v2,本地Valid,0.0942332,0.1051424,0.0832339,03_模型训练/y1_pipeline_v2/outputs/valid_tcn.npy
+LightGBM_v2_固定1558轮,本地Valid,0.0681507,0.0714550,0.0648191,03_模型训练/y1_pipeline_v2/outputs/valid_lgbm.npy
+线性0.4_TCN0.4_LGBM0.2,本地Valid融合,0.1012850,0.1096177,0.0928834,尚未通过全部稳定性门槛
+当前最终提交,已验收预测,,,,04_结果/最终提交/y1_final.npy
+LightGBM_全历史_复现,本地Valid,0.0929402,,0.0918678,旧最佳参数_每时点1200只_8轮
+LightGBM_全历史65_近期1702期35,本地Valid融合,0.0944458,,0.0928513,04_结果/候选提交/y1_blend_full65_recent35.npy

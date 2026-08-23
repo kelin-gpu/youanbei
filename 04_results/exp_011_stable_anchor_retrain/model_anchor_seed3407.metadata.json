@@ -1,0 +1,17 @@
+{
+  "model_type": "anchor",
+  "seed": 3407,
+  "rounds": 8,
+  "feature_config": "full_328",
+  "feature_count": 328,
+  "segments": [
+    [
+      "train",
+      486,
+      2918
+    ]
+  ],
+  "training_seconds": 13.309832096099854,
+  "train_rows": 2918400,
+  "lightgbm_version": "4.7.0"
+}

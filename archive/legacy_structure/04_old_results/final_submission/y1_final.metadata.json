@@ -1,0 +1,15 @@
+{
+  "shape": [
+    442,
+    5282
+  ],
+  "dtype": "float32",
+  "finite": true,
+  "evaluation_count": 2042538,
+  "non_evaluation_count": 292106,
+  "non_evaluation_value": 0.5,
+  "minimum": 0.0006291946046985686,
+  "maximum": 1.0,
+  "source": "D:\\google_dl\\book\\友安杯\\03_模型训练\\y1_rank_pipeline\\y1_rank_outputs\\y1_best.npy",
+  "destination": "D:\\google_dl\\book\\友安杯\\04_结果\\最终提交\\y1_final.npy"
+}

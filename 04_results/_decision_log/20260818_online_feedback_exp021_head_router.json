@@ -1,0 +1,22 @@
+{
+  "recorded_at": "2026-08-18",
+  "experiment": "exp_021_retrain_head_router",
+  "source": "user_reported",
+  "candidate": {
+    "name": "prediction_1.npy",
+    "path": "04_results/exp_021_retrain_head_router/prediction_1.npy",
+    "sha256": "ACD8AE2411F3B96FF01538FACE5A861B22F87443298194F5376B8E12D8E278B2",
+    "change": "cat_5 原生类别 tabular + head/router 一致重训（OOF 重算 states 后端到端）",
+    "local_capped_valid_ic": 0.090972,
+    "local_capped_valid_delta": 0.000485,
+    "online_rank_ic": 0.116568
+  },
+  "baseline": {
+    "exp020_online": 0.116252,
+    "exp016_online": 0.116132
+  },
+  "delta_online_vs_exp020": 0.000316,
+  "delta_online_vs_exp016": 0.000436,
+  "decision": "promoted_online_best_not_formal",
+  "conclusion": "exp021（cat_5 原生 tabular + head/router 一致重训）线上 0.116568，超过 exp020(0.116252) 与 exp016(0.116132)，为当前线上最佳。按用户规则（未大于 0.12 不晋级正式提交），final_submission 保持 exp016 不变。距目标 0.12 差 0.003432。"
+}

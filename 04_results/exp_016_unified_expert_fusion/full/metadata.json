@@ -1,0 +1,34 @@
+{
+  "contract": {
+    "dtype": "float32",
+    "evaluation_count": 2042538,
+    "finite": true,
+    "maximum": 1.0,
+    "minimum": 0.00020399836648721248,
+    "non_evaluation_all_0_5": true,
+    "non_evaluation_count": 292106,
+    "shape": [
+      442,
+      5282
+    ]
+  },
+  "formal_submission_overwritten": false,
+  "immutable_submission": "D:\\google_dl\\book\\youanbei\\04_results\\exp_016_unified_expert_fusion\\full\\submission_5721e5fa325ecce6.npy",
+  "official_validation": {
+    "groups": 243,
+    "mean_rank_ic": 0.09048733578256966,
+    "rows": 248832
+  },
+  "oof_folds_completed": [
+    "fold_1",
+    "fold_2",
+    "fold_3"
+  ],
+  "prediction_sha256": "5721e5fa325ecce624755da65db6e0245f2e79857f14f6d61e4fed9d9c83c524",
+  "pretraining": {
+    "path": "D:\\google_dl\\book\\youanbei\\03_cache\\exp_016_unified_expert_fusion\\checkpoints\\foundation_pretrain_0_2918.pt",
+    "reused": true,
+    "steps": 35016
+  },
+  "status": "full_completed"
+}

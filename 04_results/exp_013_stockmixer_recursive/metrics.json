@@ -1,0 +1,23 @@
+{
+  "valid_raw": {
+    "mean_rankic": 0.08780399176745764,
+    "median_rankic": 0.08740123633106223,
+    "rankic_std": 0.08090159263439119,
+    "positive_ratio": 0.8888888888888888,
+    "first_half_rankic": 0.09320991313989824,
+    "second_half_rankic": 0.08244238122593868,
+    "worst_quarter_rankic": 0.07111435033937968,
+    "time_count": 243
+  },
+  "valid_recursive": {
+    "mean_rankic": 0.08788420040493418,
+    "median_rankic": 0.08677699496591447,
+    "rankic_std": 0.08260238567511381,
+    "positive_ratio": 0.8847736625514403,
+    "first_half_rankic": 0.0932984117868312,
+    "second_half_rankic": 0.08251436780485598,
+    "worst_quarter_rankic": 0.07059902611025846,
+    "time_count": 243
+  },
+  "recursive_delta": 8.020863747654206e-05
+}

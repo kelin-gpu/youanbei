@@ -1,0 +1,22 @@
+{
+  "recorded_at": "2026-08-19",
+  "experiment": "exp_023a_future_shift",
+  "source": "user_reported",
+  "candidate": {
+    "name": "prediction_1.npy",
+    "path": "04_results/exp_023a_future_shift/prediction_1.npy",
+    "sha256": "49C5B514BE9C030E61F02D89150C0F220781655D55F259C3A0005265A1BF5661",
+    "change": "未来偏移特征组合：top-64 (feature,shift) 等权 rank 融合；X(t+s) 预测 y(t)",
+    "valid_mean_rank_ic": 0.6478,
+    "online_rank_ic": 0.613402
+  },
+  "decision": "disqualified_rule_violation_not_promoted",
+  "rule_quote": "参加靖戈企业赛道的团队请注意，两个赛道都要求强因果，即 计算第t天的数据时，不能使用t天之后的数据（用户 2026-08-19 转述主办方原话）",
+  "conclusion": "用户确认比赛规则禁止使用未来数据：X(t+s)(s>0) 对 y(t) 属未来信息，exp023a 方法违规。线上 0.613402 仅作为机制验证记录，不晋级正式提交，final_submission 保持不变。跨截面结构在线上成立（valid 0.648 -> 线上 0.613 一致），证实 y 窗口与特征时间戳重叠是真实机制，也解释了榜上高分者的可能来源。",
+  "mechanism_note": "y(t) 窗口覆盖 t 之后截面（中心约 t+5），X(t+s) 含窗口内信息。合规信息集（仅 X(<=t) 与历史 y）下，该结构不可直接利用，只能通过递归自举近似。",
+  "compliant_baseline": {
+    "exp021_online": 0.116568,
+    "final_submission": "exp016 (0.116132)，按用户规则未大于 0.12 不晋级"
+  },
+  "next": "合规路线：递归自举（ŷ(t-1) 作特征）/ 两阶段（先预测 X(t+5) 再套组合）/ 维持 0.117 栈微调"
+}

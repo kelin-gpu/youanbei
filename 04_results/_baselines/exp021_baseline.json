@@ -1,0 +1,25 @@
+{
+  "experiment": "exp_021_retrain_head_router",
+  "role": "frozen_stack_reference",
+  "prediction": "04_results/exp_021_retrain_head_router/prediction_1.npy",
+  "online_rank_ic": 0.116568,
+  "local_rank_ic": 0.09097241756005069,
+  "local_scope": "capped_valid",
+  "contract": {
+    "shape": [442, 5282],
+    "dtype": "float32",
+    "finite": true,
+    "non_evaluation_value": 0.5
+  },
+  "dependencies": [
+    "03_cache/processed_data_v1/",
+    "03_cache/exp_016_unified_expert_fusion/",
+    "03_cache/exp_021_retrain_head_router/"
+  ],
+  "reproduction": {
+    "fit": "$env:DSCR_EXP016_MODE='full'; $env:DSCR_EXP016_ALLOW_TRAINING='YES'; python 02_experiments/exp_021_retrain_head_router/run_exp021.py fit",
+    "submit": "$env:DSCR_EXP016_MODE='full'; $env:DSCR_EXP016_ALLOW_TRAINING='YES'; python 02_experiments/exp_021_retrain_head_router/run_exp021.py submit"
+  },
+  "formal_submission_overwritten": false,
+  "status": "frozen_reference"
+}

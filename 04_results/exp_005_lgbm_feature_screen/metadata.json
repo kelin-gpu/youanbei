@@ -1,0 +1,6 @@
+{
+  "experiment_id": "exp_005_lgbm_feature_screen",
+  "status": "historical_metrics_only",
+  "prediction_available": false,
+  "note": "Run experiment.ipynb to create standardized prediction.npy."
+}

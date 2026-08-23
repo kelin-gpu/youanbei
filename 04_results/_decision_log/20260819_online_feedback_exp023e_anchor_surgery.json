@@ -1,0 +1,26 @@
+{
+  "recorded_at": "2026-08-19",
+  "experiment": "exp_023e_anchor_surgery",
+  "source": "user_reported",
+  "candidate": {
+    "name": "prediction_1.npy",
+    "path": "04_results/exp_023e_anchor_surgery/prediction_1.npy",
+    "change": "锚点外科手术：仅前 20 个 test 截面按线性衰减混入递归预测（首截面全替换，起点 lag=真实 y(3160)），其余 422 截面与 exp021 逐元素一致",
+    "blend_valid_ic": 0.097843,
+    "stack_valid_ic": 0.091389,
+    "delta_valid": 0.006453,
+    "online_rank_ic": 0.119063
+  },
+  "baseline": {
+    "exp021_online": 0.116568
+  },
+  "delta_online_vs_exp021": 0.002495,
+  "transfer_ratio": 0.387,
+  "decision": "promoted_online_best_not_formal",
+  "conclusion": "锚点手术线上 0.119063，项目合规新最佳（+0.0025 vs exp021）。valid 同构选择策略有效：增益集中在真实锚点区段，非弥漫混合。距 0.12 尚差 0.000937。",
+  "lessons": [
+    "真实锚点截面 IC 0.86 vs 常规 0.11：给定历史标签是合规且极强的信号源",
+    "定向手术（只改少数截面，其余保持已验证最佳）线上风险可控"
+  ],
+  "next": "exp023f：多 lag 递归（test 第 k 截面的 lag_k 均为真实 y(3160)，当前只用 lag1）+ 指数衰减权重曲线细化"
+}

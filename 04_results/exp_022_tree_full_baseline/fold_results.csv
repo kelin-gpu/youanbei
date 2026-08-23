@@ -1,0 +1,6 @@
+variant,prediction,valid_mean_rank_ic,best_iteration,contract_ok,elapsed_s
+lgbm_native_cat,prediction_1.npy,0.0886053116,62,True,225.7
+catboost_yetirank,prediction_2.npy,0.0984824100,55,True,761.8
+xgboost_pairwise,prediction_3.npy,0.0539443076,27,True,124.2
+ensemble_rank,prediction_4.npy,0.0883155316,0,True,0.7
+lgbm_target_enc,prediction_5.npy,0.0825875442,3,True,150.9

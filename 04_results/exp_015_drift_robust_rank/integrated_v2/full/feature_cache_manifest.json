@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "status": "ready",
+  "fingerprint": "88fb10a7f0b0d79d4af497697e01791e481025aa4cc521952c84d8255618cb8b",
+  "source_manifest_sha256": "f7c4076de6e3ae7d631554df5a15f69f50d7e8f676249fb6d2d4cf71ccec8c6f",
+  "algorithm": "per_time_average_tie_percentile_rank_v1",
+  "raw_tree_columns": [
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39
+  ],
+  "feature_names": [
+    "rank_num_87",
+    "rank_num_49",
+    "rank_num_4",
+    "rank_num_55",
+    "rank_num_85",
+    "rank_num_75",
+    "rank_num_56",
+    "rank_num_76",
+    "rank_num_51",
+    "rank_num_67",
+    "rank_num_88",
+    "rank_num_61",
+    "rank_num_79",
+    "rank_num_1",
+    "rank_num_91",
+    "rank_num_84",
+    "rank_num_15",
+    "rank_num_60",
+    "rank_num_64",
+    "rank_num_43"
+  ],
+  "source_names": [
+    "num_87",
+    "num_49",
+    "num_4",
+    "num_55",
+    "num_85",
+    "num_75",
+    "num_56",
+    "num_76",
+    "num_51",
+    "num_67",
+    "num_88",
+    "num_61",
+    "num_79",
+    "num_1",
+    "num_91",
+    "num_84",
+    "num_15",
+    "num_60",
+    "num_64",
+    "num_43"
+  ],
+  "label_free": true,
+  "uses_future_statistics": false,
+  "files": {
+    "train": {
+      "path": "03_cache\\exp_015_drift_robust_rank\\integrated_v2\\train_rank20.npy",
+      "shape": [
+        6489099,
+        20
+      ],
+      "dtype": "float32",
+      "bytes": 519128048,
+      "sha256": "9d1492dead02cbc1f5c72c41f3b7ed002af0bb38b27750d7bf7e8556094ff185"
+    },
+    "valid": {
+      "path": "03_cache\\exp_015_drift_robust_rank\\integrated_v2\\valid_rank20.npy",
+      "shape": [
+        982972,
+        20
+      ],
+      "dtype": "float32",
+      "bytes": 78637888,
+      "sha256": "152db3791d5c0c75fe841343e05a5ea600868ca567159a133f553b4515d53a68"
+    },
+    "test": {
+      "path": "03_cache\\exp_015_drift_robust_rank\\integrated_v2\\test_rank20.npy",
+      "shape": [
+        2042538,
+        20
+      ],
+      "dtype": "float32",
+      "bytes": 163403168,
+      "sha256": "9461abcf84c58b1a5b775e030a795a6500fdb3834b8019af4d23bf559fec19b9"
+    }
+  },
+  "completed_at": "2026-08-13 15:10:08"
+}

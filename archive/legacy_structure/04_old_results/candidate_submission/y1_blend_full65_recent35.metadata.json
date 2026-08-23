@@ -1,0 +1,18 @@
+{
+  "status": "candidate_not_submitted",
+  "shape": [
+    442,
+    5282
+  ],
+  "dtype": "float32",
+  "evaluation_count": 2042538,
+  "non_evaluation_value": 0.5,
+  "base_weight": 0.65,
+  "recent1702_weight": 0.35,
+  "local_valid_base_rank_ic": 0.092940153549703,
+  "local_valid_blend_rank_ic": 0.09444576183929247,
+  "base_path": "D:\\google_dl\\book\\友安杯\\04_结果\\最终提交\\y1_final.npy",
+  "expert_path": "D:\\google_dl\\book\\友安杯\\04_结果\\候选提交\\y1_recent1702_expert.npy",
+  "blend_path": "D:\\google_dl\\book\\友安杯\\04_结果\\候选提交\\y1_blend_full65_recent35.npy",
+  "blend_sha256": "fb7cf4518bfd2d43196609798652a15701670f130c51166a553e6bedbbdec9ae"
+}

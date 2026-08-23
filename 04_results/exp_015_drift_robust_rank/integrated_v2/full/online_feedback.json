@@ -1,0 +1,18 @@
+{
+  "experiment": "exp_015_drift_robust_rank",
+  "experiment_version": "integrated_v2",
+  "reported_date": "2026-08-13",
+  "source": "user_reported",
+  "candidate_file": "prediction.npy",
+  "candidate_sha256": "a45190d975d2c27fbf448f67fb86b30e490a4b1305e5b9fae51654c04a184ed3",
+  "candidate_rankic": 0.110779,
+  "previous_best_experiment": "exp_007_recent_window_blend",
+  "previous_best_rankic": 0.109959,
+  "delta_vs_previous_best": 0.00082,
+  "reference_experiment": "exp_009_anchor_recent_blend_cv",
+  "reference_rankic": 0.109928,
+  "delta_vs_reference": 0.000851,
+  "decision": "promoted_online_best",
+  "formal_submission_overwritten": false,
+  "reason": "Candidate online RankIC exceeds the previous recorded best by 0.000820 and becomes the new recorded online best."
+}

@@ -1,0 +1,40 @@
+{
+  "experiment": "exp_016_unified_expert_fusion",
+  "families": [
+    "exp015_anchor",
+    "tabular",
+    "dual_axis",
+    "time_frequency",
+    "relational_graph",
+    "foundation_representation",
+    "multi_objective_rank"
+  ],
+  "manifest_sha256": "f7c4076de6e3ae7d631554df5a15f69f50d7e8f676249fb6d2d4cf71ccec8c6f",
+  "mode": "full",
+  "oof_folds": [
+    [
+      "fold_1",
+      486,
+      1459,
+      1459,
+      1945
+    ],
+    [
+      "fold_2",
+      486,
+      1945,
+      1945,
+      2432
+    ],
+    [
+      "fold_3",
+      486,
+      2432,
+      2432,
+      2918
+    ]
+  ],
+  "source_final_submission_sha256": "9d322401a2d8fedd38dea66b97578873e721f03eeb93575dbc8bdc2a1aef38e6",
+  "started_at": "2026-08-13 21:02:51",
+  "training_authorization": true
+}

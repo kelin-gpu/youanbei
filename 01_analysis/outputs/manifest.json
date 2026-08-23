@@ -1,0 +1,20 @@
+{
+  "generated_at": "2026-08-07 19:27:08 +0800",
+  "seed": 20260724,
+  "data_source": "D:\\google_dl\\book\\友安杯\\archive\\legacy_structure\\03_model_training\\y1_pipeline_v2\\.cache_dp_v2\\payload.pkl",
+  "load_seconds": 2.8748071000009077,
+  "total_runtime_seconds": 21.332425300002797,
+  "python": "3.10.20",
+  "numpy": "2.2.6",
+  "pandas": "2.3.3",
+  "outputs": [
+    "analysis_results.json",
+    "mask_coverage.csv",
+    "label_profile.csv",
+    "label_time_series.csv",
+    "numeric_feature_profile.csv",
+    "rankic_summary.csv",
+    "category_profile.csv",
+    "category_change.csv"
+  ]
+}

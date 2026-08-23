@@ -1,0 +1,50 @@
+{
+  "run_mode": "full",
+  "status": "submitted_online_best",
+  "selected_recent_rounds": 16,
+  "selected_recent_weight": 0.25,
+  "internal_selection": {
+    "recent_rounds": 16,
+    "recent_weight": 0.25,
+    "mean_rank_ic": 0.09869753782264327,
+    "fold_std": 0.011420643449103462,
+    "late_half_rank_ic": 0.09549654895114318,
+    "worst_quarter_rank_ic": 0.0550583717816999,
+    "mean_improvement": 0.0010572892898355751,
+    "worst_fold_delta": 0.0008881284717880272,
+    "late_mean_delta": 0.0008632975740446533,
+    "positive_fold_count": 3,
+    "qualified": true,
+    "selected": true
+  },
+  "official_valid_anchor": {
+    "mean_rank_ic": 0.092940153549703,
+    "std_rank_ic": 0.10905264603155261,
+    "late_half_rank_ic": 0.09186783594296577,
+    "worst_quarter_rank_ic": 0.059262187805490904,
+    "negative_time_share": 0.19753086419753085
+  },
+  "official_valid_expert": {
+    "mean_rank_ic": 0.08965672120833612,
+    "std_rank_ic": 0.10630773028328912,
+    "late_half_rank_ic": 0.08593034875204884,
+    "worst_quarter_rank_ic": 0.05837909139724855,
+    "negative_time_share": 0.17695473251028807
+  },
+  "official_valid_blend": {
+    "mean_rank_ic": 0.09361484760705562,
+    "std_rank_ic": 0.10978095267543815,
+    "late_half_rank_ic": 0.0917733019788569,
+    "worst_quarter_rank_ic": 0.0601057743616936,
+    "negative_time_share": 0.17695473251028807
+  },
+  "official_mean_delta": 0.0006746940573526122,
+  "official_late_delta": -9.453396410886994e-05,
+  "official_worst_quarter_delta": 0.0008435865562026953,
+  "anchor_reproduced": true,
+  "test_anchor_rank_correlation": 0.9932945745730918,
+  "test_correlation_gate_passed": true,
+  "promoted": true,
+  "online_rank_ic": 0.109928,
+  "online_result_source": "user_reported_2026-08-04"
+}

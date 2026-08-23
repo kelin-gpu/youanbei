@@ -1,0 +1,38 @@
+{
+  "status": "preflight_subset",
+  "source_manifest_sha256": "f7c4076de6e3ae7d631554df5a15f69f50d7e8f676249fb6d2d4cf71ccec8c6f",
+  "algorithm": "per_time_average_tie_percentile_rank_v1",
+  "label_free": true,
+  "uses_future_statistics": false,
+  "time_interval": [
+    486,
+    492
+  ],
+  "shape": [
+    10473,
+    20
+  ],
+  "feature_names": [
+    "rank_num_87",
+    "rank_num_49",
+    "rank_num_4",
+    "rank_num_55",
+    "rank_num_85",
+    "rank_num_75",
+    "rank_num_56",
+    "rank_num_76",
+    "rank_num_51",
+    "rank_num_67",
+    "rank_num_88",
+    "rank_num_61",
+    "rank_num_79",
+    "rank_num_1",
+    "rank_num_91",
+    "rank_num_84",
+    "rank_num_15",
+    "rank_num_60",
+    "rank_num_64",
+    "rank_num_43"
+  ],
+  "sha256": "b1a59a540939f1e761b476644acdd2e13b055fb6828bb32d729327dcf76c345b"
+}

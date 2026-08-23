@@ -1,0 +1,21 @@
+{
+  "recorded_at": "2026-08-13",
+  "experiment": "exp_015_drift_robust_rank/integrated_v2/full",
+  "source": "user_reported",
+  "candidate": {
+    "path": "04_results/exp_015_drift_robust_rank/integrated_v2/full/prediction.npy",
+    "sha256": "a45190d975d2c27fbf448f67fb86b30e490a4b1305e5b9fae51654c04a184ed3",
+    "online_rank_ic": 0.110779
+  },
+  "comparisons": {
+    "exp007_previous_best": 0.109959,
+    "delta_vs_exp007": 0.00082,
+    "exp009_reference": 0.109928,
+    "delta_vs_exp009": 0.000851,
+    "formal_exp003": 0.108105,
+    "delta_vs_formal_exp003": 0.002674
+  },
+  "decision": "promoted_online_best",
+  "formal_submission_overwritten": false,
+  "conclusion": "exp015 exceeds the previous recorded online best and is promoted as the new online-best candidate; the protected formal submission directory remains unchanged."
+}

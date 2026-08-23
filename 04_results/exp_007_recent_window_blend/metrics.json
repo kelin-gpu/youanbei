@@ -1,0 +1,9 @@
+{
+  "mean_rank_ic": 0.09444576183929247,
+  "base_rank_ic": 0.092940153549703,
+  "weights": {
+    "full_history": 0.65,
+    "recent_1702": 0.35
+  },
+  "result_origin": "historical_valid"
+}

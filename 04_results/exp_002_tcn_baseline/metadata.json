@@ -1,0 +1,13 @@
+{
+  "experiment_id": "exp_002_tcn_baseline",
+  "status": "completed",
+  "migrated_at": "2026-08-03 13:17:33",
+  "source_path": "D:\\google_dl\\book\\友安杯\\archive\\legacy_structure\\03_model_training\\y1_tcn_baseline\\outputs\\tcn_y1.npy",
+  "source_sha256": "b7dd8b89383c97ce97714679c856fb3f151418d4306948eb02eec6371891cb95",
+  "prediction_shape": [
+    442,
+    5282
+  ],
+  "prediction_dtype": "float32",
+  "prediction_sha256": "7b9cd7e831e3ae9a5374f35d870e5281d696ead4b1e66b1efc02af2ea71ec4e8"
+}

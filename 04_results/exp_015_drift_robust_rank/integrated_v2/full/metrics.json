@@ -1,0 +1,101 @@
+{
+  "run_mode": "full",
+  "status": "submitted_online_best",
+  "feature_view": "robust_rank_348",
+  "selected_weight": 0.2,
+  "selection_reason": "在达到最佳开发增益 95% 的配置中选择最小新增专家权重。",
+  "dev": [
+    {
+      "stage": "dev",
+      "fold": "fold_1",
+      "weight": 0.2,
+      "anchor_rankic": 0.1130180669902052,
+      "candidate_rankic": 0.11430308236376747,
+      "delta": 0.0012850153735622788,
+      "late_delta": 0.00169297717679609,
+      "worst_quarter_delta": 0.001460788256726256
+    },
+    {
+      "stage": "dev",
+      "fold": "fold_2",
+      "weight": 0.2,
+      "anchor_rankic": 0.09800554027556392,
+      "candidate_rankic": 0.09870975303898637,
+      "delta": 0.000704212763422446,
+      "late_delta": 0.0002686431098141706,
+      "worst_quarter_delta": 7.942231147223255e-05
+    }
+  ],
+  "dev_seed_deltas": [
+    0.0010298319950117346,
+    0.0010909640090482342,
+    0.0012614825062033097,
+    0.00040414582074721483,
+    0.0007837487405976257,
+    0.000686041102398463
+  ],
+  "shadow_anchor": {
+    "mean_rank_ic": 0.08506900620216068,
+    "std_rank_ic": 0.12860787079006417,
+    "late_half_rank_ic": 0.08340197090355488,
+    "worst_quarter_rank_ic": 0.0550583717816999,
+    "negative_time_share": 0.2551440329218107
+  },
+  "shadow_candidate": {
+    "mean_rank_ic": 0.08559810449627989,
+    "std_rank_ic": 0.13025649718145982,
+    "late_half_rank_ic": 0.084227542912573,
+    "worst_quarter_rank_ic": 0.055506962739021594,
+    "negative_time_share": 0.25925925925925924
+  },
+  "shadow_seed_deltas": [
+    8.059192590324782e-05,
+    0.000641834902867025,
+    0.0007054286534710907
+  ],
+  "official_anchor": {
+    "mean_rank_ic": 0.09361484760705562,
+    "std_rank_ic": 0.10978095267543815,
+    "late_half_rank_ic": 0.0917733019788569,
+    "worst_quarter_rank_ic": 0.0601057743616936,
+    "negative_time_share": 0.17695473251028807
+  },
+  "official_candidate": {
+    "mean_rank_ic": 0.09434056238427224,
+    "std_rank_ic": 0.11071860626525377,
+    "late_half_rank_ic": 0.09237068653404158,
+    "worst_quarter_rank_ic": 0.060218798156127185,
+    "negative_time_share": 0.17695473251028807
+  },
+  "official_seed_deltas": [
+    0.0008540420604749993,
+    0.0005362009357348374,
+    0.0004923591671586319
+  ],
+  "measured_gates": {
+    "selected_weight": 0.2,
+    "dev_mean_delta": 0.0009946140684923624,
+    "dev_all_positive": true,
+    "shadow_delta": 0.0005290982941192068,
+    "shadow_late_delta": 0.0008255720090181301,
+    "official_mean_delta": 0.0007257147772166267,
+    "official_late_delta": 0.0005973845551846824,
+    "official_worst_quarter_delta": 0.00011302379443358518,
+    "seed_direction_consistent": true,
+    "seed_delta_spread": 0.0011808905803000619,
+    "test_anchor_rank_corr": 0.9976932502156236,
+    "output_contract": true
+  },
+  "promoted": true,
+  "online_promotion_line": 0.109959,
+  "online_rank_ic": 0.110779,
+  "online_result_source": "user_reported_2026-08-13",
+  "online_reference": {
+    "previous_best_experiment": "exp_007_recent_window_blend",
+    "previous_best_rank_ic": 0.109959,
+    "delta_vs_previous_best": 0.00082,
+    "exp009_rank_ic": 0.109928,
+    "delta_vs_exp009": 0.000851
+  },
+  "online_decision": "promoted_online_best"
+}

@@ -1,0 +1,19 @@
+﻿block_id,view,feature_count,column_ranges,source_experiment,fold_internal,transfer_budget,seed_consistency,orthogonality,placebo,imputation_quality,note
+legacy_328_raw_40,legacy_328,40,"[[0, 40]]",exp_003 / processed_data_v1,待裁决(Phase 3),历史衰减率=N/A,待裁决,待裁决,未执行（无增益候选时可不执行）,N/A（非补全族）,
+legacy_328_rank_20,legacy_328,20,"[[40, 60]]",exp_003,待裁决(Phase 3),历史衰减率=N/A,待裁决,待裁决,未执行（无增益候选时可不执行）,N/A（非补全族）,
+legacy_328_lag_short,legacy_328,40,"[[60, 100]]",exp_003,待裁决(Phase 3),历史衰减率=N/A,待裁决,待裁决,未执行（无增益候选时可不执行）,N/A（非补全族）,
+legacy_328_lag_long,legacy_328,40,"[[100, 140]]",exp_003,待裁决(Phase 3),历史衰减率=N/A,待裁决,待裁决,未执行（无增益候选时可不执行）,N/A（非补全族）,
+legacy_328_roll_mean,legacy_328,60,"[[140, 160], [200, 220], [260, 280]]",exp_003,待裁决(Phase 3),历史衰减率=N/A,待裁决,待裁决,未执行（无增益候选时可不执行）,N/A（非补全族）,
+legacy_328_roll_std,legacy_328,60,"[[160, 180], [220, 240], [280, 300]]",exp_003,待裁决(Phase 3),历史衰减率=N/A,待裁决,待裁决,未执行（无增益候选时可不执行）,N/A（非补全族）,
+legacy_328_roll_change,legacy_328,60,"[[180, 200], [240, 260], [300, 320]]",exp_003,待裁决(Phase 3),历史衰减率=N/A,待裁决,待裁决,未执行（无增益候选时可不执行）,N/A（非补全族）,
+legacy_328_lag_available,legacy_328,4,"[[320, 324]]",exp_003,待裁决(Phase 3),历史衰减率=N/A,待裁决,待裁决,未执行（无增益候选时可不执行）,N/A（非补全族）,
+legacy_328_state,legacy_328,4,"[[324, 328]]",exp_003,待裁决(Phase 3),历史衰减率=N/A,待裁决,待裁决,未执行（无增益候选时可不执行）,N/A（非补全族）,
+numeric_408_diff,numeric_408,80,"[[328, 408]]",processed_data_v1 manifest,历史(exp_005): 408 相对 328 无可靠提升 -> 不通过,历史衰减率=N/A,待裁决,待裁决,未执行（无增益候选时可不执行）,N/A（非补全族）,exp_005 以整体视图筛选，未做块级多种子；可在 Phase 3 复核
+tree_419_categorical,tree_419,9,"[[408, 417]]",processed_data_v1 manifest,通过（exp_012 zoo: cat337 两折均正，最佳Δ+0.001307 >= 0.0010 且优于在任专家）,通过（exp_012 zoo Stage B: 官方 Valid Δ+0.000754 > 0；影子 +0.000719）,待补充（Stage B 使用 3 种子集成，折级为 seed42）,通过（Test 与锚点秩相关 0.8663 < 0.99）,待执行（时间重排安慰剂）,N/A（非补全族）,exp_012 在专家+门槛语境首次单独测过类别块并确认增益；此为项目内首个通过折内+Valid 双门槛的特征块
+tree_419_extra,tree_419,2,"[[417, 419]]",processed_data_v1 manifest,待裁决(Phase 3),历史衰减率=N/A,待裁决,待裁决,未执行（无增益候选时可不执行）,N/A（非补全族）,
+exp008_raw99,exp008_363,99,"[[0, 99]]",exp_008_new_method,待裁决(Phase 3),历史衰减率=N/A,待裁决,待裁决,未执行（无增益候选时可不执行）,待裁决,仅作为 363 视图组成部分，不单独评估
+exp008_cs_rank99,exp008_363,99,"[[99, 198]]",exp_008_new_method,待裁决(Phase 3),历史衰减率=N/A,待裁决,待裁决,未执行（无增益候选时可不执行）,待裁决,仅作为 363 视图组成部分，不单独评估
+exp008_surprise,exp008_363,60,"[[198, 258]]",exp_008_new_method,"通过（exp_010: 3 折均正, 增量+0.000890 >= 0.0005 但 < 0.0010 严格门槛）",不通过（官方 Valid w=0.00，衰减率~0）,待裁决,待裁决,未执行（无增益候选时可不执行）,待裁决,折内未达 0.0010 且迁移衰减为 0，双门槛均不满足
+exp008_surprise_rank,exp008_363,60,"[[258, 318]]",exp_008_new_method,待裁决(Phase 3),历史衰减率=N/A,待裁决,待裁决,未执行（无增益候选时可不执行）,待裁决,从未单独评估 -> 待裁决
+exp008_trend,exp008_363,40,"[[318, 358]]",exp_008_new_method,待裁决(Phase 3),不通过（exp_008 全体系 Valid -0.0085）,待裁决,待裁决,未执行（无增益候选时可不执行）,待裁决,
+exp008_history_state,exp008_363,5,"[[358, 363]]",exp_008_new_method,待裁决(Phase 3),不通过（随 exp_008 体系）,待裁决,待裁决,未执行（无增益候选时可不执行）,待裁决,

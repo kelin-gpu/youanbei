@@ -1,0 +1,22 @@
+{
+  "recorded_at": "2026-08-17",
+  "experiment": "exp_019_conservative_router",
+  "source": "user_reported",
+  "candidate": {
+    "name": "prediction_1.npy",
+    "path": "04_results/exp_019_conservative_router/prediction_1.npy",
+    "sha256": "064780EECC9006EC33EB816D7A988EF45D6C2FBABCA0A546AA1795E9444A2E5F",
+    "gamma": 0.0,
+    "constraint": "exp015_anchor+tabular 合计 ≥60%，深度家族单家 ≤10%",
+    "local_full_valid_rank_ic": 0.092698,
+    "local_delta_vs_router": 0.001309,
+    "online_rank_ic": 0.114914
+  },
+  "baseline": {
+    "name": "exp016 prediction.npy",
+    "online_rank_ic": 0.116132
+  },
+  "delta_online": -0.001218,
+  "decision": "not_promoted",
+  "conclusion": "保守路由（anchor+tabular≥60%，γ=0 纯静态）本地全量 Valid +0.0013，线上 -0.0012（0.114914 < 0.116132），属本地→线上错配。路由保底约束不晋级。"
+}

@@ -1,0 +1,64 @@
+{
+  "status": "preflight_passed",
+  "trained": false,
+  "folds": {
+    "fold_1": {
+      "rows": 792337,
+      "groups": 243,
+      "row_start": 3973718,
+      "row_stop": 4766055
+    },
+    "fold_2": {
+      "rows": 842887,
+      "groups": 243,
+      "row_start": 4766055,
+      "row_stop": 5608942
+    },
+    "fold_3": {
+      "rows": 880157,
+      "groups": 243,
+      "row_start": 5608942,
+      "row_stop": 6489099
+    }
+  },
+  "model": {
+    "shape": [
+      64
+    ],
+    "loss": 2.0836665630340576,
+    "parts": {
+      "mse": 1.8188178539276123,
+      "ic_loss": 0.9094089865684509,
+      "residual_loss": 0.6956312656402588
+    },
+    "gradient_finite": true
+  },
+  "synthetic": {
+    "anchor_rankic": 0.6024725274725274,
+    "good_rankic": 0.9222985347985345,
+    "reversed_rankic": 0.42565628815628814
+  },
+  "full_control_flow": {
+    "stage_calls": 12,
+    "stages": [
+      "early",
+      "dev",
+      "shadow",
+      "final"
+    ],
+    "selected_alpha_nonnegative": true
+  },
+  "mini_training": {
+    "epochs": 2,
+    "metric": -2.0122023026148477,
+    "history_rows": 2,
+    "checkpoint": "D:\\google_dl\\book\\youanbei\\04_results\\exp_014_anchor_residual_rankglu_v2\\models\\best_preflight_mini_seed_42.pt",
+    "prediction_rows": 3112,
+    "prediction_groups": 1,
+    "prediction_finite": true,
+    "checkpoint_fingerprint_valid": true,
+    "completed_checkpoint_idempotent": true
+  },
+  "final_submission_sha256_before": "9d322401a2d8fedd38dea66b97578873e721f03eeb93575dbc8bdc2a1aef38e6",
+  "final_submission_sha256_after": "9d322401a2d8fedd38dea66b97578873e721f03eeb93575dbc8bdc2a1aef38e6"
+}
