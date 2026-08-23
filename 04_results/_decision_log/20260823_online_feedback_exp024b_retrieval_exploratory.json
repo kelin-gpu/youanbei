@@ -1,0 +1,27 @@
+{
+  "recorded_at": "2026-08-23",
+  "experiment": "exp_024b_retrieval_exploratory",
+  "source": "user_reported",
+  "candidate": {
+    "name": "prediction_1.npy",
+    "path": "04_results/exp_024b_retrieval_exploratory/prediction_1.npy",
+    "prediction_sha256": "6ff796c7c222bb3e9a55077014c1fc885dca368e3ac1bd29aecafb4e58e2be55",
+    "change": "exp023h 前6截面保持；后436截面加入固定 K=32/PCA=16/alpha=0.1 状态检索秩校正",
+    "online_rank_ic": 0.120847
+  },
+  "baseline": {
+    "exp023h_online": 0.119660,
+    "exp021_online": 0.116568,
+    "formal_exp016_online": 0.116132
+  },
+  "delta_online_vs_exp023h": 0.001187,
+  "delta_online_vs_target_0_12": 0.000847,
+  "decision": "online_best_target_achieved_pending_formal_promotion",
+  "conclusion": "exp024b 线上 RankIC 0.120847，首次在严格因果框架下超过 0.12。尽管 exp024a 的本地稳健性门槛失败，固定检索校正在 Test 上形成真实正增益；记录为新的合规线上最佳候选。final_submission 保持 exp016，等待用户明确授权后再晋级。",
+  "compliance_summary": "Test t 只使用 X(t)、截止 3160 的 Train/Valid X 与标签、冻结 exp023h；不使用 Test 标签或 X(t+s)。预测契约与安全审计通过。",
+  "submission_budget": {
+    "daily_limit": 3,
+    "used": 1,
+    "remaining": 2
+  }
+}

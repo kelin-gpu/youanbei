@@ -2,19 +2,19 @@
 
 本文档是本项目的可持续维护档案和复现入口。内容只使用当前工作区中能够追溯到数据文件、Notebook、源代码、缓存 manifest、结果 metadata/metrics/report 或既有用户线上记录的事实；无法确认的内容统一标记为「待补充 / 暂无记录」。相对实验目录中的局部 README，本文件负责说明整个项目的共同数据口径、实验演进、结果来源、代码组织、运行边界和提交保护规则。
 
-文档更新时间：2026-08-23（项目收官版；文档与复现入口增强）
+文档更新时间：2026-08-23（exp024b 线上突破 0.12；正式提交待授权）
 
 机器可读项目状态见 [`project_status.json`](project_status.json)，实验产物登记见 [`04_results/experiment_registry.csv`](04_results/experiment_registry.csv)，只读环境/契约审计入口为 [`scripts/project_audit.py`](scripts/project_audit.py)。
 
 创新前测试复用与补测记录见 [`04_results/_acceptance/README.md`](04_results/_acceptance/README.md)；现有测试不重复执行，缺失的 exp021 全量 Valid/逐截面/高漂移验收已补齐。
 
-> **项目最终状态（2026-08-23）**
+> **项目当前状态（2026-08-23）**
 >
-> - **线上最佳成绩：`0.119660`**，来自 `exp_023h_ultimate_surgery/prediction_1.npy`（exp021 融合栈 + 锚点手术终极版）。
+> - **线上最佳成绩：`0.120847`**，来自 `exp_024b_retrieval_exploratory/prediction_1.npy`（exp023h + 固定状态检索秩校正）。
 > - **正式提交文件：`04_results/final_submission/prediction.npy`**，来源 exp016（线上 `0.116132`，2026-08-17 人工晋级）。
-> - **目标 0.12 的最终判定：强因果合规框架下不可达**；`0.119660` 为无泄漏方法的诚实极限（论证见 [9.5 当前结论](#95-当前结论) 与 [5.2 分层结论](#52-当前最佳结果的分层结论)）。
-> - 完整收官论证另见 `.trae/documents/友安杯Y1_RankIC优化实施路线图.md` §1.7；全部线上反馈见 `04_results/_decision_log/`（19 份记录）。
-> - **项目实现方案文档已于 2026-08-23 重写至收官状态**（`05_docs/project_report/友安杯_Y1_项目实现方案.docx/.pdf`）；旧版草稿/重写版/创新增强版已清理。按项目规则：**线上成绩超过 0.12 之前，方案文档不用于正式提交**。
+> - **RankIC > 0.12 目标已达成**：exp024b 相对 exp023h 提高 `+0.001187`，超过目标 `+0.000847`。
+> - exp024a 的本地稳健性门槛曾失败，因此 exp024b 保留完整探索性风险记录；线上结果不反向修改历史诊断。
+> - `final_submission` 不自动覆盖；只有用户明确授权后，才将 exp024b 晋级为正式文件。
 
 ## 快速导航
 
@@ -30,7 +30,7 @@
 
 ## 项目一句话总结
 
-这是一个面向动态股票池的时间序列截面排序项目：使用过去信息构造因果特征和历史窗口，在每个时间截面内预测股票相对排名，以平均 RankIC 评价；实验从线性/TCN 基线逐步发展到因果 LightGBM、近期窗口专家、稳健秩专家、exp016 七家族专家融合与市场状态路由，收官阶段通过「锚点手术」（利用给定历史标签 y(3160) 构造多 lag 真锚链）将线上 RankIC 从 `0.116568` 推进到最终 `0.119660`，并以探针实验证实榜上 0.12+ 高分大概率依赖未来数据（违规，不采用）。
+这是一个面向动态股票池的时间序列截面排序项目：使用过去信息构造因果特征和历史窗口，在每个时间截面内预测股票相对排名，以平均 RankIC 评价；实验从线性/TCN 基线逐步发展到 exp021 七家族融合栈、exp023h 锚点手术，再由 exp024b 在保持前 6 个锚点截面的同时对后 436 个截面加入固定状态检索秩校正，最终取得合规线上 RankIC `0.120847`。
 
 ```mermaid
 flowchart LR
@@ -39,7 +39,7 @@ flowchart LR
     C --> D["02_experiments\nexp_001–exp_023"]
     D --> E["04_results\n预测、模型、指标、审计"]
     E --> F["候选提交\nprediction.npy"]
-    F --> G["线上 RankIC\n最终最佳 0.119660"]
+    F --> G["线上 RankIC\n当前最佳 0.120847"]
     H["05_docs\n官方材料与项目报告"] -.-> D
     I["04_results/final_submission\n受保护正式文件\nexp016 0.116132"] -.不自动覆盖.-> F
 ```
@@ -74,14 +74,14 @@ flowchart LR
 | 实验目录 | `exp_001`–`exp_023` 均存在；`exp_012` 还包含 framework/retrain/model-zoo/fusion 子流程；`exp_023` 为 a–h 八个子实验系列 |
 | 预测结果 | 多数实验已保存 `prediction*.npy`；`exp_005` 只有历史筛选指标；`exp_008` 缺少标准化 metrics/metadata |
 | 正式提交文件 | `04_results/final_submission/prediction.npy`，来源为 `exp_016`（2026-08-17 人工晋级，线上 `0.116132`） |
-| 最高已记录线上成绩 | `0.119660`，来自 `exp_023h_ultimate_surgery`（2026-08-21 用户记录） |
-| 项目阶段 | **已收官（2026-08-21）**：0.12 判定为合规不可达，以 exp023h 收官 |
-| 当前未解决问题 | 无待执行任务；遗留学术性方向见 [9.3](#93-尚未验证或只能作为候选的方向) |
+| 最高已记录线上成绩 | `0.120847`，来自 `exp_024b_retrieval_exploratory`（2026-08-23 用户记录） |
+| 项目阶段 | **目标已达成，等待正式提交授权** |
+| 当前未解决问题 | 是否将 exp024b 人工晋级到 `final_submission` |
 
 ### 1.3 重要口径说明
 
-1. `04_results/final_submission/prediction.npy` 是当前正式文件（exp016，`0.116132`），不会被实验自动覆盖；线上最佳 exp023h（`0.119660`）按用户规则「未大于 0.12 不晋级正式提交」保持为候选。
-2. 「线上最佳」（exp023h `0.119660`）与「正式文件当前来源」（exp016 `0.116132`）是两个不同概念；若平台允许，可将 `exp_023h_ultimate_surgery/prediction_1.npy` 重传以锁定成绩。
+1. `04_results/final_submission/prediction.npy` 是当前正式文件（exp016，`0.116132`），不会被实验自动覆盖；线上最佳 exp024b（`0.120847`）已超过晋级阈值，但仍等待用户明确授权。
+2. 「线上最佳」（exp024b `0.120847`）与「正式文件当前来源」（exp016 `0.116132`）是两个不同概念；可提交文件为 `04_results/exp_024b_retrieval_exploratory/prediction_1.npy`。
 3. `exp_023a_future_shift` 的线上 `0.613402` 为**违规记录**：使用 X(t+s)(s>0) 预测 y(t) 违反主办方强因果规则（「计算第 t 天的数据时，不能使用 t 天之后的数据」，用户 2026-08-19 转述），仅作机制验证存档，不参与任何晋级比较。
 4. `exp_009` metadata 标记为 `submitted_online_best`，线上 `0.109928`，但仍记录 `formal_submission_overwritten: false`。
 5. `exp_006` 存在记录口径差异：其结果目录 `metrics.json` 为 `0.088340`，旧 README 曾记录 `0.094018`。本文将两者分别标注，不擅自裁定哪一个应替代另一个。
@@ -875,7 +875,7 @@ Notebook 的 `RUN_MODE` 默认写为 `smoke`，完整实验结果 metadata 记�
 - fit 阶段：OOF rows=1,494,016，capped valid IC `0.090972`（baseline `0.090487`，Δ `+0.000485`），耗时 1242.8s。
 - submit 阶段：final tabular 重训，契约通过，耗时 996.2s。
 - 线上 RankIC：`0.116568`（2026-08-18 用户记录），较 exp020 `0.116252` 提升 `+0.000316`，较 exp016 `0.116132` 提升 `+0.000436`。
-- 结论：cat_5 原生 tabular + head/router 一致重训成为**当前线上最佳**。按用户规则（未大于 0.12 不晋级正式提交），`final_submission` 保持 exp016 不变。距目标 0.12 差 `0.003432`。栈平台在此确立（后续栈侧改动无法突破）。
+- 当时结论：cat_5 原生 tabular + head/router 一致重训成为该阶段线上最佳。`final_submission` 保持 exp016 不变；栈平台在此确立。
 
 ### Experiment 022 — `exp_022_tree_full_baseline`
 
@@ -916,7 +916,7 @@ Notebook 的 `RUN_MODE` 默认写为 `smoke`，完整实验结果 metadata 记�
 3. **栈平台 0.1165**：exp020/021 cat_5 改动成功（+0.0004），exp023g CatBoost 替换失败（0）——栈侧 valid 增益 <0.002 时线上不可区分，平台已固化。
 4. **手术机制三次线上稳定**（+0.0022~+0.0030），是唯一可靠增益来源，但边际递减（+0.0025→+0.0005→+0.0001），transfer ratio 降至 0.16。
 
-#### 0.12 不可达的论证
+#### exp023h 阶段的历史不可达判断（后被 exp024b 推翻）
 
 - 缺口 `0.000340` × 442 截面 = 0.15 截面-IC 总量。
 - 手术段仅 6 截面：需平均 IC +0.025（~0.49→0.65+）；截面 5-6 的 lag 链已断裂（IC≈0），拉高它们等价于解决中段平台问题（22 个实验证明不可行），循环依赖。
@@ -961,7 +961,7 @@ Notebook 的 `RUN_MODE` 默认写为 `smoke`，完整实验结果 metadata 记�
       e  锚点手术 v1（线上 0.119063，+0.0025——合规新最佳）
       f  多 lag 锚链（线上 0.119533，+0.0005——手术稳定）
       g  CatBoost 栈替换 + 手术（线上 0.118640，栈侧不迁移）
-      h  手术终极版（线上 0.119660——最终极限，收官）
+      h  手术终极版（线上 0.119660——当时阶段最佳）
 ```
 
 ### 4.1 逐轮修改与影响
@@ -1034,20 +1034,21 @@ Notebook 的 `RUN_MODE` 默认写为 `smoke`，完整实验结果 metadata 记�
 | exp_023e | exp021 栈 + 手术 | 前 20 截面线性衰减混入递归 | 起点 lag=真实 y(3160) | — | 0.097843（+0.0065） | **0.119063** | 锚点手术 v1，合规新最佳 |
 | exp_023f | exp021 栈 + 手术 | lag1..6 全真锚 + alpha 前置 | mB 递归，K=30, γ=0.9 | — | 0.098683 | **0.119533** | 手术机制稳定 |
 | exp_023g | CatBoost 新栈 + 手术 | CatBoost 60轮 tabular + head/router 重训 + K=6 手术 | — | — | 手术 0.100569 | 0.118640 | 栈侧改动不迁移，不晋级 |
-| **exp_023h** | exp021 栈 + 手术 | 深度 LGBM(255叶×140轮×3种子), lag=rank+raw | alpha=1.0, K=6, γ=0.85 | — | 0.099460 | **0.119660** | **最终线上最佳**，收官 |
+| **exp_023h** | exp021 栈 + 手术 | 深度 LGBM(255叶×140轮×3种子), lag=rank+raw | alpha=1.0, K=6, γ=0.85 | — | 0.099460 | **0.119660** | exp024b 之前的线上最佳 |
+| **exp_024b** | exp023h + 状态检索校正 | K=32, PCA=16, alpha=0.1；前6截面保留 | 固定预注册参数 | +0.000637（诊断口径） | **0.120847** | **当前合规线上最佳，目标达成** |
 
 ### 5.2 当前最佳结果的分层结论
 
 | 维度 | 当前结论 |
 |---|---|
-| 最佳已记录线上实验 | `exp_023h_ultimate_surgery/prediction_1.npy`，`0.119660`（2026-08-21） |
-| 第二/第三最佳 | exp023f `0.119533`；exp023e `0.119063`（锚点手术系列内部） |
+| 最佳已记录线上实验 | `exp_024b_retrieval_exploratory/prediction_1.npy`，`0.120847`（2026-08-23） |
+| 第二/第三最佳 | exp023h `0.119660`；exp023f `0.119533` |
 | 栈平台最佳 | exp021 `0.116568`（锚点手术系列的底座） |
 | 当前正式提交文件 | `04_results/final_submission/prediction.npy`，来源 exp016，线上 `0.116132` |
 | 最高本地完整 Valid | exp023g 手术后 `0.100569`（但线上回归）；纯本地：exp_004 融合 `0.101285`（未通过稳定性） |
-| 目标 0.12 判定 | **合规不可达**；缺口 `0.000340` 需锚点段平均 IC +0.025，等价于解决中段平台问题（22 个实验证明不可行） |
+| 目标 0.12 判定 | **已达成**；exp024b 超过目标 `+0.000847` |
 | 违规上限参照 | exp023a（未来数据）线上 `0.613402`——解释榜上高分来源，不采用 |
-| 当前最佳模型/方案 | exp021 七家族融合栈（cat_5 原生 tabular + head/router 重训）+ exp023h 锚点手术（深度 LGBM 递归，前 6 截面真锚链） |
+| 当前最佳模型/方案 | exp023h 前6截面锚点手术 + 后436截面固定状态检索秩校正（exp024b） |
 
 ### 5.3 已验证的正向与负向修改
 
@@ -1064,6 +1065,7 @@ Notebook 的 `RUN_MODE` 默认写为 `smoke`，完整实验结果 metadata 记�
 - exp021 → exp023e 锚点手术 v1：`0.119063`，+0.002495，唯一大幅可靠增益；
 - exp023e → exp023f 多 lag 锚链：`0.119533`，+0.000470；
 - exp023f → exp023h 手术终极版：`0.119660`，+0.000127，增益递减至极限。
+- exp023h → exp024b 固定状态检索秩校正：`0.120847`，`+0.001187`，首次合规突破 0.12。
 
 **已记录为无效或负向的修改：**
 
@@ -1089,7 +1091,7 @@ Notebook 的 `RUN_MODE` 默认写为 `smoke`，完整实验结果 metadata 记�
 
 ### 6.1 当前最高线上方案
 
-依据已有真实线上记录，当前最高成绩来自 `exp_023h_ultimate_surgery`（`0.119660`）。它由两部分组成：exp021 融合栈作为底座（436 个截面），加上前 6 个截面的锚点手术替换：
+依据已有真实线上记录，当前最高成绩来自 `exp_024b_retrieval_exploratory`（`0.120847`）。它以 exp023h 为底座，前 6 个锚点截面逐值保留，在后 436 个截面加入固定状态检索秩校正：
 
 ```text
 data.z
@@ -1101,12 +1103,14 @@ data.z
       输入 = tree 408 数值特征 + lag1..6（rank + raw z-score 编码）
       test 第 k 截面的 lag_k = 真实 y(3160)（给定历史标签，k≤6）
       手术参数 alpha_hi=1.0, K=6, gamma=0.85（valid 真实锚链同构段网格搜索）
-  → 其余 436 截面与 exp021 逐元素一致
+  → 前 6 截面保留 exp023h
+  → 后 436 截面：31 个稳定特征构造状态，PCA=16，检索 K=32 历史截面
+  → 历史特征秩指纹校正，alpha=0.1
   → 442 × 5282 prediction_1.npy
-  → 线上 RankIC 0.119660
+  → 线上 RankIC 0.120847
 ```
 
-合规声明：第 t 截面仅使用 X(≤t) 与 <t 的给定标签/自有预测；手术锚点为比赛给定的历史标签 y(3160) 等；全管线无未来信息。详细参数与网格搜索见 `04_results/exp_023h_ultimate_surgery/metrics.json`。
+合规声明：第 t 截面只使用 X(t)、截止 Test 前的 Train/Valid 标签与冻结的 exp023h；不读取 Test 标签或 X(t+s)。详细参数与契约见 `04_results/exp_024b_retrieval_exploratory/metrics.json`。
 
 ### 6.2 当前正式提交方案
 
@@ -1124,7 +1128,7 @@ data.z
 
 正式文件 metadata 已确认：shape `(442,5282)`、dtype `float32`、finite、评估位置 `2,042,538`、非评估位置 `292,106` 且均为 `0.5`，SHA-256 `5721e5fa...`，晋级记录见 `04_results/_decision_log/20260817_promote_exp016_formal_submission.json`。
 
-按用户规则「线上成绩未大于 0.12 不晋级正式提交」，exp023h（`0.119660`）保持候选状态；若需锁定最终成绩，可将 `04_results/exp_023h_ultimate_surgery/prediction_1.npy` 重传平台。
+exp024b 已超过 `0.12` 晋级阈值，但 `final_submission` 仍受保护；只有用户明确授权后才执行人工替换、备份和哈希登记。
 
 ## 7. 项目目录说明
 
@@ -1254,7 +1258,7 @@ archive/                            历史目录和旧实验入口
 - 本地→线上错配为系统性问题：剪枝（exp016-pruned）、保守路由（exp019）、递归弥漫混合（exp023c）三次本地正向全部线上负向。
 - **锚点手术是唯一可靠的增益来源**：定向替换少数截面、其余保持已验证最佳，三次线上验证增益稳定（+0.0022~+0.0030），最终推到 `0.119660`。
 - **强因果规则边界已由探针划清**：X(t+s)(s>0) 对 y(t) 的预测力来自标签窗口重叠（未来信息），违规；给定历史标签 y(<t) 是合规锚点信号源。
-- **0.12 合规不可达**：缺口 0.000340 需手术段平均 IC +0.025，等价于解决中段 412 截面平台问题——22 个实验证明不可行，循环依赖。
+- **exp023h 阶段的历史判断**：当时缺口 0.000340，既有锚点/栈路线未能解决；该判断后来被 exp024b 的固定状态检索校正推翻。
 
 ### 9.3 后续改良方向（含执行入口）
 
@@ -1303,14 +1307,14 @@ Train/Valid/Test 区间：
 
 ### 9.5 当前结论
 
-**项目已收官（2026-08-21）。** 最终结论：
+**项目已于 2026-08-23 达成 RankIC > 0.12 目标。** 当前结论：
 
-1. **线上最佳**：`exp_023h_ultimate_surgery/prediction_1.npy`，线上 RankIC `0.119660`——exp021 融合栈（cat_5 原生 tabular + head/router 重训，`0.116568`）+ 前 6 截面锚点手术（深度 LGBM 递归，真锚链 lag1..6）。
-2. **正式提交**：`final_submission/prediction.npy` 仍为 exp016（`0.116132`）；按用户规则 exp023h 未过 0.12 不晋级正式，如需锁定成绩可人工重传。
-3. **0.12 判定**：强因果合规框架下不可达。合规序列 `0.116568 → 0.119063 (023e) → 0.119533 (023f) → 0.119660 (023h)` 增益单调递减，锚点段模型探针（深度/原始值/多种子/三模型）已榨干，剩余缺口与中段平台循环依赖。
+1. **线上最佳**：`exp_024b_retrieval_exploratory/prediction_1.npy`，线上 RankIC `0.120847`——exp023h 前6锚点截面 + 后436截面固定状态检索秩校正。
+2. **正式提交**：`final_submission/prediction.npy` 仍为 exp016（`0.116132`）；exp024b 已超过晋级线，但等待用户明确授权后才允许替换。
+3. **0.12 判定**：目标已达成。合规序列扩展为 `0.116568 → 0.119063 (023e) → 0.119533 (023f) → 0.119660 (023h) → 0.120847 (024b)`。
 4. **榜上高分解释**：exp023a 证实使用未来数据 X(t+s) 可达线上 `0.613402`，但违反主办方强因果规则；一次提交到 0.12 的选手大概率走了此路线。
 5. `exp_015`、`exp_007`、`exp_009` 保留为强基线；exp013/014/016-pruned/019/023c/023g 明确不晋级。
-6. 完整收官论证见 `.trae/documents/友安杯Y1_RankIC优化实施路线图.md` §1.7；19 份线上反馈决策日志位于 `04_results/_decision_log/`。
+6. exp024b 的预注册、诊断风险与线上结果均保留；线上反馈决策日志位于 `04_results/_decision_log/`。
 
 ## 10. 复现分级与命令清单
 
@@ -1646,9 +1650,9 @@ prediction[非评估位置] == 0.5
 
 当前状态是：
 
-- 线上最佳候选：`04_results/exp_023h_ultimate_surgery/prediction_1.npy`，线上 RankIC `0.119660`（2026-08-21）；
+- 线上最佳候选：`04_results/exp_024b_retrieval_exploratory/prediction_1.npy`，线上 RankIC `0.120847`（2026-08-23）；
 - 当前正式文件：`04_results/final_submission/prediction.npy`，来源为 exp016，线上记录 `0.116132`（2026-08-17 人工晋级，替换 exp003）；
-- 按用户规则「线上成绩未大于 0.12 不晋级正式提交」，exp023h/023f/023e 系列均保持候选；
+- exp024b 已超过 0.12 晋级阈值，但仍需用户明确授权才能替换正式文件；
 - 若要晋级正式文件，必须单独进行人工确认、备份旧文件、校验新文件和记录 SHA-256，不能把"线上最佳"自动等同于"正式文件已替换"。
 
 ### 12.4 当前 exp016 full 产物
@@ -1805,13 +1809,15 @@ prediction[非评估位置] == 0.5
 - [`02_experiments/exp_016_unified_expert_fusion/src/full_pipeline.py`](02_experiments/exp_016_unified_expert_fusion/src/full_pipeline.py)：完整阶段图。
 - [`02_experiments/exp_016_unified_expert_fusion/tests/test_safety_contract.py`](02_experiments/exp_016_unified_expert_fusion/tests/test_safety_contract.py)：无依赖回归检查。
 - [`02_experiments/exp_021_retrain_head_router/run_exp021.py`](02_experiments/exp_021_retrain_head_router/run_exp021.py)：栈平台最佳（0.116568）生成脚本。
-- [`02_experiments/exp_023_tabular_upgrade/run_exp023h.py`](02_experiments/exp_023_tabular_upgrade/run_exp023h.py)：最终提交（0.119660）生成脚本。
+- [`02_experiments/exp_023_tabular_upgrade/run_exp023h.py`](02_experiments/exp_023_tabular_upgrade/run_exp023h.py)：exp024b 底座（0.119660）生成脚本。
+- [`02_experiments/exp_024_state_retrieved_rank_residual/run_exp024b.py`](02_experiments/exp_024_state_retrieved_rank_residual/run_exp024b.py)：当前线上最佳（0.120847）生成脚本。
 - [`02_experiments/exp_023_tabular_upgrade/PLAN.md`](02_experiments/exp_023_tabular_upgrade/PLAN.md)：exp023 发现链与机制说明（未来偏移、锚点手术）。
 
 ### 结果与文档
 
-- [`04_results/exp_023h_ultimate_surgery/prediction_1.npy`](04_results/exp_023h_ultimate_surgery/prediction_1.npy)：**当前线上最佳候选文件（0.119660）**。
-- [`04_results/exp_023h_ultimate_surgery/metrics.json`](04_results/exp_023h_ultimate_surgery/metrics.json)：最终提交参数、网格搜索与契约校验。
+- [`04_results/exp_024b_retrieval_exploratory/prediction_1.npy`](04_results/exp_024b_retrieval_exploratory/prediction_1.npy)：**当前线上最佳候选文件（0.120847）**。
+- [`04_results/exp_024b_retrieval_exploratory/metrics.json`](04_results/exp_024b_retrieval_exploratory/metrics.json)：固定检索参数、相似度与契约校验。
+- [`04_results/exp_023h_ultimate_surgery/metrics.json`](04_results/exp_023h_ultimate_surgery/metrics.json)：当前最佳底座的参数与锚点手术记录。
 - [`04_results/exp_016_unified_expert_fusion/full/metadata.json`](04_results/exp_016_unified_expert_fusion/full/metadata.json)：当前正式文件来源的 full 状态。
 - [`04_results/final_submission/metadata.json`](04_results/final_submission/metadata.json)：当前正式文件来源和哈希。
 - [`04_results/_decision_log/`](04_results/_decision_log/)：19 份决策日志（线上反馈 + 晋级记录，2026-08-07..21）。

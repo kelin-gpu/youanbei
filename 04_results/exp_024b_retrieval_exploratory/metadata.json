@@ -1,7 +1,9 @@
 {
-  "status": "candidate_generated_exploratory_not_promoted",
+  "status": "online_best_target_achieved_pending_formal_promotion",
   "causal_status": "compliant_claim_and_contract_recorded",
   "formal_submission_overwritten": false,
   "baseline_overwritten": false,
-  "warning": "exp024a failed robustness gates; submit only as a user-authorized exploratory probe"
+  "warning": "exp024a failed robustness gates, but user-reported online RankIC is 0.120847",
+  "online_rank_ic": 0.120847,
+  "online_result_source": "user_reported_2026-08-23"
 }

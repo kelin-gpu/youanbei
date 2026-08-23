@@ -1,6 +1,6 @@
 {
   "project": "youanbei-y1",
-  "status": "创新筛选完成/等待新证据",
+  "status": "RankIC>0.12目标已达成/等待正式提交授权",
   "source_of_truth": {
     "human_summary": "README.md",
     "online_feedback": "04_results/_decision_log/",
@@ -17,13 +17,13 @@
       "status": "frozen_reference"
     },
     "best_candidate": {
-      "experiment": "exp_023h_ultimate_surgery",
-      "online_rank_ic": 0.119660,
-      "prediction": "04_results/exp_023h_ultimate_surgery/prediction_1.npy",
-      "sha256": "2fb9021f97d21827eee7102ddd386af7ce3b32fe4be14fcdbe9782860ee84877",
+      "experiment": "exp_024b_retrieval_exploratory",
+      "online_rank_ic": 0.120847,
+      "prediction": "04_results/exp_024b_retrieval_exploratory/prediction_1.npy",
+      "sha256": "6ff796c7c222bb3e9a55077014c1fc885dca368e3ac1bd29aecafb4e58e2be55",
       "shape": [442, 5282],
       "dtype": "float32",
-      "status": "online_best_pending_formal_promotion"
+      "status": "online_best_target_achieved_pending_formal_promotion"
     },
     "formal_submission": {
       "experiment": "exp_016_unified_expert_fusion",
@@ -43,31 +43,32 @@
   "promotion_policy": {
     "auto_overwrite_formal_submission": false,
     "online_promotion_threshold": 0.12,
-    "local_stack_change_submission_threshold": 0.002
+    "local_stack_change_submission_threshold": 0.002,
+    "current_candidate_exceeds_threshold": true
   },
   "cache": {
     "dataset": "03_cache/processed_data_v1",
     "manifest_sha256": "f7c4076de6e3ae7d631554df5a15f69f50d7e8f676249fb6d2d4cf71ccec8c6f"
   },
   "innovation_readiness": {
-    "status": "accepted",
+    "status": "target_achieved_pending_formal_promotion",
     "test_history": "04_results/_acceptance/test_history_audit.json",
     "feature_registry": "04_results/_acceptance/drift_feature_registry.csv",
     "exp021_full_valid_audit": "04_results/_acceptance/exp021_validation_audit/metrics.json",
-    "next_experiment": "none_pending_new_independent_signal",
+    "next_experiment": "none_target_achieved",
     "plan": "05_docs/rankic_gt_012_innovation_plan.md",
     "latest_diagnostics": {
       "exp024a": "completed_rejected",
       "exp025a": "completed_rejected",
       "exp026a": "completed_rejected"
     },
-    "online_submissions_used_on_2026-08-23": 0,
-    "online_submissions_remaining_on_2026-08-23": 3,
+    "online_submissions_used_on_2026-08-23": 1,
+    "online_submissions_remaining_on_2026-08-23": 2,
     "exploratory_candidate": {
       "experiment": "exp_024b_retrieval_exploratory",
       "prediction": "04_results/exp_024b_retrieval_exploratory/prediction_1.npy",
       "sha256": "6ff796c7c222bb3e9a55077014c1fc885dca368e3ac1bd29aecafb4e58e2be55",
-      "status": "candidate_generated_exploratory_not_promoted"
+      "status": "submitted_online_best_0.120847"
     }
   },
   "last_reviewed": "2026-08-23"

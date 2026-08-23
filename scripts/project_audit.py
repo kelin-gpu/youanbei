@@ -18,7 +18,8 @@ DATASET = ROOT / "03_cache" / "processed_data_v1"
 FORMAL = ROOT / "04_results" / "final_submission" / "prediction.npy"
 BASELINE_PREDICTIONS = {
     "exp021_stack": ROOT / "04_results" / "exp_021_retrain_head_router" / "prediction_1.npy",
-    "exp023h_best_candidate": ROOT / "04_results" / "exp_023h_ultimate_surgery" / "prediction_1.npy",
+    "exp023h_previous_best": ROOT / "04_results" / "exp_023h_ultimate_surgery" / "prediction_1.npy",
+    "exp024b_best_candidate": ROOT / "04_results" / "exp_024b_retrieval_exploratory" / "prediction_1.npy",
     "formal_submission": FORMAL,
 }
 
@@ -128,7 +129,7 @@ def main() -> int:
                 status_data.get("baselines", {}).get(section, {}).get("sha256") == digest(path)
                 for section, path in {
                     "stack": BASELINE_PREDICTIONS["exp021_stack"],
-                    "best_candidate": BASELINE_PREDICTIONS["exp023h_best_candidate"],
+                    "best_candidate": BASELINE_PREDICTIONS["exp024b_best_candidate"],
                     "formal_submission": BASELINE_PREDICTIONS["formal_submission"],
                 }.items()
                 if path.exists()

@@ -1,6 +1,6 @@
 # exp024b：固定检索残差探索候选
 
-状态：`candidate_generated_exploratory_not_promoted`。
+状态：`online_best_target_achieved_pending_formal_promotion`。
 
 这是用户要求补齐的可提交候选，不代表 exp024a 的 no-go 结论被推翻。固定参数来自 exp024a 预注册：K=32、PCA=16、alpha=0.1，不做事后搜索。
 
@@ -18,3 +18,10 @@
 - 与 exp023h 评估位 Pearson：`0.997573`
 
 本候选可供用户手动提交，但 exp024a 的稳健性门槛曾失败，因此状态保持 `exploratory_not_promoted`。
+
+## 线上反馈
+
+- 用户记录线上 RankIC：`0.120847`（2026-08-23）；
+- 相对 exp023h `0.119660`：`+0.001187`；
+- 相对目标 `0.12`：`+0.000847`；
+- 决策：新的合规线上最佳，目标已达成；等待用户明确授权后再考虑覆盖正式提交。

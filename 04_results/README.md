@@ -10,7 +10,7 @@
 
 当前状态：
 
-- 线上最佳候选为 `exp_023h_ultimate_surgery/prediction_1.npy`，用户记录线上 RankIC `0.119660`；
+- 线上最佳候选为 `exp_024b_retrieval_exploratory/prediction_1.npy`，用户记录线上 RankIC `0.120847`；
 - 栈基准为 `exp_021_retrain_head_router/prediction_1.npy`，线上 RankIC `0.116568`；
 - `final_submission/prediction.npy` 仍为 exp016 的正式提交，线上 RankIC `0.116132`，不会自动覆盖；
 - 机器可读实验登记见 `04_results/experiment_registry.csv`，项目状态见根目录 `project_status.json`。
