@@ -1,0 +1,23 @@
+{
+  "recorded_at": "2026-08-23",
+  "experiment": "exp_024b_retrieval_exploratory",
+  "source": "user_authorized",
+  "candidate": {
+    "path": "04_results/exp_024b_retrieval_exploratory/prediction_1.npy",
+    "sha256": "6ff796c7c222bb3e9a55077014c1fc885dca368e3ac1bd29aecafb4e58e2be55",
+    "online_rank_ic": 0.120847
+  },
+  "destination": {
+    "path": "04_results/final_submission/prediction.npy",
+    "sha256": "6ff796c7c222bb3e9a55077014c1fc885dca368e3ac1bd29aecafb4e58e2be55"
+  },
+  "replaced": {
+    "experiment": "exp_016_unified_expert_fusion",
+    "sha256": "5721e5fa325ecce624755da65db6e0245f2e79857f14f6d61e4fed9d9c83c524",
+    "online_rank_ic": 0.116132,
+    "recoverable_from": "04_results/exp_016_unified_expert_fusion/full/prediction.npy"
+  },
+  "decision": "promoted_formal_submission",
+  "online_submission_used": false,
+  "conclusion": "用户明确授权将 exp024b（0.120847）晋级为正式提交；final_submission 已人工替换并通过源/目标 SHA-256 一致性检查。"
+}

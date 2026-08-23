@@ -1,9 +1,11 @@
 {
-  "status": "online_best_target_achieved_pending_formal_promotion",
+  "status": "online_best_formally_promoted",
   "causal_status": "compliant_claim_and_contract_recorded",
-  "formal_submission_overwritten": false,
+  "formal_submission_overwritten": true,
   "baseline_overwritten": false,
   "warning": "exp024a failed robustness gates, but user-reported online RankIC is 0.120847",
   "online_rank_ic": 0.120847,
-  "online_result_source": "user_reported_2026-08-23"
+  "online_result_source": "user_reported_2026-08-23",
+  "formally_promoted_at": "2026-08-23",
+  "promotion_source": "user_authorized"
 }

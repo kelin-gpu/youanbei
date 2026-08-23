@@ -2,7 +2,7 @@
 
 本文档是本项目的可持续维护档案和复现入口。内容只使用当前工作区中能够追溯到数据文件、Notebook、源代码、缓存 manifest、结果 metadata/metrics/report 或既有用户线上记录的事实；无法确认的内容统一标记为「待补充 / 暂无记录」。相对实验目录中的局部 README，本文件负责说明整个项目的共同数据口径、实验演进、结果来源、代码组织、运行边界和提交保护规则。
 
-文档更新时间：2026-08-23（exp024b 线上突破 0.12；正式提交待授权）
+文档更新时间：2026-08-23（exp024b 线上突破 0.12 并经用户授权晋级正式提交）
 
 机器可读项目状态见 [`project_status.json`](project_status.json)，实验产物登记见 [`04_results/experiment_registry.csv`](04_results/experiment_registry.csv)，只读环境/契约审计入口为 [`scripts/project_audit.py`](scripts/project_audit.py)。
 
@@ -11,10 +11,10 @@
 > **项目当前状态（2026-08-23）**
 >
 > - **线上最佳成绩：`0.120847`**，来自 `exp_024b_retrieval_exploratory/prediction_1.npy`（exp023h + 固定状态检索秩校正）。
-> - **正式提交文件：`04_results/final_submission/prediction.npy`**，来源 exp016（线上 `0.116132`，2026-08-17 人工晋级）。
+> - **正式提交文件：`04_results/final_submission/prediction.npy`**，来源 exp024b（线上 `0.120847`，2026-08-23 人工晋级）。
 > - **RankIC > 0.12 目标已达成**：exp024b 相对 exp023h 提高 `+0.001187`，超过目标 `+0.000847`。
 > - exp024a 的本地稳健性门槛曾失败，因此 exp024b 保留完整探索性风险记录；线上结果不反向修改历史诊断。
-> - `final_submission` 不自动覆盖；只有用户明确授权后，才将 exp024b 晋级为正式文件。
+> - `final_submission` 不自动覆盖；本次已取得用户明确授权并完成 exp024b 人工晋级。
 
 ## 快速导航
 
@@ -41,7 +41,7 @@ flowchart LR
     E --> F["候选提交\nprediction.npy"]
     F --> G["线上 RankIC\n当前最佳 0.120847"]
     H["05_docs\n官方材料与项目报告"] -.-> D
-    I["04_results/final_submission\n受保护正式文件\nexp016 0.116132"] -.不自动覆盖.-> F
+    I["04_results/final_submission\n受保护正式文件\nexp024b 0.120847"] -.人工晋级.-> F
 ```
 
 ## 1. 项目概述
@@ -73,15 +73,15 @@ flowchart LR
 | 共享处理缓存 `processed_data_v1` | 已生成，`READY` 与 `manifest.json` 存在并记录 SHA-256 |
 | 实验目录 | `exp_001`–`exp_023` 均存在；`exp_012` 还包含 framework/retrain/model-zoo/fusion 子流程；`exp_023` 为 a–h 八个子实验系列 |
 | 预测结果 | 多数实验已保存 `prediction*.npy`；`exp_005` 只有历史筛选指标；`exp_008` 缺少标准化 metrics/metadata |
-| 正式提交文件 | `04_results/final_submission/prediction.npy`，来源为 `exp_016`（2026-08-17 人工晋级，线上 `0.116132`） |
+| 正式提交文件 | `04_results/final_submission/prediction.npy`，来源为 `exp_024b`（2026-08-23 人工晋级，线上 `0.120847`） |
 | 最高已记录线上成绩 | `0.120847`，来自 `exp_024b_retrieval_exploratory`（2026-08-23 用户记录） |
-| 项目阶段 | **目标已达成，等待正式提交授权** |
-| 当前未解决问题 | 是否将 exp024b 人工晋级到 `final_submission` |
+| 项目阶段 | **目标已达成，exp024b 已晋级正式提交** |
+| 当前未解决问题 | exp024b 增益来源尚需离线归因；未启动后续实验 |
 
 ### 1.3 重要口径说明
 
-1. `04_results/final_submission/prediction.npy` 是当前正式文件（exp016，`0.116132`），不会被实验自动覆盖；线上最佳 exp024b（`0.120847`）已超过晋级阈值，但仍等待用户明确授权。
-2. 「线上最佳」（exp024b `0.120847`）与「正式文件当前来源」（exp016 `0.116132`）是两个不同概念；可提交文件为 `04_results/exp_024b_retrieval_exploratory/prediction_1.npy`。
+1. `04_results/final_submission/prediction.npy` 是当前正式文件（exp024b，`0.120847`），经用户授权人工晋级，不会被后续实验自动覆盖。
+2. exp024b 的原始候选文件仍保留在 `04_results/exp_024b_retrieval_exploratory/prediction_1.npy`，两者 SHA-256 一致。
 3. `exp_023a_future_shift` 的线上 `0.613402` 为**违规记录**：使用 X(t+s)(s>0) 预测 y(t) 违反主办方强因果规则（「计算第 t 天的数据时，不能使用 t 天之后的数据」，用户 2026-08-19 转述），仅作机制验证存档，不参与任何晋级比较。
 4. `exp_009` metadata 标记为 `submitted_online_best`，线上 `0.109928`，但仍记录 `formal_submission_overwritten: false`。
 5. `exp_006` 存在记录口径差异：其结果目录 `metrics.json` 为 `0.088340`，旧 README 曾记录 `0.094018`。本文将两者分别标注，不擅自裁定哪一个应替代另一个。
@@ -1044,7 +1044,7 @@ Notebook 的 `RUN_MODE` 默认写为 `smoke`，完整实验结果 metadata 记�
 | 最佳已记录线上实验 | `exp_024b_retrieval_exploratory/prediction_1.npy`，`0.120847`（2026-08-23） |
 | 第二/第三最佳 | exp023h `0.119660`；exp023f `0.119533` |
 | 栈平台最佳 | exp021 `0.116568`（锚点手术系列的底座） |
-| 当前正式提交文件 | `04_results/final_submission/prediction.npy`，来源 exp016，线上 `0.116132` |
+| 当前正式提交文件 | `04_results/final_submission/prediction.npy`，来源 exp024b，线上 `0.120847` |
 | 最高本地完整 Valid | exp023g 手术后 `0.100569`（但线上回归）；纯本地：exp_004 融合 `0.101285`（未通过稳定性） |
 | 目标 0.12 判定 | **已达成**；exp024b 超过目标 `+0.000847` |
 | 违规上限参照 | exp023a（未来数据）线上 `0.613402`——解释榜上高分来源，不采用 |
@@ -1114,21 +1114,20 @@ data.z
 
 ### 6.2 当前正式提交方案
 
-当前正式文件是 exp016（2026-08-17 人工晋级，替换原 exp003）：
+当前正式文件是 exp024b（2026-08-23 经用户授权人工晋级，替换 exp016）：
 
 ```text
-data.z
-  → processed_data_v1
-  → 七个家族：exp015 锚点、表格排序、双轴时序—截面、因果时频、关系图、本地自监督表征、多目标排序头
-  → 市场状态路由动态加权
+exp023h prediction_1.npy
+  → 前 6 个锚点截面逐值保留
+  → 后 436 个截面加入固定 K=32 / PCA=16 / alpha=0.1 状态检索秩校正
   → 442 × 5282 prediction.npy
   → 04_results/final_submission/prediction.npy
-  → 已记录线上 RankIC 0.116132
+  → 已记录线上 RankIC 0.120847
 ```
 
-正式文件 metadata 已确认：shape `(442,5282)`、dtype `float32`、finite、评估位置 `2,042,538`、非评估位置 `292,106` 且均为 `0.5`，SHA-256 `5721e5fa...`，晋级记录见 `04_results/_decision_log/20260817_promote_exp016_formal_submission.json`。
+正式文件 metadata 已确认：shape `(442,5282)`、dtype `float32`、finite、评估位置 `2,042,538`、非评估位置 `292,106` 且均为 `0.5`，SHA-256 `6ff796c7...`，晋级记录见 `04_results/_decision_log/20260823_promote_exp024b_formal_submission.json`。
 
-exp024b 已超过 `0.12` 晋级阈值，但 `final_submission` 仍受保护；只有用户明确授权后才执行人工替换、备份和哈希登记。
+上一正式文件 exp016 仍保留在其原始结果目录，SHA-256 `5721e5fa...`，可按决策日志恢复；后续实验仍不得自动覆盖 `final_submission`。
 
 ## 7. 项目目录说明
 
@@ -1172,8 +1171,8 @@ environment.yml                     项目声明环境与依赖
   exp_017/                          P0 归因审计报告（p0_findings.md）
   exp_018 ... exp_022/              cat5/路由/tabular/纯树结果目录
   exp_023a ... exp_023h/            收官冲刺 8 个子实验结果目录
-  _decision_log/                    决策预注册与线上反馈日志（19 份，2026-08-07..21）
-  final_submission/                 当前正式 prediction.npy（exp016）和 metadata
+  _decision_log/                    决策预注册与线上反馈日志（21 份，2026-08-07..23）
+  final_submission/                 当前正式 prediction.npy（exp024b）和 metadata
 05_docs/                            官方材料与项目报告
   official_materials/               赛题、命题说明与官方方案模板（附件1-3）
   project_report/                   项目实现方案（2026-08-23 收官重写版，DOCX+PDF）
@@ -1310,7 +1309,7 @@ Train/Valid/Test 区间：
 **项目已于 2026-08-23 达成 RankIC > 0.12 目标。** 当前结论：
 
 1. **线上最佳**：`exp_024b_retrieval_exploratory/prediction_1.npy`，线上 RankIC `0.120847`——exp023h 前6锚点截面 + 后436截面固定状态检索秩校正。
-2. **正式提交**：`final_submission/prediction.npy` 仍为 exp016（`0.116132`）；exp024b 已超过晋级线，但等待用户明确授权后才允许替换。
+2. **正式提交**：`final_submission/prediction.npy` 已经用户授权晋级为 exp024b（`0.120847`），源文件与正式文件 SHA-256 一致。
 3. **0.12 判定**：目标已达成。合规序列扩展为 `0.116568 → 0.119063 (023e) → 0.119533 (023f) → 0.119660 (023h) → 0.120847 (024b)`。
 4. **榜上高分解释**：exp023a 证实使用未来数据 X(t+s) 可达线上 `0.613402`，但违反主办方强因果规则；一次提交到 0.12 的选手大概率走了此路线。
 5. `exp_015`、`exp_007`、`exp_009` 保留为强基线；exp013/014/016-pruned/019/023c/023g 明确不晋级。
@@ -1651,9 +1650,9 @@ prediction[非评估位置] == 0.5
 当前状态是：
 
 - 线上最佳候选：`04_results/exp_024b_retrieval_exploratory/prediction_1.npy`，线上 RankIC `0.120847`（2026-08-23）；
-- 当前正式文件：`04_results/final_submission/prediction.npy`，来源为 exp016，线上记录 `0.116132`（2026-08-17 人工晋级，替换 exp003）；
-- exp024b 已超过 0.12 晋级阈值，但仍需用户明确授权才能替换正式文件；
-- 若要晋级正式文件，必须单独进行人工确认、备份旧文件、校验新文件和记录 SHA-256，不能把"线上最佳"自动等同于"正式文件已替换"。
+- 当前正式文件：`04_results/final_submission/prediction.npy`，来源为 exp024b，线上记录 `0.120847`（2026-08-23 经用户授权人工晋级，替换 exp016）；
+- exp024b 已超过 0.12 晋级阈值，并于 2026-08-23 取得用户明确授权完成正式文件替换；
+- 正式晋级已校验源/目标 SHA-256 一致，上一正式文件 exp016 的原始产物与哈希记录继续保留。
 
 ### 12.4 当前 exp016 full 产物
 
@@ -1818,9 +1817,9 @@ prediction[非评估位置] == 0.5
 - [`04_results/exp_024b_retrieval_exploratory/prediction_1.npy`](04_results/exp_024b_retrieval_exploratory/prediction_1.npy)：**当前线上最佳候选文件（0.120847）**。
 - [`04_results/exp_024b_retrieval_exploratory/metrics.json`](04_results/exp_024b_retrieval_exploratory/metrics.json)：固定检索参数、相似度与契约校验。
 - [`04_results/exp_023h_ultimate_surgery/metrics.json`](04_results/exp_023h_ultimate_surgery/metrics.json)：当前最佳底座的参数与锚点手术记录。
-- [`04_results/exp_016_unified_expert_fusion/full/metadata.json`](04_results/exp_016_unified_expert_fusion/full/metadata.json)：当前正式文件来源的 full 状态。
+- [`04_results/exp_024b_retrieval_exploratory/metadata.json`](04_results/exp_024b_retrieval_exploratory/metadata.json)：当前正式文件来源及线上晋级状态。
 - [`04_results/final_submission/metadata.json`](04_results/final_submission/metadata.json)：当前正式文件来源和哈希。
-- [`04_results/_decision_log/`](04_results/_decision_log/)：19 份决策日志（线上反馈 + 晋级记录，2026-08-07..21）。
+- [`04_results/_decision_log/`](04_results/_decision_log/)：21 份决策日志（线上反馈 + 晋级记录，2026-08-07..23）。
 - [`04_results/exp_017/p0_findings.md`](04_results/exp_017/p0_findings.md)：exp016 归因审计报告。
 - [`.trae/documents/友安杯Y1_RankIC优化实施路线图.md`](.trae/documents/友安杯Y1_RankIC优化实施路线图.md)：项目管理路线图（含 §1.7 收官论证）。
 - [`05_docs/project_report/友安杯_Y1_项目实现方案.docx`](05_docs/project_report/友安杯_Y1_项目实现方案.docx)：项目实现方案（2026-08-23 收官重写版；按规则 0.12 前不用于提交）。

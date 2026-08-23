@@ -1,6 +1,6 @@
 {
   "project": "youanbei-y1",
-  "status": "RankIC>0.12目标已达成/等待正式提交授权",
+  "status": "RankIC>0.12目标已达成/exp024b已晋级正式提交",
   "source_of_truth": {
     "human_summary": "README.md",
     "online_feedback": "04_results/_decision_log/",
@@ -23,16 +23,16 @@
       "sha256": "6ff796c7c222bb3e9a55077014c1fc885dca368e3ac1bd29aecafb4e58e2be55",
       "shape": [442, 5282],
       "dtype": "float32",
-      "status": "online_best_target_achieved_pending_formal_promotion"
+      "status": "online_best_formally_promoted"
     },
     "formal_submission": {
-      "experiment": "exp_016_unified_expert_fusion",
-      "online_rank_ic": 0.116132,
+      "experiment": "exp_024b_retrieval_exploratory",
+      "online_rank_ic": 0.120847,
       "prediction": "04_results/final_submission/prediction.npy",
-      "sha256": "5721e5fa325ecce624755da65db6e0245f2e79857f14f6d61e4fed9d9c83c524",
+      "sha256": "6ff796c7c222bb3e9a55077014c1fc885dca368e3ac1bd29aecafb4e58e2be55",
       "shape": [442, 5282],
       "dtype": "float32",
-      "status": "protected"
+      "status": "protected_formal_submission"
     }
   },
   "causal_policy": {
@@ -51,7 +51,7 @@
     "manifest_sha256": "f7c4076de6e3ae7d631554df5a15f69f50d7e8f676249fb6d2d4cf71ccec8c6f"
   },
   "innovation_readiness": {
-    "status": "target_achieved_pending_formal_promotion",
+    "status": "target_achieved_and_formally_promoted",
     "test_history": "04_results/_acceptance/test_history_audit.json",
     "feature_registry": "04_results/_acceptance/drift_feature_registry.csv",
     "exp021_full_valid_audit": "04_results/_acceptance/exp021_validation_audit/metrics.json",
