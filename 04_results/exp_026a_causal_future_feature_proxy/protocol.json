@@ -1,0 +1,32 @@
+{
+  "experiment": "exp_026a_causal_future_feature_proxy",
+  "status": "preregistered",
+  "registered_at": "2026-08-23",
+  "hypothesis": "exp023a 暴露的未来变化特征可由 X(<=t) 部分预测；用预测值而非真实未来 X 构造的截面秩代理能为 exp021 提供可迁移增益。",
+  "changed_variable": "causally_forecasted_future_feature_proxy",
+  "baseline_experiment": "exp021_full_valid_frozen",
+  "causal_status": "preregistered_strict_causal",
+  "causal_boundary": "at query t every forecaster input is the same feature at lags 0,1,2,5,10; future feature values are training targets only and never inference inputs",
+  "train_range": "[496,2918-shift) per feature-shift model",
+  "valid_range": "[2918,3146), capped so every forecast target remains inside Valid",
+  "local_metric": "full and temporal-third mean cross-sectional Spearman RankIC",
+  "expected_gain": "at least +0.0025 versus exp021 and +0.0005 versus persistence proxy, with positive delta in all three temporal thirds",
+  "failure_rule": "full delta < +0.0025; forecast candidate not above persistence by +0.0005; any temporal third non-positive; any causal/hash audit failure",
+  "online_submission_allowed": false,
+  "test_prediction_allowed": false,
+  "preregistered_parameters": {
+    "feature_shift_source": "exp023a train-selected top20_combos",
+    "history_lags": [0, 1, 2, 5, 10],
+    "model": "StandardScaler+Ridge",
+    "ridge_alpha": 10.0,
+    "train_stock_cap_per_time": 256,
+    "candidate_shrink_alpha": 0.1,
+    "common_valid_stop": 3146,
+    "random_seed": 20260823
+  },
+  "submission_budget": {
+    "daily_limit": 3,
+    "remaining_on_2026-08-23": 3,
+    "allocated_to_exp026a": 0
+  }
+}
