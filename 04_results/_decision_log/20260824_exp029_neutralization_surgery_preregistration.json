@@ -1,0 +1,57 @@
+{
+  "date": "2026-08-24",
+  "experiment": "exp_029_neutralization_surgery",
+  "author": "session_research_branch",
+  "hypothesis": "exp024b 剩余截面排序误差中存在可由特征暴露中性化修正的成分:在每个时间截面内,将基线预测秩对 Top-N 高漂移特征的截面秩做线性投影并按小系数 lambda 扣除。该修正作用于特征轴(截面内特征暴露),与已否决的实体轴路线 exp028a(个股身份残差,线上 0.110966)不同。",
+  "mechanism": "per-section: F = rank01(selected feature columns) centered; beta = lstsq(F, base_rank); candidate = rank01(base_rank - lambda * F @ beta)",
+  "preregistered_parameters": {
+    "lambda_grid": [0.05, 0.10, 0.15],
+    "feature_count_grid": [10, 20, 40],
+    "feature_source": "adversarial_validation_gain_topN_among_408_numeric_tree_features",
+    "adversarial_validation": {
+      "rows_per_side_max": 200000,
+      "sampling": "per-section stratified, seeded 20260824",
+      "model": "LightGBM binary, 5-fold CV AUC, gain importance",
+      "auc_gate": 0.55
+    },
+    "parameter_selection_rule": "choose (lambda, N) maximizing pooled fold2+fold3 mean delta subject to fold2>0 and fold3>0 and per-section rank-correlation>=0.995 in folds; official valid is pure holdout reported once with frozen parameters",
+    "preserve_exp024b_first_sections": 6,
+    "nan_rank_policy": "NaN feature values receive rank 0.5 before centering",
+    "min_section_rows": 10
+  },
+  "evaluation_windows": {
+    "fold_1": [1459, 1945],
+    "fold_2": [1945, 2432],
+    "fold_3": [2432, 2918],
+    "official_valid": [2918, 3161]
+  },
+  "baseline_note": "fold windows use exp016 static strict-OOF proxy (same as exp024a); official valid uses frozen exp021 full valid prediction; test base is exp024b prediction (valid-side exp024b analog does not exist, mirroring exp024 series convention)",
+  "acceptance_gates": {
+    "adversarial_auc_at_least_0_55": true,
+    "fold2_pooled_delta_positive": true,
+    "fold3_pooled_delta_positive": true,
+    "official_valid_pooled_delta_nonnegative": true,
+    "worst_32_section_block_mean_at_least_-0.002_all_windows": true,
+    "per_section_rank_correlation_to_baseline_min_0_995": true,
+    "leave_one_block_out_delta_positive_ratio_at_least_0_75": true,
+    "protected_hashes_unchanged": true
+  },
+  "stop_rules": [
+    "任何门槛失败即终止该路线,不生成 exp029b",
+    "不以事后扩大 lambda 网格、更换特征来源或放宽秩相关门槛复活",
+    "official valid 不用于参数选择,只做冻结参数的单次保留验证"
+  ],
+  "compliance": {
+    "no_future_features": "特征仅取当截面 X(t) 与历史;对抗验证只用 X 特征不用标签",
+    "test_labels": "exp029a 不加载 Test 标签;exp029b 仅在门槛全过后生成 prediction",
+    "protected_files": [
+      "04_results/exp_021_retrain_head_router/prediction_1.npy",
+      "04_results/exp_023h_ultimate_surgery/prediction_1.npy",
+      "04_results/exp_024b_retrieval_exploratory/prediction_1.npy",
+      "04_results/final_submission/prediction.npy"
+    ],
+    "automatic_online_submission": false
+  },
+  "expected_outcome_if_true": "fold2/fold3 pooled delta 小幅为正且 official valid 不为负,生成 exp029b 供用户决定是否消耗线上额度",
+  "expected_outcome_if_false": "特征暴露已被 exp015/016 稳健秩视图吸收,中性化 delta 在四窗口不一致,按停止规则登记失败并关闭该路线"
+}

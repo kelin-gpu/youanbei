@@ -1,0 +1,29 @@
+{
+  "date": "2026-08-24",
+  "experiment": "exp_031b_factor_mined_candidate",
+  "event": "user_reported_online_feedback",
+  "candidate_prediction": "04_results/exp_031b_factor_mined_candidate/prediction_1.npy",
+  "candidate_sha256": "8d9dd658a195bf581ac9af1eabdc7762853ad4ba1425ee9c0819944adaf7e1c2",
+  "online_rank_ic": 0.120632,
+  "comparisons": {
+    "delta_vs_exp024b_0.120847": -0.000215,
+    "delta_vs_exp023h_0.119660": 0.000972
+  },
+  "local_evidence": {
+    "official_valid_delta_vs_reference": 0.0003629835071162152,
+    "failed_gate": "g6_container_sanity_retrieval_above_random",
+    "interpretation": "local_micro_gain_did_not_transfer_and_g6_warning_was_predictive"
+  },
+  "decision": "online_rejected_evidence_only_close_factor_mining_route",
+  "promoted": false,
+  "formal_submission_changed": false,
+  "formal_submission_experiment": "exp_024b_retrieval_exploratory",
+  "formal_submission_sha256": "6ff796c7c222bb3e9a55077014c1fc885dca368e3ac1bd29aecafb4e58e2be55",
+  "submission_budget_2026-08-24": {
+    "used": 1,
+    "remaining": 2,
+    "daily_limit": 3,
+    "note": "reconfirm_with_user_before_any_further_submission"
+  },
+  "source": "user_reported_and_recorded_in_exp031b_metrics"
+}

@@ -1,0 +1,134 @@
+{
+  "experiment": "exp_031b_factor_mined_candidate",
+  "decision": "online_rejected_evidence_only",
+  "authorization": "user_authorized_exploratory_candidate_2026-08-24",
+  "baseline": "exp023h_ultimate_surgery (container identical to exp024b)",
+  "difference_from_exp024b": "feature_contract extended 31 -> 35 (4 mined rank-diff factors from exp031a)",
+  "frozen_parameters": {
+    "neighbors": 32,
+    "candidate_shrink_alpha": 0.1,
+    "preserve_exp023h_first_sections": 6,
+    "state_pca_components": 16
+  },
+  "factor_specs": [
+    {
+      "a": 1,
+      "b": 0,
+      "kind": "diff"
+    },
+    {
+      "a": 1,
+      "b": 2,
+      "kind": "diff"
+    },
+    {
+      "a": 1,
+      "b": 10,
+      "kind": "diff"
+    },
+    {
+      "a": 1,
+      "b": 4,
+      "kind": "diff"
+    }
+  ],
+  "factor_names": [
+    "diff_1_0",
+    "diff_1_2",
+    "diff_1_10",
+    "diff_1_4"
+  ],
+  "features": [
+    "num_8",
+    "num_57",
+    "num_41",
+    "num_68",
+    "num_39",
+    "num_40",
+    "num_73",
+    "num_48",
+    "num_74",
+    "num_86",
+    "num_38",
+    "num_3",
+    "num_42",
+    "num_71",
+    "num_87",
+    "num_4",
+    "num_55",
+    "num_85",
+    "num_75",
+    "num_56",
+    "num_76",
+    "num_67",
+    "num_88",
+    "num_61",
+    "num_79",
+    "num_1",
+    "num_84",
+    "num_15",
+    "num_60",
+    "num_64",
+    "num_43",
+    "diff_1_0",
+    "diff_1_2",
+    "diff_1_10",
+    "diff_1_4"
+  ],
+  "prediction": "prediction_1.npy",
+  "prediction_sha256": "8d9dd658a195bf581ac9af1eabdc7762853ad4ba1425ee9c0819944adaf7e1c2",
+  "contract": {
+    "shape": [
+      442,
+      5282
+    ],
+    "dtype": "float32",
+    "finite": true,
+    "evaluation_count": 2042538,
+    "non_evaluation_count": 292106,
+    "non_evaluation_all_0_5": true,
+    "minimum": 0.0,
+    "maximum": 1.0
+  },
+  "preserved_first_sections": 6,
+  "changed_sections_vs_exp023h": 436,
+  "per_time_rank_correlation_to_exp023h": {
+    "mean": 0.9976569917222554,
+    "min": 0.9944104830662436
+  },
+  "per_time_rank_correlation_to_exp024b": {
+    "mean": 0.9994758752034765,
+    "min_all_sections": 0.9964360532757368,
+    "min_corrected_sections": 0.9964360532757368,
+    "gate": 0.995
+  },
+  "delivery_gate": {
+    "contract_finite": true,
+    "min_rank_correlation_to_exp024b": 0.9964360532757368,
+    "protected_unchanged": true,
+    "passed": true
+  },
+  "protected_hashes_before": {
+    "exp021_prediction": "acd8ae2411f3b96ff01538face5a861b22f87443298194f5376b8e12d8e278b2",
+    "exp023h_prediction": "2fb9021f97d21827eee7102ddd386af7ce3b32fe4be14fcdbe9782860ee84877",
+    "exp024b_prediction": "6ff796c7c222bb3e9a55077014c1fc885dca368e3ac1bd29aecafb4e58e2be55",
+    "formal_submission": "6ff796c7c222bb3e9a55077014c1fc885dca368e3ac1bd29aecafb4e58e2be55"
+  },
+  "protected_hashes_after": {
+    "exp021_prediction": "acd8ae2411f3b96ff01538face5a861b22f87443298194f5376b8e12d8e278b2",
+    "exp023h_prediction": "2fb9021f97d21827eee7102ddd386af7ce3b32fe4be14fcdbe9782860ee84877",
+    "exp024b_prediction": "6ff796c7c222bb3e9a55077014c1fc885dca368e3ac1bd29aecafb4e58e2be55",
+    "formal_submission": "6ff796c7c222bb3e9a55077014c1fc885dca368e3ac1bd29aecafb4e58e2be55"
+  },
+  "test_labels_loaded": false,
+  "automatic_online_submission": false,
+  "elapsed_s": 59.3,
+  "online_submission": {
+    "submitted_by": "user_manual_upload_2026-08-24",
+    "online_score": 0.120632,
+    "baseline_exp024b_online_score": 0.120847,
+    "online_delta_vs_exp024b": -0.000215,
+    "outcome": "online_rejected_micro_regression",
+    "formal_submission_reverted_to_exp024b": true
+  }
+}

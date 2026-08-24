@@ -1,0 +1,6 @@
+{
+  "status": "completed_rejected",
+  "causal_status": "compliant_diagnostic_no_test_labels",
+  "baseline_note": "reference replicates exp024a retrieval protocol exactly (same seed/params)",
+  "formal_submission_overwritten": false
+}

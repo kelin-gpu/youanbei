@@ -1,0 +1,19 @@
+{
+  "experiment": "exp_030b_frozen_history_diagnostic",
+  "frozen_parameters": {
+    "alpha_grid": [
+      0.05,
+      0.1,
+      0.15
+    ],
+    "history_window_grid_sections": [
+      10,
+      20,
+      40
+    ],
+    "selection_rule": "max pooled fold2+fold3 subject to fold gates and momentum>shuffled",
+    "chosen_alpha": null,
+    "chosen_history_w": null,
+    "pooled_fold2_fold3_delta": null
+  }
+}

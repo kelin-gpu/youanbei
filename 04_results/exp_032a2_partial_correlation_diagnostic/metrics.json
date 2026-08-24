@@ -1,0 +1,153 @@
+{
+  "experiment": "exp_032a2_partial_correlation_diagnostic",
+  "decision": "unstable_signal",
+  "measure": "partialIC = mean_section(r_fy - r_fb * r_by); amended per 20260824_exp032a2 decision log",
+  "passed": false,
+  "gates": {
+    "g1_signal_pool_exists": true,
+    "g2_partial_signal": true,
+    "g3_valid_transfer": true,
+    "g4_stability_worst_block": false,
+    "g5_protected_hashes_unchanged": true
+  },
+  "counts": {
+    "candidates_total": 257,
+    "pool_pass": 124,
+    "qualified": 16
+  },
+  "family_breakdown": {
+    "F1_rank_unused59": 22,
+    "F2_z20": 48,
+    "F3_z60": 54,
+    "qualified_F1": 2,
+    "qualified_F2": 5,
+    "qualified_F3": 9
+  },
+  "base_ic_by_window": {
+    "fold2": 0.12267639638442772,
+    "fold3": 0.10029517881648092,
+    "valid": 0.09180860780470396
+  },
+  "qualified_features": [
+    {
+      "feature": "F1_rank_num46",
+      "rawIC_pooled": 0.02067,
+      "basecorr_valid": 0.12067,
+      "partial_valid": 0.00592
+    },
+    {
+      "feature": "F1_rank_num58",
+      "rawIC_pooled": -0.02248,
+      "basecorr_valid": -0.20602,
+      "partial_valid": 0.00509
+    },
+    {
+      "feature": "F2_z20_num31",
+      "rawIC_pooled": -0.01836,
+      "basecorr_valid": -0.04522,
+      "partial_valid": -0.00563
+    },
+    {
+      "feature": "F2_z20_num42",
+      "rawIC_pooled": -0.0144,
+      "basecorr_valid": -0.12647,
+      "partial_valid": 0.00641
+    },
+    {
+      "feature": "F2_z20_num43",
+      "rawIC_pooled": -0.02646,
+      "basecorr_valid": -0.07315,
+      "partial_valid": -0.00809
+    },
+    {
+      "feature": "F2_z20_num56",
+      "rawIC_pooled": 0.01535,
+      "basecorr_valid": 0.02501,
+      "partial_valid": 0.00997
+    },
+    {
+      "feature": "F2_z20_num71",
+      "rawIC_pooled": -0.02299,
+      "basecorr_valid": -0.07337,
+      "partial_valid": -0.00874
+    },
+    {
+      "feature": "F3_z60_num3",
+      "rawIC_pooled": 0.02002,
+      "basecorr_valid": 0.10508,
+      "partial_valid": 0.01094
+    },
+    {
+      "feature": "F3_z60_num7",
+      "rawIC_pooled": -0.05036,
+      "basecorr_valid": -0.29152,
+      "partial_valid": -0.00654
+    },
+    {
+      "feature": "F3_z60_num8",
+      "rawIC_pooled": -0.0529,
+      "basecorr_valid": -0.32423,
+      "partial_valid": -0.01006
+    },
+    {
+      "feature": "F3_z60_num38",
+      "rawIC_pooled": -0.03782,
+      "basecorr_valid": -0.15888,
+      "partial_valid": -0.00722
+    },
+    {
+      "feature": "F3_z60_num41",
+      "rawIC_pooled": -0.04506,
+      "basecorr_valid": -0.15525,
+      "partial_valid": -0.0067
+    },
+    {
+      "feature": "F3_z60_num67",
+      "rawIC_pooled": -0.01347,
+      "basecorr_valid": -0.05404,
+      "partial_valid": -0.00964
+    },
+    {
+      "feature": "F3_z60_num68",
+      "rawIC_pooled": -0.03289,
+      "basecorr_valid": -0.14951,
+      "partial_valid": -0.00817
+    },
+    {
+      "feature": "F3_z60_num69",
+      "rawIC_pooled": -0.03103,
+      "basecorr_valid": -0.15128,
+      "partial_valid": -0.00768
+    },
+    {
+      "feature": "F3_z60_num72",
+      "rawIC_pooled": -0.03253,
+      "basecorr_valid": -0.13462,
+      "partial_valid": -0.00668
+    }
+  ],
+  "aligned_valid_partial_mean": 0.007716863359168841,
+  "valid_worst32_block": -0.009821957444650455,
+  "valid_loo_positive_ratio": 1.0,
+  "sections_per_window": {
+    "fold2": 487,
+    "fold3": 486,
+    "valid": 243
+  },
+  "protected_hashes_before": {
+    "exp021_prediction": "acd8ae2411f3b96ff01538face5a861b22f87443298194f5376b8e12d8e278b2",
+    "exp023h_prediction": "2fb9021f97d21827eee7102ddd386af7ce3b32fe4be14fcdbe9782860ee84877",
+    "exp024b_prediction": "6ff796c7c222bb3e9a55077014c1fc885dca368e3ac1bd29aecafb4e58e2be55",
+    "formal_submission": "6ff796c7c222bb3e9a55077014c1fc885dca368e3ac1bd29aecafb4e58e2be55"
+  },
+  "protected_hashes_after": {
+    "exp021_prediction": "acd8ae2411f3b96ff01538face5a861b22f87443298194f5376b8e12d8e278b2",
+    "exp023h_prediction": "2fb9021f97d21827eee7102ddd386af7ce3b32fe4be14fcdbe9782860ee84877",
+    "exp024b_prediction": "6ff796c7c222bb3e9a55077014c1fc885dca368e3ac1bd29aecafb4e58e2be55",
+    "formal_submission": "6ff796c7c222bb3e9a55077014c1fc885dca368e3ac1bd29aecafb4e58e2be55"
+  },
+  "test_labels_loaded": false,
+  "prediction_generated": false,
+  "online_submission_used": false,
+  "elapsed_s": 420.5
+}

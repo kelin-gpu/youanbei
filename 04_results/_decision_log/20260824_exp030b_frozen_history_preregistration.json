@@ -1,0 +1,50 @@
+{
+  "date": "2026-08-24",
+  "experiment": "exp_030b_frozen_history_applicability",
+  "author": "session_research_branch",
+  "context": "exp030a 全部门槛通过(概念组残差动量,pooled fold2+fold3 +0.006373,official valid +0.006156,优于 shuffled 负对照)。但 exp030a 的信号使用滚动历史(截面 t 的历史 = t 前 W 个截面),Test 段标签不可得、历史无法滚动。本诊断检验冻结历史变体:每个评估窗口内所有截面共用『窗口开始前 W 个截面』的组残差快照,精确模拟 Test 部署形态(历史冻结在 [3151,3161) 对全部 442 个 Test 截面)。",
+  "mechanism": "per window [start,stop): frozen history = sections [start-W, start); signal for every t in window built from that single snapshot via current-section category mapping; candidate = (1-alpha)*rank01(base) + alpha*rank01(signal)",
+  "window_frozen_snapshots": {
+    "fold_2": "[1935,1945)",
+    "fold_3": "[2422,2432)",
+    "official_valid": "[2908,2918)",
+    "fold_1_note": "skipped: proxy history only exists from 1459, no clean pre-window snapshot for fold_1"
+  },
+  "preregistered_parameters": {
+    "alpha_grid": [0.05, 0.10, 0.15],
+    "history_window_grid_sections": [10, 20, 40],
+    "negative_control": "shuffled (same permutation protocol as exp030a)",
+    "random_seed": 20260824,
+    "selection_rule": "choose (alpha, W) maximizing pooled fold2+fold3 mean delta subject to fold2>0, fold3>0, min rank corr>=0.995 on both folds, worst 32-section block>=-0.002 on both folds, momentum pooled > shuffled pooled",
+    "holdout": "official valid evaluated once with frozen parameters",
+    "tie_rule": "smaller alpha wins ties"
+  },
+  "acceptance_gates": {
+    "any_combo_eligible_on_folds": true,
+    "momentum_beats_shuffled_on_fold2_fold3_pooled": true,
+    "official_valid_pooled_delta_nonnegative": true,
+    "official_valid_second_half_delta_nonnegative": true,
+    "official_valid_worst_32_section_block_at_least_-0_002": true,
+    "official_valid_rank_correlation_min_0_995": true,
+    "leave_one_block_out_delta_positive_ratio_at_least_0_75": true,
+    "protected_hashes_unchanged": true
+  },
+  "decay_reporting": "per-section distance_from_snapshot recorded; mean delta by distance quartile reported for official valid (243 sections) as horizon-extrapolation evidence toward Test's 442 sections; no gate on decay itself",
+  "stop_rules": [
+    "任何门槛失败:结论为『信号真实但冻结部署不成立』,不生成 Test 候选;滚动递归自举部署需用户另行决策",
+    "不以事后扩大网格或改用混合冻结/滚动复活",
+    "若全部通过:立即以冻结参数生成 exp030c Test 候选(底座 exp024b,前 6 截面保留),仍不自动提交、不覆盖正式文件"
+  ],
+  "compliance": {
+    "no_future_features": "每个窗口的冻结快照严格在窗口开始之前;Test 部署时快照=[3151,3161) valid 已知标签",
+    "test_labels": "不加载 Test 标签",
+    "protected_files": [
+      "04_results/exp_021_retrain_head_router/prediction_1.npy",
+      "04_results/exp_023h_ultimate_surgery/prediction_1.npy",
+      "04_results/exp_024b_retrieval_exploratory/prediction_1.npy",
+      "04_results/final_submission/prediction.npy"
+    ],
+    "automatic_online_submission": false
+  },
+  "expected_runtime_minutes": 8
+}

@@ -1,0 +1,68 @@
+{
+  "date": "2026-08-24",
+  "experiment": "exp_031_factor_mining_exp024b_container",
+  "author": "session_research_branch",
+  "hypothesis": "在 exp024b 容器(状态检索+指纹打分)的 31 个 registry-allowed 特征之上,存在由因果截面算子组合而成的协同因子:将其作为额外指纹列并入 feature_contract 后,检索校正器在 fold2+fold3 的 pooled delta 提升,且 official Valid 不退化。因子只用当截面 X(t),与 exp030(需标签滚动,不可部署)和 exp028a(实体轴,线上否决)完全不同。",
+  "mining_design": {
+    "implementation": "确定性枚举+两阶段(无 GP 随机性,无新依赖):阶段1按 pooled IC 筛选,阶段2贪心协同性评估",
+    "leaf_pool": "31 个 registry-allowed(stable_keep/rank_or_robust_transform)数值特征,与 exp024b feature_contract 完全同池,不引入漂移特征",
+    "operator_scope": "仅截面算子(rank01、差、积、概念组相对、绝对偏离);排除 lag/时序算子(train 截面非满网格 1208-3815 行,且 lag 结构已被 exp023 系列否决)",
+    "templates": {
+      "T1_rank": "rank01(f_j), j in 31",
+      "T2_diff": "rank01(f_a) - rank01(f_b), a<b in TOP16",
+      "T3_prod": "(rank01(f_a)-0.5)*(rank01(f_b)-0.5), a<b in TOP16",
+      "T4_concept": "rank01(f_j) - groupmean_{cat_k}(rank01(f_j)), j in TOP16, k in 9 类别列 408-416",
+      "T5_absdev": "|rank01(f_j) - 0.5|, j in TOP16"
+    },
+    "TOP16_rule": "T1 按 pooled fold2+fold3 平均截面 Spearman IC 绝对值排序取前 16",
+    "screening": {
+      "metric": "capped 截面(≤1024 行,与 exp024a 同)上逐截面 Spearman(factor, y),fold2/fold3 pooled 平均",
+      "floor": "|pooled IC| >= 0.005 且 fold2/fold3 符号一致且与 pooled 同号",
+      "output": "过线候选按 |pooled IC| 降序取前 12 进入贪心"
+    },
+    "greedy": {
+      "start": "reference = 31 基础特征(完整复现 exp024a 检索协议)",
+      "step": "按筛选顺序逐个尝试并入;若 pooled fold2+fold3 retrieval delta 相对当前最优提升 > 1e-6 则保留",
+      "stop": "连续 3 个不提升或保留数达 4",
+      "container_params_frozen": "PCA16, K=32, alpha=0.1, robust_scaler(10,90), seed 20260823, 库=train sections(times<window_start), exp024a 同款窗口"
+    },
+    "nan_policy": "与 exp024b 容器一致:rank_columns(scipy rankdata,NaN 排序置顶),不做额外 NaN 特判"
+  },
+  "acceptance_gates": {
+    "g1_screening_floor_met": "至少 1 个候选过筛选线,否则路线关闭(no_factor_above_floor)",
+    "g2_greedy_improvement": "最终子集 pooled fold2+fold3 retrieval delta > reference pooled,否则关闭(no_synergistic_factor)",
+    "g3_valid_holdout_nonnegative": "official Valid 上最终子集 candidate_mean_ic >= reference candidate_mean_ic",
+    "g4_valid_worst32_relative": "valid 逐截面相对 delta(final-reference) 最差 32 截面块 >= -0.002",
+    "g5_valid_loo_positive_ratio": "valid 相对 delta 的 8 块 LOO 正率 >= 0.75",
+    "g6_container_sanity": "最终子集 retrieval > random 对照(valid 窗口)",
+    "g7_protected_hashes_unchanged": true
+  },
+  "reference_replication_check": "reference 的 fold2/fold3/valid retrieval delta 应与 exp024a metrics.json 数值一致(软校验,仅记录;不一致则人工排查后再继续)",
+  "exp031b_if_gates_pass": {
+    "structure": "完整复刻 run_exp024b.py,唯一差异=feature_contract 扩展 31+挖掘因子(factor_lib 计算)",
+    "params": "base=exp023h, alpha=0.1, K=32, PCA16, preserve_first_6_sections, library=train+valid, seed 20260823",
+    "outputs": "04_results/exp_031b_factor_mined_candidate/prediction_1.npy + metrics/metadata/per_time",
+    "safety": "validate_prediction 契约必须通过;与 exp024b 预测逐截面秩相关 min >= 0.995;保护文件哈希不变;不自动提交"
+  },
+  "stop_rules": [
+    "g1 或 g2 失败:路线以 no_factor_above_floor / no_synergistic_factor 关闭,不扩大模板、不放宽筛选线复活",
+    "g3-g6 任一失败:因子保留在诊断记录中,不生成 exp031b,不提交",
+    "official valid 只做冻结参数单次保留验证",
+    "线上提交仅由用户决定"
+  ],
+  "compliance": {
+    "no_future_features": "因子仅由当截面 X(t) 列(数值 31 池 + 类别 408-416)计算;检索库只用 s<t 截面",
+    "test_labels": "exp031a 不加载 Test 标签;exp031b 仅在门槛全过后运行",
+    "protected_files": [
+      "04_results/exp_021_retrain_head_router/prediction_1.npy",
+      "04_results/exp_023h_ultimate_surgery/prediction_1.npy",
+      "04_results/exp_024b_retrieval_exploratory/prediction_1.npy",
+      "04_results/final_submission/prediction.npy"
+    ],
+    "automatic_online_submission": false,
+    "new_dependencies": "none (numpy/scipy/sklearn only)"
+  },
+  "expected_runtime_minutes": 40,
+  "expected_outcome_if_true": "扩展指纹校正器在 fold 与 valid 同时不退化,生成 exp031b 候选供用户决定是否消耗线上额度",
+  "expected_outcome_if_false": "31 特征指纹已是该容器上限,因子挖掘路线以确定性证据关闭,项目按 exp024b 收官"
+}

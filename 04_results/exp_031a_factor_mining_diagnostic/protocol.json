@@ -1,0 +1,37 @@
+{
+  "experiment": "exp_031a_factor_mining_diagnostic",
+  "frozen_container_params": {
+    "pca_components": 16,
+    "neighbors": 32,
+    "alpha": 0.1,
+    "pca_seed": 20260823
+  },
+  "final_factor_specs": [
+    {
+      "a": 1,
+      "b": 0,
+      "kind": "diff"
+    },
+    {
+      "a": 1,
+      "b": 2,
+      "kind": "diff"
+    },
+    {
+      "a": 1,
+      "b": 10,
+      "kind": "diff"
+    },
+    {
+      "a": 1,
+      "b": 4,
+      "kind": "diff"
+    }
+  ],
+  "final_factor_names": [
+    "diff_1_0",
+    "diff_1_2",
+    "diff_1_10",
+    "diff_1_4"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "experiment": "exp_032a_raw_feature_diagnostic",
+  "decision": "no_orthogonal_signal",
+  "passed": false,
+  "gates": {
+    "g1_signal_pool_exists": true,
+    "g2_residual_signal": false,
+    "g3_valid_transfer": true,
+    "g4_stability_worst_block": false,
+    "g5_protected_hashes_unchanged": true
+  },
+  "counts": {
+    "candidates_total": 297,
+    "pool_pass": 124,
+    "qualified": 1
+  },
+  "family_breakdown": {
+    "F1_rank_unused59": 22,
+    "F2_z20": 48,
+    "F3_z60": 54
+  },
+  "qualified_features": [
+    {
+      "feature": "F1_rank_num10",
+      "rawIC_pooled": 0.01457,
+      "residIC_valid": 0.03439
+    }
+  ],
+  "valid_residual_mean": 0.034393942580351895,
+  "valid_worst32_block": -0.07682580348088011,
+  "valid_loo_positive_ratio": 1.0,
+  "sections_per_window": {
+    "fold2": 487,
+    "fold3": 486,
+    "valid": 243
+  },
+  "protected_hashes_before": {
+    "exp021_prediction": "acd8ae2411f3b96ff01538face5a861b22f87443298194f5376b8e12d8e278b2",
+    "exp023h_prediction": "2fb9021f97d21827eee7102ddd386af7ce3b32fe4be14fcdbe9782860ee84877",
+    "exp024b_prediction": "6ff796c7c222bb3e9a55077014c1fc885dca368e3ac1bd29aecafb4e58e2be55",
+    "formal_submission": "6ff796c7c222bb3e9a55077014c1fc885dca368e3ac1bd29aecafb4e58e2be55"
+  },
+  "protected_hashes_after": {
+    "exp021_prediction": "acd8ae2411f3b96ff01538face5a861b22f87443298194f5376b8e12d8e278b2",
+    "exp023h_prediction": "2fb9021f97d21827eee7102ddd386af7ce3b32fe4be14fcdbe9782860ee84877",
+    "exp024b_prediction": "6ff796c7c222bb3e9a55077014c1fc885dca368e3ac1bd29aecafb4e58e2be55",
+    "formal_submission": "6ff796c7c222bb3e9a55077014c1fc885dca368e3ac1bd29aecafb4e58e2be55"
+  },
+  "test_labels_loaded": false,
+  "prediction_generated": false,
+  "online_submission_used": false,
+  "elapsed_s": 640.9
+}

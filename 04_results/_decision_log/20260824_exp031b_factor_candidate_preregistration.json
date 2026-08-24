@@ -1,0 +1,52 @@
+{
+  "date": "2026-08-24",
+  "experiment": "exp_031b_factor_mined_candidate",
+  "author": "session_research_branch",
+  "authorization": "用户于 2026-08-24 明确授权生成探索性候选,镜像 exp024b 先例(exp024a 鲁棒门槛未全过但用户授权探索性提交,线上 +0.001187 兑现)",
+  "context": "exp031a 诊断结果:g1-g5/g7 通过(贪心保留 4 个秩差因子 diff_1_0/diff_1_2/diff_1_10/diff_1_4,fold pooled -0.001668→-0.001360,official Valid 0.092445→0.092808,LOO 正率 1.0,exp024a 协议复现 match=True);唯 g6(检索>随机对照)失败,但该性质为 exp024b 容器固有(exp024a 原始记录 random 0.093585 > 检索 0.092445),且因子把差距从 -0.001140 收窄到 -0.000485",
+  "structure": "完整复刻 run_exp024b.py,唯一差异 = feature_contract 扩展为 31 基础列 + 4 个挖掘因子列(factor_lib.compute_factor 计算,与 exp031a 诊断同一实现保证位一致)",
+  "frozen_parameters": {
+    "base_prediction": "exp023h prediction_1.npy",
+    "alpha": 0.1,
+    "neighbors_K": 32,
+    "pca_components": 16,
+    "pca_seed": 20260823,
+    "robust_scaler_quantiles": [10, 90],
+    "preserve_first_6_sections_verbatim": true,
+    "retrieval_library": "train + valid 全部已知截面(标签止于 3160)",
+    "factor_specs": [
+      {"kind": "diff", "a": 1, "b": 0},
+      {"kind": "diff", "a": 1, "b": 2},
+      {"kind": "diff", "a": 1, "b": 10},
+      {"kind": "diff", "a": 1, "b": 4}
+    ],
+    "factor_source": "04_results/exp_031a_factor_mining_diagnostic/protocol.json final_factor_specs"
+  },
+  "acceptance_criteria_before_delivery": {
+    "contract_validation_must_pass": "442x5282 维度,2,042,538 评估位置,非评估位置全 0.5(与项目契约一致)",
+    "rank_correlation_to_exp024b_min_0_995": "逐截面 Spearman(exp031b, exp024b) 最低值 >= 0.995",
+    "protected_hashes_unchanged": true,
+    "no_auto_submission": true
+  },
+  "expected_behavior": {
+    "first_6_sections": "与 exp023h/exp024b 逐位相同(锚点射程内)",
+    "remaining_436_sections": "检索校正分数基于 35 维扩展指纹(31+4),校正项与 exp024b 部分重合部分新增",
+    "expected_valid_side_evidence": "official Valid +0.000363(诊断外推),线上期望为正向但不确定(g6 警示仍在)"
+  },
+  "stop_rules": [
+    "契约验证或秩相关门槛失败:不交付预测文件,报告失败原因",
+    "秩相关 <0.995 视为偏离容器过远,同上",
+    "线上提交由用户手动执行,本脚本只生成本地候选"
+  ],
+  "compliance": {
+    "no_future_features": "因子仅由当截面 X(t) 列计算;检索库只用已知标签截面(s<=3160);Test 标签不加载",
+    "protected_files": [
+      "04_results/exp_021_retrain_head_router/prediction_1.npy",
+      "04_results/exp_023h_ultimate_surgery/prediction_1.npy",
+      "04_results/exp_024b_retrieval_exploratory/prediction_1.npy",
+      "04_results/final_submission/prediction.npy"
+    ],
+    "automatic_online_submission": false
+  },
+  "expected_runtime_minutes": 15
+}

@@ -1,0 +1,9 @@
+{
+  "status": "online_rejected_evidence_only",
+  "causal_status": "compliant_claim_and_contract_recorded",
+  "formal_submission_overwritten": false,
+  "baseline_overwritten": false,
+  "warning": "exp031a failed gate g6 (a pre-existing container property); submit only as a user-authorized exploratory probe, mirroring the exp024b precedent",
+  "online_score": 0.120632,
+  "online_delta_vs_exp024b": -0.000215
+}

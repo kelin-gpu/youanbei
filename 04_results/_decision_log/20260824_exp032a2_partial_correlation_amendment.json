@@ -1,0 +1,27 @@
+{
+  "date": "2026-08-24",
+  "experiment": "exp_032a2_partial_correlation_amendment",
+  "author": "session_research_branch",
+  "type": "protocol_amendment_to_exp032a",
+  "trigger": "exp032a 的 residIC 度量被证明存在数学缺陷,不能度量增量价值",
+  "evidence_of_flaw": {
+    "decomposition": "对 pool 前列特征分解显示 corr(f,base) 达 -0.28~-0.49 而 corr(f,y) 仅 -0.03~-0.06:exp021 底座沿这些原始特征方向存在约 10 倍于真实信号的系统性倾斜",
+    "paradox": "resid = y - base 因此含有底座倾斜的镜像分量,使 corr(f,resid) 虚高至 0.2-0.34;但按该方向做线性校正后 corr(校正, y) 从 0.107 降至 0.096(验证计算:var(p)=0.801, cov(p,y)=0.086),证明 residIC 解释的不是可转化为 Spearman 改善的信号,而是底座自身方差结构",
+    "conclusion": "residIC 不是增量价值的正确度量;g2 的失败判定无效,需以正确度量重判"
+  },
+  "corrected_measure": {
+    "definition": "partialIC = 窗口内逐截面 (r_fy - r_fb * r_by) 的均值(一阶秩混合改善方向,r_* 为该截面的 Spearman)",
+    "justification": "对 pred = base + w*g 的一阶展开 d corr/dw |_{w=0} 正比于 r_gy - r_by*r_gb,即偏相关分子;这是秩混合目标下增量价值的精确一阶度量",
+    "direction_rule": "晋级方向 = partialIC 的符号(不再要求与 rawIC 同号;底座倾斜调整型特征同样有效)"
+  },
+  "amended_gates": {
+    "g1_signal_pool_exists": "不变:pool(|rawIC pooled|>=0.01 且 fold2/fold3 同号)>= 20",
+    "g2_partial_signal": "|partialIC| >= 0.005 且 fold2/fold3/valid 三窗口同号的列 >= 10(门槛数值不变,度量修正)",
+    "g3_valid_transfer": "合格列 valid partialIC 均值(按各自方向)> 0",
+    "g4_stability": "合格列方向对齐后的 valid 逐截面 partial 序列最差 32 截面块 >= -0.002",
+    "g5_protected_hashes_unchanged": "不变"
+  },
+  "integrity_note": "本修正在查看 decompose 诊断表后提出,但修正依据是数学矛盾(residIC 校正降低 corr)而非结果拟合;修正后的度量在示例特征上给出的 partialIC 量级(0.007-0.025)既可能通过也可能不通过,不做任何针对性调整。exp032a 原始记录保留作为度量缺陷的文档。",
+  "phase_d_if_gates_pass": "不变:扩展 tabular 重训,另行预注册",
+  "compliance": "不变:零训练、零预测输出、零提交、保护文件哈希核验"
+}

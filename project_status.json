@@ -51,7 +51,7 @@
     "manifest_sha256": "f7c4076de6e3ae7d631554df5a15f69f50d7e8f676249fb6d2d4cf71ccec8c6f"
   },
   "innovation_readiness": {
-    "status": "target_achieved_formally_promoted_exp028_online_rejected",
+    "status": "target_achieved_exp024b_formal_exp029_to_exp032_routes_closed",
     "test_history": "04_results/_acceptance/test_history_audit.json",
     "feature_registry": "04_results/_acceptance/drift_feature_registry.csv",
     "exp021_full_valid_audit": "04_results/_acceptance/exp021_validation_audit/metrics.json",
@@ -61,11 +61,20 @@
       "exp025a": "completed_rejected",
       "exp026a": "completed_rejected",
       "exp027a": "completed_rejected_inconclusive_keep_exp024b",
-      "exp028a": "online_rejected_0.110966"
+      "exp028a": "online_rejected_0.110966",
+      "exp029a": "completed_rejected_stop_neutralization_route",
+      "exp030a": "completed_signal_confirmed_not_deployable",
+      "exp030b": "completed_rejected_frozen_deployment_unsupported",
+      "exp031a": "completed_rejected_g6_container_sanity",
+      "exp031b": "online_rejected_0.120632",
+      "exp032a": "completed_rejected_measure_flaw_documented",
+      "exp032a2": "completed_rejected_unstable_signal"
     },
-    "next_experiment": "none_pending_user_direction",
+    "next_experiment": "none_all_preregistered_exp029_to_exp032_routes_stopped",
     "online_submissions_used_on_2026-08-23": 2,
     "online_submissions_remaining_on_2026-08-23": 1,
+    "online_submissions_used_on_2026-08-24": 1,
+    "online_submissions_remaining_on_2026-08-24": 2,
     "exploratory_candidate": {
       "experiment": "exp_024b_retrieval_exploratory",
       "prediction": "04_results/exp_024b_retrieval_exploratory/prediction_1.npy",
@@ -73,5 +82,5 @@
       "status": "submitted_online_best_0.120847"
     }
   },
-  "last_reviewed": "2026-08-23"
+  "last_reviewed": "2026-08-24"
 }

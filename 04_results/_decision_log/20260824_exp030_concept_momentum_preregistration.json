@@ -1,0 +1,60 @@
+{
+  "date": "2026-08-24",
+  "experiment": "exp_030a_concept_momentum_diagnostic",
+  "author": "session_research_branch",
+  "hypothesis": "截面交互信号(概念共享信息)真实存在:股票 i 的基线残差可由其所属概念组(9 个类别特征各自定义的分组,HIST 式预定义概念)的近期历史平均残差预测。若组级残差动量在四窗口稳定为正并优于 shuffled 负对照,才允许考虑训练截面注意力专家(方案 C 第二阶段,需用户另行授权);否则关闭截面交互路线。",
+  "mechanism": "per-section t, for each categorical feature k and value v: R_kv(t) = mean over trailing W sections s<t of [mean residual of group (k,v) members at s], z-scored across groups present at t; signal_i = mean_k z_{k,v_k(i)}(t); candidate = (1-alpha)*rank01(base) + alpha*rank01(signal)",
+  "distinction_from_rejected_routes": {
+    "exp028a_entity_axis": "exp028a 是个股身份残差(每股一组,收缩系数过强被线上否决);本诊断是概念组聚合残差(每组约 165-440 只股票,噪声结构不同),且零训练、无矩估计",
+    "exp024b_feature_axis": "exp024b 检索的是历史截面的特征-标签指纹(哪些特征此刻有效);本诊断是组级残差动量(哪些组近期被系统性低/高估),机制不同",
+    "exp029a_exposure_axis": "exp029a 扣除特征暴露;本诊断加入组残差历史信号"
+  },
+  "preregistered_parameters": {
+    "alpha_grid": [0.05, 0.10, 0.15],
+    "history_window_grid_sections": [10, 20, 40],
+    "min_history_sections": 5,
+    "group_sources": "tree categorical columns 408-416 (9 features, per-section membership from X(t), causal)",
+    "nan_category_policy": "stock contributes 0 signal from that column when its category is non-finite",
+    "negative_control": "shuffled: same signal values permuted across stocks within each section (seeded), same alpha blending",
+    "random_seed": 20260824,
+    "selection_rule": "choose (alpha, W) maximizing pooled fold2+fold3 mean delta subject to fold2>0, fold3>0, min rank corr>=0.995 on both folds, worst 32-section block>=-0.002 on both folds, momentum pooled > shuffled pooled on fold2+fold3",
+    "holdout": "official valid [2918,3161) evaluated once with frozen parameters",
+    "tie_rule": "smaller alpha wins ties"
+  },
+  "evaluation_windows": {
+    "fold_1": [1459, 1945],
+    "fold_2": [1945, 2432],
+    "fold_3": [2432, 2918],
+    "official_valid": [2918, 3161]
+  },
+  "baseline_note": "fold windows use exp016 static strict-OOF proxy on capped 1024-row samples (same as exp024a/029a); official valid uses frozen exp021 full valid prediction; valid-window history mixes train OOF proxy residuals [1459,2918) and valid residuals [2918,t), all labels s<t",
+  "acceptance_gates": {
+    "any_combo_eligible_on_folds": true,
+    "momentum_beats_shuffled_on_fold2_fold3_pooled": true,
+    "official_valid_pooled_delta_nonnegative": true,
+    "official_valid_worst_32_section_block_at_least_-0_002": true,
+    "official_valid_rank_correlation_min_0_995": true,
+    "leave_one_block_out_delta_positive_ratio_at_least_0_75": true,
+    "protected_hashes_unchanged": true
+  },
+  "stop_rules": [
+    "任何门槛失败即终止,不生成 Test 预测、不训练注意力专家",
+    "不以扩大网格、更换分组来源、加权历史或 decay 复活",
+    "official valid 不用于参数选择,只做冻结参数单次保留验证",
+    "若全部通过,训练第二阶段仍需用户明确授权,本轮不自动执行"
+  ],
+  "compliance": {
+    "no_future_features": "组隶属取自 X(t) 当截面;残差历史只用 s<t 的标签与严格 OOF/冻结预测",
+    "test_labels": "不加载 Test 标签,不生成 prediction",
+    "protected_files": [
+      "04_results/exp_021_retrain_head_router/prediction_1.npy",
+      "04_results/exp_023h_ultimate_surgery/prediction_1.npy",
+      "04_results/exp_024b_retrieval_exploratory/prediction_1.npy",
+      "04_results/final_submission/prediction.npy"
+    ],
+    "automatic_online_submission": false
+  },
+  "expected_runtime_minutes": 15,
+  "expected_outcome_if_true": "组残差动量四窗口稳定为正且优于 shuffled,开启截面注意力专家训练的用户决策点",
+  "expected_outcome_if_false": "概念组残差在组级也不可迁移,截面交互路线随实体轴(exp028a)一并关闭,创新搜索转向方案 B(因子挖掘)或停手"
+}

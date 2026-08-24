@@ -1,0 +1,49 @@
+{
+  "date": "2026-08-24",
+  "experiment": "exp_032_raw_feature_family_diagnostic",
+  "author": "session_research_branch",
+  "motivation": "合规头部约 0.126 vs 本项目 0.120847,差距 0.005 几乎全部住在 436 个无标签截面的底座质量上(隐含底座差距 ~0.005)。本项目主线特征 408 维全部由 99 个原始特征中的 40 个加工而来,59 个原始特征从未进入现代栈;exp008 曾构造 raw99/cs_rank99/surprise/trend 全家桶但线上 0.101942 为多改动捆绑测试(因果补全+训练策略同时变更),exp010 加入 105 维增量特征时稳定性门槛把权重清零(effective w=0,预测退回锚点)——即该特征族从未被干净检验。旧分析显示未用 59 特征中 15 个 |IC|>=0.02(最强 num_7 -0.052)。",
+  "hypothesis": "99 个原始特征中存在被主线 408 维特征族遗漏的正交信号:对当前 exp021 底座的逐截面残差仍有稳定预测力的候选特征族。若存在,喂入 tabular 家族是最有可能补上 0.005 底座差距的杠杆;若不存在,新特征族路线以证据关闭。",
+  "data_source": "data.z(zstandard 压缩 pickle,num_x [3603,5282,99] float32,cat_x [3603,5282,9],y1/mask_x/mask_y [3603,5282]);提取区间 [1885,3161)(诊断窗口+滚动历史),提取后缓存为 npy,后续 mmap 使用",
+  "candidate_features": {
+    "F1_rank_unused59": "59 个未选中原始特征的截面 rank01(NaN 保留)",
+    "F2_zscore99_w20": "全部 99 特征的逐股 z-score:(x(t) - mean[t-20,t)) / std[t-20,t),NaN 保留(新颖性/意外族,主线仅 20 特征有 roll_change)",
+    "F3_zscore99_w60": "同上,窗口 60(长记忆新颖性)",
+    "F4_rank_used40_fresh": "已选 40 特征的截面 rank01(对照:已用信号在诊断窗口的原始强度,用于校准 F1 的相对量级;不进入晋级候选)"
+  },
+  "causality": "全部候选只用 <=t 信息:F1/F4 当截面,F2/F3 滚动窗口 [t-W,t) 闭开区间;不触碰 Test 标签;不使用 X(t+s)",
+  "diagnostic_protocol": {
+    "windows": "fold2 [1945,2432), fold3 [2432,2918), official Valid [2918,3161)",
+    "base_proxies": "fold2/fold3 用 exp024a 的 oof_proxy_parts(exp021 加权 OOF,capped 1024);valid 用 _acceptance/exp021_validation_audit/full_valid_prediction.npy(全截面)",
+    "metrics_per_candidate": "逐截面 Spearman(feature, y) 的窗口均值 = rawIC;逐截面 Spearman(feature, rank(y)-rank(base)) 的窗口均值 = residualIC",
+    "selection_rule": "晋级池 = |rawIC_fold2+fold3 pooled| >= 0.01 且 fold2/fold3 符号一致(与 exp031a 同型筛选,预先固定)"
+  },
+  "acceptance_gates": {
+    "g1_signal_pool_exists": "晋级池(F1+F2+F3 合并)规模 >= 20 列,否则 raw_family_route_closed_no_signal",
+    "g2_residual_signal": "晋级池中 residualIC 与 rawIC 同号且 |residualIC| >= 0.005 且 fold2/fold3/valid 三窗口符号一致的列 >= 10,否则 no_orthogonal_signal",
+    "g3_valid_transfer": "g2 合格列的 valid residualIC 均值 > 0,否则 local_only_not_transferable",
+    "g4_stability": "g2 合格列在 valid 的逐截面 residual IC 最差 32 截面块均值 >= -0.002,否则 unstable_signal",
+    "g5_protected_hashes_unchanged": true
+  },
+  "phase_d_if_gates_pass": "扩展 tabular 家族重训(exp020 式 categorical LightGBM,419+新族 vs 419 基线,四窗口协议验收,pooled >= +0.002 且 valid 非负才考虑线上);该阶段另行预注册",
+  "stop_rules": [
+    "g1 或 g2 失败:新特征族路线以证据关闭,记录全部诊断,不进入 phase D",
+    "g3/g4 失败:同 exp025a/029a 处理,路线记 local_only 关闭",
+    "提取阶段若内存/对齐校验失败:修复后重跑,不改变门槛",
+    "线上提交仅由用户决定,本实验零训练零提交"
+  ],
+  "compliance": {
+    "no_future_features": true,
+    "test_labels_loaded": false,
+    "protected_files": [
+      "04_results/exp_021_retrain_head_router/prediction_1.npy",
+      "04_results/exp_023h_ultimate_surgery/prediction_1.npy",
+      "04_results/exp_024b_retrieval_exploratory/prediction_1.npy",
+      "04_results/final_submission/prediction.npy"
+    ],
+    "automatic_online_submission": false,
+    "new_dependencies": "none (numpy/scipy + zstandard 已在环境)"
+  },
+  "expected_runtime_minutes": "extraction 15-25, diagnostic 10-20",
+  "memory_strategy": "data.z 解压后 ~7.5GB:压缩 pickle(3GB) -> 解压 bytes 写临时文件 -> 释放 -> 从文件 pickle.load(峰值 ~8GB) -> 切片 [1885,3161) 2.66GB -> 释放原始 -> 存缓存;全程峰值 ~11GB < 可用 15.3GB"
+}

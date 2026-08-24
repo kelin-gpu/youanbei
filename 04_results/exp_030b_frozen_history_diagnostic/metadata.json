@@ -1,0 +1,6 @@
+{
+  "status": "completed_rejected",
+  "causal_status": "compliant_diagnostic_no_test_labels",
+  "baseline_note": "frozen snapshots: fold2=[1935,1945), fold3=[2422,2432), valid=[2908,2918); fold1 skipped (no pre-window proxy history)",
+  "formal_submission_overwritten": false
+}

@@ -1,0 +1,7 @@
+{
+  "status": "completed_rejected",
+  "causal_status": "compliant_diagnostic_no_test_labels",
+  "baseline_note": "fold windows use exp016 static strict-OOF proxy; official valid uses frozen exp021 full prediction; feature axis neutralization differs from rejected entity-axis exp028a",
+  "formal_submission_overwritten": false,
+  "test_prediction_generated": false
+}

@@ -2,13 +2,13 @@
 
 本文档是本项目的可持续维护档案和复现入口。内容只使用当前工作区中能够追溯到数据文件、Notebook、源代码、缓存 manifest、结果 metadata/metrics/report 或既有用户线上记录的事实；无法确认的内容统一标记为「待补充 / 暂无记录」。相对实验目录中的局部 README，本文件负责说明整个项目的共同数据口径、实验演进、结果来源、代码组织、运行边界和提交保护规则。
 
-文档更新时间：2026-08-23（exp024b 线上突破 0.12 并经用户授权晋级正式提交）
+文档更新时间：2026-08-24（同步 exp029–032 严格诊断、exp031b 线上反馈与当前收官状态）
 
 机器可读项目状态见 [`project_status.json`](project_status.json)，实验产物登记见 [`04_results/experiment_registry.csv`](04_results/experiment_registry.csv)，只读环境/契约审计入口为 [`scripts/project_audit.py`](scripts/project_audit.py)。
 
 创新前测试复用与补测记录见 [`04_results/_acceptance/README.md`](04_results/_acceptance/README.md)；现有测试不重复执行，缺失的 exp021 全量 Valid/逐截面/高漂移验收已补齐。
 
-> **项目当前状态（2026-08-23）**
+> **项目当前状态（2026-08-24）**
 >
 > - **线上最佳成绩：`0.120847`**，来自 `exp_024b_retrieval_exploratory/prediction_1.npy`（exp023h + 固定状态检索秩校正）。
 > - **正式提交文件：`04_results/final_submission/prediction.npy`**，来源 exp024b（线上 `0.120847`，2026-08-23 人工晋级）。
@@ -16,6 +16,9 @@
 > - exp024a 的本地稳健性门槛曾失败，因此 exp024b 保留完整探索性风险记录；线上结果不反向修改历史诊断。
 > - `final_submission` 不自动覆盖；本次已取得用户明确授权并完成 exp024b 人工晋级。
 > - exp028a 个股有序残差校准在三个后置窗口全部为负，线上 RankIC `0.110966`（较 exp024b `-0.009881`）确认否决；不晋级，正式文件保持 exp024b。
+> - exp029–032 已依次检验特征暴露中性化、概念组残差动量、因子挖掘与原始特征族：可部署版本均被预注册门槛或线上反馈否决，没有新候选晋级。
+> - exp031b 为用户授权的探索性候选，线上 `0.120632`，较 exp024b `-0.000215`；这是当前已记录第二高合规分数，但状态为 evidence-only，不是正式最佳。
+> - 2026-08-24 本项目已记录 1 次人工线上提交（exp031b）；按每日 3 次上限记为已用 `1/3`、剩余 `2/3`。再次准备提交前仍须向用户确认额度有效性。
 
 ## 快速导航
 
@@ -25,19 +28,19 @@
 - 想看收官阶段（0.116→0.1197）的机制故事：阅读 [Experiment 023](#experiment-023--exp_023_tabular_upgrade-收官冲刺锚点手术系列)（未来偏移探针、递归自举、锚点手术）。
 - 想复现已有结果：阅读 [第 8 节 运行与复现实验](#8-运行与复现实验) 和 [第 10 节 复现分级与命令清单](#10-复现分级与命令清单)。
 - 想复现收官系列（0.1161→0.1197）：阅读 [10.8 exp020/021/023 收官系列运行](#108-exp020021023-收官系列运行)。
-- 想继续改良冲 0.12：阅读 [9.3 后续改良方向（含执行入口）](#93-后续改良方向含执行入口) 与 [9.2 已验证的结论](#92-已验证的结论)，先明确哪些路已被证伪。
+- 想了解突破 0.12 后的新路线及其停止依据：阅读 [9.2 已验证的结论](#92-已验证的结论) 和 [9.3 后续改良方向（含执行入口）](#93-后续改良方向含执行入口)。
 - 想读当前主线代码：阅读 [第 11 节 当前主线代码构造](#11-当前主线代码构造)，再进入 `02_experiments/exp_016_unified_expert_fusion/`。
 - 想检查提交是否安全：阅读 [第 12 节 数据、预测和提交契约](#12-数据预测和提交契约)。
 
 ## 项目一句话总结
 
-这是一个面向动态股票池的时间序列截面排序项目：使用过去信息构造因果特征和历史窗口，在每个时间截面内预测股票相对排名，以平均 RankIC 评价；实验从线性/TCN 基线逐步发展到 exp021 七家族融合栈、exp023h 锚点手术，再由 exp024b 在保持前 6 个锚点截面的同时对后 436 个截面加入固定状态检索秩校正，最终取得合规线上 RankIC `0.120847`。
+这是一个面向动态股票池的时间序列截面排序项目：使用过去信息构造因果特征和历史窗口，在每个时间截面内预测股票相对排名，以平均 RankIC 评价；实验从线性/TCN 基线发展到 exp021 七家族融合栈、exp023h 锚点手术和 exp024b 固定状态检索秩校正，取得合规线上 RankIC `0.120847`。此后 exp025–032 对目标函数、未来特征代理、检索归因、实体残差、特征中性化、概念动量、因子挖掘和原始特征族做了相互独立的严格诊断，尚无可替代 exp024b 的稳定部署方案。
 
 ```mermaid
 flowchart LR
     A["data.z\n原始数据"] --> B["01_analysis\n数据分析"]
     A --> C["processed_data_v1\n共享处理缓存"]
-    C --> D["02_experiments\nexp_001–exp_023"]
+    C --> D["02_experiments\nexp_001–exp_032"]
     D --> E["04_results\n预测、模型、指标、审计"]
     E --> F["候选提交\nprediction.npy"]
     F --> G["线上 RankIC\n当前最佳 0.120847"]
@@ -65,6 +68,8 @@ flowchart LR
 - exp016 归因审计、cat_5 消融、保守路由与 cat_5 原生类别 tabular 系列改造（exp017–021）。
 - 纯树全量基线（LightGBM/CatBoost/XGBoost 五变体）与合规边界探查（exp022）。
 - 收官冲刺：未来偏移机制探针（违规判定）、递归自举与锚点手术（exp023a–h）。
+- 突破 0.12：固定状态检索秩校正及归因（exp024/027）。
+- 后续独立诊断：直接 Spearman、合规未来代理、实体残差、特征中性化、概念组残差动量、确定性因子挖掘与原始特征族偏相关（exp025–032）。
 
 ### 1.2 当前完成进度
 
@@ -72,12 +77,12 @@ flowchart LR
 |---|---|
 | 原始数据读取与分析 | 已完成；分析输出位于 `01_analysis/outputs/` |
 | 共享处理缓存 `processed_data_v1` | 已生成，`READY` 与 `manifest.json` 存在并记录 SHA-256 |
-| 实验目录 | `exp_001`–`exp_023` 均存在；`exp_012` 还包含 framework/retrain/model-zoo/fusion 子流程；`exp_023` 为 a–h 八个子实验系列 |
-| 预测结果 | 多数实验已保存 `prediction*.npy`；`exp_005` 只有历史筛选指标；`exp_008` 缺少标准化 metrics/metadata |
+| 实验目录 | `exp_001`–`exp_032` 的现有主线均已落盘；exp029–032 包含 7 个新诊断/候选结果目录和对应预注册记录 |
+| 预测结果 | 多数已晋级或探索性实验保存 `prediction*.npy`；exp028a、exp031b 为 evidence-only；exp029/030/031a/032 均按门槛停止且未生成 Test 候选 |
 | 正式提交文件 | `04_results/final_submission/prediction.npy`，来源为 `exp_024b`（2026-08-23 人工晋级，线上 `0.120847`） |
 | 最高已记录线上成绩 | `0.120847`，来自 `exp_024b_retrieval_exploratory`（2026-08-23 用户记录） |
-| 项目阶段 | **目标已达成，exp024b 已晋级正式提交** |
-| 当前未解决问题 | exp027a 归因未能稳定区分全历史先验与状态检索；exp028a 实体残差校准三个后置窗口均负，均按门槛停止 |
+| 项目阶段 | **目标已达成，exp024b 保持正式提交；exp029–032 新路线已完成收官诊断** |
+| 当前未解决问题 | 合规头部约 `0.126` 与当前 `0.120847` 仍差约 `0.005`；exp032a2 证实原始特征族存在正交信号，但最差 32 截面块 `-0.009822`，尚无稳定可部署方案 |
 
 ### 1.3 重要口径说明
 
@@ -88,6 +93,8 @@ flowchart LR
 5. `exp_006` 存在记录口径差异：其结果目录 `metrics.json` 为 `0.088340`，旧 README 曾记录 `0.094018`。本文将两者分别标注，不擅自裁定哪一个应替代另一个。
 6. `exp_008` 的结果目录只有 `model.txt` 与 `prediction.npy`，没有标准化 `metrics.json`、`metadata.json` 和 `experiment_report.md`；其详细信息部分来自 Notebook 和旧项目记录，审计完整性低于其他实验。
 7. exp017 归因审计无独立实验目录，产物为 `04_results/exp_017/p0_findings.md`；exp023 的 b/d 两个中间子实验未提交线上。
+8. exp031b 线上 `0.120632` 是用户手动提交的探索性反馈，低于 exp024b `0.000215`；候选文件保留，但正式文件从未改变。
+9. 2026-08-24 已记录 exp031b 一次人工提交；任何后续候选在准备提交前仍须重新确认当日额度。
 
 ## 2. 数据集分析
 
@@ -358,7 +365,7 @@ flowchart LR
 - 线上 Score：`0.108105`（项目既有线上记录）
 - 提交时间：既有记录指向 2026-08-03 的历史提交记录；精确提交时间待补充
 - 排名：待补充 / 暂无记录
-- 备注：`04_results/final_submission/prediction.npy` 当前仍来自该家族；正式 metadata 的 SHA-256 为 `9d322401a2d8fedd38dea66b97578873e721f03eeb93575dbc8bdc2a1aef38e6`。
+- 备注：该实验曾是早期正式来源；当前正式文件已于 2026-08-23 经人工授权替换为 exp024b，exp003 原始预测与历史 SHA-256 仅作追溯。
 
 ### Experiment 004 — `exp_004_model_ensemble`
 
@@ -1005,7 +1012,7 @@ Notebook 的 `RUN_MODE` 默认写为 `smoke`，完整实验结果 metadata 记�
 |---|---|---|---|---|---:|---:|---|
 | exp_001 | raw `data.z` | 99 数值 | Linear SGD | 3 epochs, lr 0.02, L2 1e-5 | 0.089678 | 0.075549 | 历史基线 |
 | exp_002 | raw + sequence cache | 486 窗口，99+mask | Causal TCN | 8 epochs, hidden 32 | 0.091556 | 0.086096 | 序列基线 |
-| exp_003 | `processed_data_v1`/因果 pipeline | `legacy_328` | LGBM LambdaRank | tuned params, best iter 8 | 0.092940 | 0.108105 | 当前正式文件来源 |
+| exp_003 | `processed_data_v1`/因果 pipeline | `legacy_328` | LGBM LambdaRank | tuned params, best iter 8 | 0.092940 | 0.108105 | 历史正式来源，现已被 exp024b 替代 |
 | exp_004 | `processed_data_v1` | Linear + TCN + 328 LGBM | 秩融合 | 0.4/0.4/0.2 | 0.101285 | 0.097028 | 未通过稳定性 |
 | exp_005 | `processed_data_v1` | 328/408/419 筛选 | LGBM LambdaRank | base, 8/16/32 rounds | 0.092940（历史筛选） | 待补充 | 无 prediction |
 | exp_006 | `processed_data_v1` | `legacy_328` + 时间窗口 | LGBM LambdaRank | recent1702/r16 in metrics | 0.088340（结果目录）；0.094018（旧记录） | 0.108189 | 口径待审计 |
@@ -1037,14 +1044,23 @@ Notebook 的 `RUN_MODE` 默认写为 `smoke`，完整实验结果 metadata 记�
 | exp_023g | CatBoost 新栈 + 手术 | CatBoost 60轮 tabular + head/router 重训 + K=6 手术 | — | — | 手术 0.100569 | 0.118640 | 栈侧改动不迁移，不晋级 |
 | **exp_023h** | exp021 栈 + 手术 | 深度 LGBM(255叶×140轮×3种子), lag=rank+raw | alpha=1.0, K=6, γ=0.85 | — | 0.099460 | **0.119660** | exp024b 之前的线上最佳 |
 | **exp_024b** | exp023h + 状态检索校正 | K=32, PCA=16, alpha=0.1；前6截面保留 | 固定预注册参数 | +0.000637（诊断口径） | **0.120847** | **当前合规线上最佳，目标达成** |
-| exp_028a | 冻结 OOF/exp021/exp024b | 时间有序个股残差经验贝叶斯校准 | 无模型训练、无 alpha 搜索 | 0.078417（official Valid，delta −0.013392） | — | 门槛失败；按用户要求生成 evidence-only prediction，不晋级 |
+| exp_025a | exp021/exp016 OOF proxy | 直接 Spearman 目标诊断 | 严格 OOF | 路线门槛失败 | — | `stop_direct_rank_route`，无 Test 候选 |
+| exp_026a | exp021 frozen Valid | 合规未来特征预测代理 | 严格因果截止 | 路线门槛失败 | — | `stop_causal_future_proxy_route`，无 Test 候选 |
+| exp_027a | exp024a 四窗口 | 全历史先验 vs 状态检索归因 | 结构冻结 | global pooled `+0.000827` | — | 低于 `+0.001` 门槛，保持 exp024b |
+| exp_028a | 冻结 OOF/exp021/exp024b | 时间有序个股残差经验贝叶斯校准 | 无模型训练、无 alpha 搜索 | 0.078417（official Valid，delta −0.013392） | 0.110966 | 本地与线上均否决；evidence-only |
+| exp_029a | exp021/exp016 OOF proxy | Top-N 漂移特征截面中性化 | λ=0.05, N=20 | fold pooled `+0.000373`；Valid `−0.000307` | — | official Valid 门槛失败，无 Test 候选 |
+| exp_030a | exp021/exp016 OOF proxy | 9 类别概念组滚动残差动量 | α=0.05, W=10 | Valid `+0.006156`，worst32 `+0.004514` | — | 信号存在性全门槛通过，但滚动标签历史不可用于 Test |
+| exp_030b | 同 exp030a | 窗口前冻结历史快照 | α/W 全网格 | fold2+fold3 全组合不合格 | — | 可部署形态失败，不生成候选 |
+| exp_031a | exp024a 检索容器 | 31+4 确定性秩差因子 | PCA16/K32/α0.1 冻结 | Valid 相对 `+0.000363`；g6 失败 | — | 按预注册停止；后经用户另行授权生成 exp031b |
+| exp_031b | exp023h + 35维扩展检索指纹 | 4 个秩差因子 | 完整复刻 exp024b 参数 | 契约/秩相关交付门槛通过 | **0.120632** | 较 exp024b `−0.000215`，线上否决、evidence-only |
+| exp_032a/a2 | exp021 OOF proxy + raw99 | raw59、z20、z60；偏相关修正度量 | 零训练诊断 | 16列通过均值门槛；worst32 `−0.009822` | — | 正交信号存在但状态不稳，停止 phase D |
 
 ### 5.2 当前最佳结果的分层结论
 
 | 维度 | 当前结论 |
 |---|---|
 | 最佳已记录线上实验 | `exp_024b_retrieval_exploratory/prediction_1.npy`，`0.120847`（2026-08-23） |
-| 第二/第三最佳 | exp023h `0.119660`；exp023f `0.119533` |
+| 第二/第三最佳合规线上记录 | exp031b `0.120632`（已否决、未晋级）；exp023h `0.119660` |
 | 栈平台最佳 | exp021 `0.116568`（锚点手术系列的底座） |
 | 当前正式提交文件 | `04_results/final_submission/prediction.npy`，来源 exp024b，线上 `0.120847` |
 | 最高本地完整 Valid | exp023g 手术后 `0.100569`（但线上回归）；纯本地：exp_004 融合 `0.101285`（未通过稳定性） |
@@ -1081,6 +1097,11 @@ Notebook 的 `RUN_MODE` 默认写为 `smoke`，完整实验结果 metadata 记�
 - exp019 保守路由：本地 +0.0013，线上 `0.114914`（−0.0012）；
 - exp023c 递归自举弥漫混合：线上 `0.111227`（−0.0053 vs exp021）——valid 特有锚点结构系统性高估递归类方法；
 - exp023g CatBoost 栈替换：线上 `0.118640`（−0.0009 vs exp023f）——栈侧 valid 增益 <0.002 时线上不可区分。
+- exp028a 个股残差校准：三个后置窗口全负，线上 `0.110966`（较 exp024b `−0.009881`），实体轴路线关闭。
+- exp029a 特征暴露中性化：fold2/fold3 微正但 official Valid `−0.000307`，不迁移。
+- exp030a 概念组滚动残差动量信号显著，但 exp030b 冻结历史部署全组合失败；信号不可用于无标签 Test 长区间。
+- exp031b 35维因子扩展指纹：本地相对 Valid `+0.000363`，线上 `0.120632`（较 exp024b `−0.000215`），验证 g6 kill-switch。
+- exp032a2 原始特征族偏相关：16列有正交信号，但最差32截面块 `−0.009822`，状态稳定性不足。
 
 **方法论级结论（收官遗产）：**
 
@@ -1165,15 +1186,26 @@ environment.yml                     项目声明环境与依赖
   exp_021_retrain_head_router/       head/router 一致重训（run_exp021.py）
   exp_022_tree_full_baseline/        纯树五变体基线（run_exp022.py）
   exp_023_tabular_upgrade/           收官冲刺系列（run_exp023a..h.py + _probe_*.py 探针）
+  exp_024_state_retrieved_rank_residual/ 状态检索校正与 exp024b 生成入口
+  exp_025_direct_rank_objective/     直接 Spearman 目标诊断
+  exp_026_causal_future_proxy/       合规未来特征代理诊断
+  exp_027_retrieval_attribution/     exp024b 检索增益归因
+  exp_028_ordered_entity_residual/   时间有序个股残差校准
+  exp_029_neutralization_surgery/    特征暴露中性化诊断
+  exp_030_concept_momentum/          概念组滚动/冻结残差动量诊断
+  exp_031_factor_mining/             确定性因子挖掘与 exp031b 候选生成
+  exp_032_raw_feature_family/        raw99/z20/z60 特征族诊断
 03_cache/                           共享及实验专用缓存
   processed_data_v1/                READY、manifest、linear/tree/sequence/common
   exp_016_unified_expert_fusion/     exp016 分层缓存（OOF、checkpoints 等）
+  exp_032_raw_feature_bank/          exp032 的 [1885,3161) raw99 切片缓存（约2.66GB）
 04_results/                         实验预测、模型、指标、审计结果
   exp_001 ... exp_016/              各实验结果目录
   exp_017/                          P0 归因审计报告（p0_findings.md）
   exp_018 ... exp_022/              cat5/路由/tabular/纯树结果目录
   exp_023a ... exp_023h/            收官冲刺 8 个子实验结果目录
-  _decision_log/                    决策预注册与线上反馈日志（23 份，2026-08-07..23）
+  exp_024 ... exp_032/              突破0.12、归因及后续独立诊断结果
+  _decision_log/                    决策预注册与线上反馈日志（31 份，2026-08-07..24）
   final_submission/                 当前正式 prediction.npy（exp024b）和 metadata
 05_docs/                            官方材料与项目报告
   official_materials/               赛题、命题说明与官方方案模板（附件1-3）
@@ -1219,10 +1251,15 @@ archive/                            历史目录和旧实验入口
 - exp_021：`02_experiments/exp_021_retrain_head_router/run_exp021.py`（同上训练保护；`stage=fit/submit/all` 分阶段）。
 - exp_022：`02_experiments/exp_022_tree_full_baseline/run_exp022.py`（`--cap` 控制抽样，默认 1024；约 21 分钟）。
 - exp_023：`02_experiments/exp_023_tabular_upgrade/run_exp023a.py ... run_exp023h.py` 各子实验独立入口；`_probe_*.py` 为只读探针（cat_5=股票 ID、y 短期自相关、未来偏移机制等发现来源）；exp023g/h 的递归模型依赖 exp021 栈产物与 tree 缓存。
+- exp_024–028：分别由 `run_exp024a.py/run_exp024b.py`、`run_exp025a.py`、`run_exp026a.py`、`run_exp027a.py`、`run_exp028a.py` 运行；已有可信结果不得为整理 README 而重跑。
+- exp_029：`02_experiments/exp_029_neutralization_surgery/run_exp029a.py`，零训练的特征暴露中性化诊断。
+- exp_030：`02_experiments/exp_030_concept_momentum/run_exp030a.py` 与 `run_exp030b.py`，分别验证滚动信号存在性和冻结历史可部署性。
+- exp_031：`02_experiments/exp_031_factor_mining/run_exp031a.py` 为确定性因子诊断，`run_exp031b.py` 只生成用户授权的独立候选，不自动提交或覆盖正式文件。
+- exp_032：`extract_raw_features.py` 建立 raw99 切片缓存；`run_exp032a.py/run_exp032a2.py` 为零训练诊断，现有结果已按稳定性门槛停止。
 
 ### 8.4 预测与提交文件
 
-- 标准结果文件：`04_results/<experiment_id>/prediction.npy`；多候选实验使用 `prediction_1.npy`、`prediction_2.npy` 等编号（exp018–023）。
+- 标准结果文件：`04_results/<experiment_id>/prediction.npy`；多候选或独立候选实验使用 `prediction_1.npy`、`prediction_2.npy` 等编号（包括 exp018–024、exp028a、exp031b）。
 - 标准 shape：`(442, 5282)`，dtype `float32`。
 - 非评估位置：严格为 `0.5`。
 - 正式提交文件：`04_results/final_submission/prediction.npy`。
@@ -1240,7 +1277,9 @@ archive/                            历史目录和旧实验入口
 | 类别集中 | cat_2/3/4/7 高度集中，cat_5 高基数且有 unseen | 类别编码、unknown bucket 和泛化需单独审计（exp018 已消融，native 最优） |
 | 标签 | Y1 是近似均匀的截面 rank，不是普通二分类 | MSE、RankLoss、LambdaRank 的目标含义不同 |
 | 分布迁移 | exp_013 本地递归 Valid `0.087884`，线上 `0.077244`；exp_012 也显示本地增益明显衰减 | 不能用本地 Valid 直接替代线上判断 |
-| 本地—线上错配 | exp_014 本地 `+0.002818` 线上 `-0.001463`；exp016 剪枝本地 `+0.0028` 线上 `-0.000478`；exp019 本地 `+0.0013` 线上 `-0.0012`；exp023c 栈混合本地 `+0.005` 线上 `-0.0053` | **系统性确认**：本地 valid 增益 <0.002 的改动线上方向不可预测；晋级门槛必须线上校准 |
+| 对抗分布漂移 | exp029a 的 train/test 特征二分类 5 折 AUC `0.999943`，高 gain 特征与 PSI 登记表一致 | 漂移确实存在，但简单截面中性化在 official Valid 为负，不能把“检测到漂移”直接等同于“可修正收益” |
+| 本地—线上错配 | exp_014 本地 `+0.002818` 线上 `-0.001463`；exp016 剪枝本地 `+0.0028` 线上 `-0.000478`；exp019 本地 `+0.0013` 线上 `-0.0012`；exp031b 本地相对 `+0.000363` 线上 `-0.000215` | **系统性确认**：本地 valid 增益 <0.002 的改动线上方向不可预测；晋级门槛必须线上校准 |
+| 新信号稳定性 | exp030a 的概念滚动信号 Valid `+0.006156` 但冻结部署失败；exp032a2 的16列偏相关均值为正但 worst32 `-0.009822` | “信号存在”不等于“无标签长区间可部署”；必须单独验证冻结历史、局部时间块与因果上线形态 |
 | 标签窗口结构 | y(t) 的标签窗口覆盖 t 之后的截面（中心约 t+5）；y(t-1)→y(t) 截面 IC 0.777，lag≥5 衰减至 0 | 未来特征含窗口内信息（exp023a 探针证实）；合规框架下只能用给定历史标签作锚点 |
 | 栈平台固化 | exp020/021 cat_5 改动 +0.0004 成功；exp023g CatBoost 替换 valid +0.0012 线上 0 | 栈侧改动 valid 增益 <0.002 时线上不可区分，平台固化在 0.1165 |
 | 训练终点 | exp_003/006/007/009 测试模型被审计为训练至 3161；exp_011/012 采用 Train-only 2918 | 不同实验线上结果不能在不说明口径的情况下直接比较 |
@@ -1260,18 +1299,23 @@ archive/                            历史目录和旧实验入口
 - **锚点手术是唯一可靠的增益来源**：定向替换少数截面、其余保持已验证最佳，三次线上验证增益稳定（+0.0022~+0.0030），最终推到 `0.119660`。
 - **强因果规则边界已由探针划清**：X(t+s)(s>0) 对 y(t) 的预测力来自标签窗口重叠（未来信息），违规；给定历史标签 y(<t) 是合规锚点信号源。
 - **exp023h 阶段的历史判断**：当时缺口 0.000340，既有锚点/栈路线未能解决；该判断后来被 exp024b 的固定状态检索校正推翻。
+- **exp029a（2026-08-24）关闭特征暴露中性化路线**：对抗验证 AUC 0.9999 证实 train/test 强漂移且与 PSI 登记表一致，但截面内特征暴露中性化在 fold2/fold3 全组合微正（pooled 最高 +0.000373）而 official Valid 为负（-0.000307），与 exp025a 同型不迁移；按预注册停止规则不生成 exp029b。
+- **exp030（2026-08-24）证实概念组残差动量存在但不可部署**：exp030a 滚动历史诊断是连续五次否决后首个全门槛通过（valid +0.006156，88% 截面正，shuffled 对照负）；但 exp030b 冻结历史（Test 唯一可用形态）全组合 pooled 为负——信号是短半衰期滚动效应而非静态组偏置。截面交互路线以「存在性证实+不可部署性证实」双重记录关闭，不生成 Test 候选。
+- **exp031a（2026-08-24）因子挖掘×检索容器：相对增益全过、容器固有性质拦停**：确定性挖掘保留 4 个秩差因子，相对 reference 的 fold/valid 增益、worst-block、LOO 全部通过（valid +0.000363，LOO 正率 1.0，且完整复现 exp024a 协议 match=True）；唯 g6（检索>随机对照）失败——该性质 exp024a/shipped exp024b 本就不满足（random 0.093585 > 检索 0.092445），因子反而把差距收窄一半。按预注册不自动生成，因子与诊断全存档。
+- **exp031b（2026-08-24）用户授权探索性候选，线上 0.120632 被否决**：35 维扩展指纹（31+4 秩差因子）完整复刻 exp024b 容器（参数全冻结），契约与秩相关门槛全过；线上相对 exp024b **−0.000215** 微幅回归——g6 警示（检索不优于随机对照）被线上验证为有预测力的信号，本地 +0.000363 的微增益不迁移。因子挖掘路线以线上锚点正式关闭，正式提交保持 exp024b `0.120847`。
+- **exp032a/a2（2026-08-24）原始特征族×现代底座诊断：度量修正后发现真实正交信号，但稳定性拦停**：从 data.z 重建 99 个原始特征（主线只用 40 个，59 个从未进入现代栈；exp008 全家桶当年为捆绑测试+权重清零，从未干净检验）。exp032a 的残差 IC 度量被证明有数学缺陷（exp021 底座沿 num_7 等方向存在 ~10 倍于真实信号的倾斜，corr(f,base)=-0.45 vs corr(f,y)=-0.05，residIC 虚高至 0.29 但按其方向校正反而把底座 IC 从 0.107 降到 0.096）。exp032a2 以偏相关度量（=秩混合一阶改善方向）重判：**16 个特征（z60 主导，11 个为底座过曝修正方向）通过 fold2/fold3/valid 三窗口一致性，族级 partial 均值 +0.0077**——真实未吸收信号存在；但 g4 稳定性失败（valid 最差 32 截面块 −0.0098 << −0.002），按预注册记 `unstable_signal` 关闭。产物：`03_cache/exp_032_raw_feature_bank`（raw_num.npy 2.66GB 可复用）、两份诊断表与决策日志。
 
 ### 9.3 后续改良方向（含执行入口）
 
-按项目规则：**线上成绩超过 0.12 之前不制作提交用技术文档**；改良目标即合规突破 0.12（缺口 `0.000340`）。以下方向按「入口 + 依据 + 预期」组织，供后续执行改良时直接取用。注意 9.2 中已证伪路线不要重复投入。
+项目已经合规突破 0.12，目前没有通过预注册门槛且等待生成的候选。以下内容改为“维护/研究方向清单”，不是自动启动队列；任何新实验仍须提出与 exp025–032 不同的独立假设、先写 protocol，并通过严格 expanding walk-forward 门槛。
 
 | 方向 | 执行入口 | 依据与预期 |
 |---|---|---|
-| 规则重释则重启未来偏移路线 | `02_experiments/exp_023_tabular_upgrade/run_exp023a.py`（18 分钟全流程）+ `PLAN.md` | valid 0.6478 / 线上 0.613402；若主办方明确允许跨截面特征使用可立即重启，后续压榨方向（GBDT 全偏移块、IC 加权、尾部专用模型）已在 PLAN.md §4 列出 |
-| 锚点段模型继续压榨 | `run_exp023h.py`（376.5s）；改 `P_DEEP`/`LAGS`/`SEEDS`/`ROUNDS` 常量 | 深度/原始值/多种子/三模型探针均已试（见 023h decision log），边际增益已降至 +0.0001、transfer ratio 0.16——**预期为负**，除非出现新的模型族 |
-| 中段 412 截面平台突破 | exp021 栈底座 `run_exp021.py` stage=fit 重做头部 | 22 个实验证明栈侧 valid 增益 <0.002 时线上不可区分；任何头部/路由改动须本地 valid 增益 ≥0.002 才值得消耗提交额度 |
-| 高 PSI 特征稳健变换 | 特征工厂入口 `04_results/_feature_factory/` + exp022 的 tree 419 视图 | 栈平台固化后预计无法突破（9.2 结论）；仅当与锚点手术叠加验证时有残余价值 |
-| 手术段扩展（K>6） | `run_exp023h.py` 网格（metrics.json 已含 K=6..40 全网格 valid 值） | 网格显示 K>6 的 valid 全面低于 K=6（0.09946 vs ≤0.09927）；截面 7+ 的 lag 链断裂（IC≈0），**已证伪** |
+| 正式文件保护与可复现审计 | `scripts/project_audit.py` + safety contract | exp024b 仍是正式最佳；每次文档/登记更新后核验 SHA-256 `6ff796...e2be55`，不自动覆盖、不自动提交 |
+| 原始特征族的状态稳定机制（仅新假设） | exp032 缓存与偏相关诊断表 | 已证实16列存在均值正交信号，但 g4 worst32 明显失败；只有能预先定义并严格因果识别 regime 的新机制才值得另立实验，禁止直接事后选块或调权 |
+| 概念组残差动量 | exp030a/030b | 滚动真标签信号强，但 Test 可用的冻结历史全组合失败；递归伪标签已有 exp023c 负面先例，本路线关闭 |
+| 因子扩展检索指纹 | exp031a/031b | 本地微增益线上 `-0.000215`，g6 警示被验证；31维 exp024b 指纹继续作为冻结上限，不再搜索 K/alpha/权重 |
+| 锚点段模型继续压榨 | `run_exp023h.py` 历史网格 | 深度/原始值/多种子/三模型均已试，边际增益降至 `+0.000127`；除非出现独立模型族，否则预期为负 |
 | 自动化数据质量测试 | 新增脚本参照 [12 数据契约](#12-数据预测和提交契约) 与 exp016 tests | 纯工程改进：mask 覆盖率、非评估填充、feature finite、类别 unseen、PSI 告警、SHA-256、训练终点记录；不直接产生分数 |
 | exp_008 档案补齐 | `04_results/exp_008_new_method/`（现仅 model.txt + prediction.npy） | 仅影响档案完整性，无分数收益 |
 
@@ -1279,7 +1323,9 @@ archive/                            历史目录和旧实验入口
 
 1. 任何新候选先写 `04_results/_decision_log/` 预注册（模板见 9.4），再消耗线上提交额度；
 2. 栈侧/特征侧改动本地 valid 增益不足 0.002 时，线上方向不可预测，默认不提交；
-3. 手术类改动参数只在 valid 真实锚点段（与 test 结构同构）选择，禁止普通 valid 段选参（exp023c 教训）。
+3. 手术类改动参数只在 valid 真实锚点段（与 test 结构同构）选择，禁止普通 valid 段选参（exp023c 教训）；
+4. 新信号必须同时证明存在性与可部署性；滚动真实标签、未来偏移和事后时间块选择不得进入 Test；
+5. 准备线上提交前向用户确认当日额度，项目代码不得自动提交或自动覆盖 `final_submission`。
 
 ### 9.4 后续实验记录模板
 
@@ -1318,6 +1364,11 @@ Train/Valid/Test 区间：
 6. exp024b 的预注册、诊断风险与线上结果均保留；线上反馈决策日志位于 `04_results/_decision_log/`。
 7. exp027a 将检索校正拆为全历史先验与状态特异残差：global pooled 优势仅 `+0.000827` 且只有2/4窗口为正，residual-only 为正窗口0/4；结论 `inconclusive_keep_exp024b`，未建立 exp027b。
 8. exp028a 检验时间有序个股残差收缩，fold2/fold3/official Valid 分别为 `-0.025045/-0.003758/-0.013392`；用户报告线上 RankIC `0.110966`，较 exp024b 低 `0.009881`，确认路线被否决。独立 `prediction_1.npy` 仅作 evidence-only，不晋级、不覆盖 exp024b。
+9. exp029a 证实 train/test 特征漂移极强，但中性化仅在 fold 侧微正、official Valid 为负，特征暴露路线停止。
+10. exp030a 证实概念组残差动量是真实短期信号；exp030b 同时证实冻结历史部署不成立，因此没有生成 Test 候选。
+11. exp031b 经用户授权探索并取得线上 `0.120632`，较 exp024b `-0.000215`；因子挖掘路线关闭，正式文件未改变。
+12. exp032a2 用偏相关修正了残差 IC 度量缺陷，找到16列正交信号，但 worst32 `-0.009822` 未过稳定性门槛，不进入重训 phase D。
+13. 截至 2026-08-24，没有待晋级候选；当日已记录 exp031b 一次人工提交，下一次准备提交前必须重新确认额度。
 
 ## 10. 复现分级与命令清单
 
@@ -1656,6 +1707,7 @@ prediction[非评估位置] == 0.5
 - 线上最佳候选：`04_results/exp_024b_retrieval_exploratory/prediction_1.npy`，线上 RankIC `0.120847`（2026-08-23）；
 - 当前正式文件：`04_results/final_submission/prediction.npy`，来源为 exp024b，线上记录 `0.120847`（2026-08-23 经用户授权人工晋级，替换 exp016）；
 - exp024b 已超过 0.12 晋级阈值，并于 2026-08-23 取得用户明确授权完成正式文件替换；
+- exp031b 独立候选线上 `0.120632`，状态为 `online_rejected_evidence_only`；其 SHA-256 为 `8d9dd658...f7e1c2`，没有覆盖 exp024b 或正式文件；
 - 正式晋级已校验源/目标 SHA-256 一致，上一正式文件 exp016 的原始产物与哈希记录继续保留。
 
 ### 12.4 当前 exp016 full 产物
@@ -1814,6 +1866,10 @@ prediction[非评估位置] == 0.5
 - [`02_experiments/exp_021_retrain_head_router/run_exp021.py`](02_experiments/exp_021_retrain_head_router/run_exp021.py)：栈平台最佳（0.116568）生成脚本。
 - [`02_experiments/exp_023_tabular_upgrade/run_exp023h.py`](02_experiments/exp_023_tabular_upgrade/run_exp023h.py)：exp024b 底座（0.119660）生成脚本。
 - [`02_experiments/exp_024_state_retrieved_rank_residual/run_exp024b.py`](02_experiments/exp_024_state_retrieved_rank_residual/run_exp024b.py)：当前线上最佳（0.120847）生成脚本。
+- [`02_experiments/exp_029_neutralization_surgery/run_exp029a.py`](02_experiments/exp_029_neutralization_surgery/run_exp029a.py)：特征暴露中性化严格诊断。
+- [`02_experiments/exp_030_concept_momentum/run_exp030b.py`](02_experiments/exp_030_concept_momentum/run_exp030b.py)：概念组残差动量冻结部署诊断。
+- [`02_experiments/exp_031_factor_mining/run_exp031b.py`](02_experiments/exp_031_factor_mining/run_exp031b.py)：用户授权的35维扩展指纹独立候选生成脚本。
+- [`02_experiments/exp_032_raw_feature_family/run_exp032a2.py`](02_experiments/exp_032_raw_feature_family/run_exp032a2.py)：原始特征族偏相关与稳定性诊断。
 - [`02_experiments/exp_023_tabular_upgrade/PLAN.md`](02_experiments/exp_023_tabular_upgrade/PLAN.md)：exp023 发现链与机制说明（未来偏移、锚点手术）。
 
 ### 结果与文档
@@ -1823,8 +1879,10 @@ prediction[非评估位置] == 0.5
 - [`04_results/exp_023h_ultimate_surgery/metrics.json`](04_results/exp_023h_ultimate_surgery/metrics.json)：当前最佳底座的参数与锚点手术记录。
 - [`04_results/exp_024b_retrieval_exploratory/metadata.json`](04_results/exp_024b_retrieval_exploratory/metadata.json)：当前正式文件来源及线上晋级状态。
 - [`04_results/exp_028a_ordered_entity_residual/prediction_1.npy`](04_results/exp_028a_ordered_entity_residual/prediction_1.npy)：exp028a 门槛失败后按用户要求保留的 evidence-only 预测，禁止自动晋级。
+- [`04_results/exp_031b_factor_mined_candidate/prediction_1.npy`](04_results/exp_031b_factor_mined_candidate/prediction_1.npy)：线上 `0.120632` 的 evidence-only 候选，未晋级。
+- [`04_results/exp_032a2_partial_correlation_diagnostic/metrics.json`](04_results/exp_032a2_partial_correlation_diagnostic/metrics.json)：16列正交信号及 worst32 稳定性否决记录。
 - [`04_results/final_submission/metadata.json`](04_results/final_submission/metadata.json)：当前正式文件来源和哈希。
-- [`04_results/_decision_log/`](04_results/_decision_log/)：23 份决策日志（预注册/诊断 + 线上反馈 + 晋级记录，2026-08-07..23）。
+- [`04_results/_decision_log/`](04_results/_decision_log/)：31 份决策日志（预注册/诊断 + 线上反馈 + 晋级记录，2026-08-07..24）。
 - [`04_results/exp_017/p0_findings.md`](04_results/exp_017/p0_findings.md)：exp016 归因审计报告。
 - [`.trae/documents/友安杯Y1_RankIC优化实施路线图.md`](.trae/documents/友安杯Y1_RankIC优化实施路线图.md)：项目管理路线图（含 §1.7 收官论证）。
 - [`05_docs/project_report/友安杯_Y1_项目实现方案.docx`](05_docs/project_report/友安杯_Y1_项目实现方案.docx)：项目实现方案（2026-08-23 收官重写版；按规则 0.12 前不用于提交）。
